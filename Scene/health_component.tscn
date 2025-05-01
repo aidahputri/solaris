@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bacytinuyqjts"]
+
+[ext_resource type="Script" path="res://Scene/health_component.gd" id="1_f14r4"]
+
+[node name="HealthComponent" type="Node2D"]
+script = ExtResource("1_f14r4")
+MAX_HEALTH = null

@@ -1,29 +1,63 @@
-[gd_scene load_steps=5 format=3 uid="uid://dm30ncxth5bqk"]
+[gd_scene load_steps=8 format=3 uid="uid://dm30ncxth5bqk"]
 
 [ext_resource type="Script" path="res://Script/Player.gd" id="1_1tflu"]
 [ext_resource type="SpriteFrames" uid="uid://dob520s8jtcvt" path="res://PlayerSpriteFrame.tres" id="1_5vhtm"]
+[ext_resource type="PackedScene" uid="uid://bacytinuyqjts" path="res://Scene/health_component.tscn" id="3_f63as"]
+[ext_resource type="PackedScene" uid="uid://vkoy8dp5t3sp" path="res://Scene/hitbox_component.tscn" id="4_4ualu"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8upu1"]
-size = Vector2(34, 77)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nd1dm"]
+size = Vector2(33, 77)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3fvl7"]
 size = Vector2(27, 77)
 
-[node name="Player" type="CharacterBody2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0jj2g"]
+size = Vector2(33, 77)
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("healthComponent")]
 script = ExtResource("1_1tflu")
+healthComponent = NodePath("HealthComponent")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -32)
 sprite_frames = ExtResource("1_5vhtm")
 animation = &"walk"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, -6.5)
-shape = SubResource("RectangleShape2D_8upu1")
+[node name="HealthComponent" parent="." node_paths=PackedStringArray("progressBar") instance=ExtResource("3_f63as")]
+MAX_HEALTH = 100.0
+progressBar = NodePath("../Control/ProgressBar")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("healthComponent") instance=ExtResource("4_4ualu")]
+healthComponent = NodePath("../HealthComponent")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+position = Vector2(-3.5, -6.5)
+shape = SubResource("RectangleShape2D_nd1dm")
+
+[node name="WeaponHitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WeaponHitbox"]
 position = Vector2(0, -6.5)
 shape = SubResource("RectangleShape2D_3fvl7")
 disabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-3.5, -6.5)
+shape = SubResource("RectangleShape2D_0jj2g")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ProgressBar" type="ProgressBar" parent="Control"]
+layout_mode = 0
+offset_left = -15.0
+offset_top = -82.0
+offset_right = -11.0
+offset_bottom = -55.0
+
+[connection signal="area_entered" from="WeaponHitbox" to="." method="_on_weapon_hitbox_area_entered"]

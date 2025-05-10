@@ -46,6 +46,7 @@ position = Vector2(-3.5, -6.5)
 shape = SubResource("RectangleShape2D_0jj2g")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3

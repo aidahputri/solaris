@@ -74,7 +74,6 @@ func animations():
 		else:
 			animplayer.play("walk")
 
-
 func _on_weapon_hitbox_area_entered(area: Area2D) -> void:
 	if area is HitboxComponent:
 		var hitbox: HitboxComponent = area

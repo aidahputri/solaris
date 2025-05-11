@@ -1,0 +1,54 @@
+[gd_scene load_steps=5 format=3 uid="uid://ndqpynq50iet"]
+
+[ext_resource type="Texture2D" uid="uid://dk6nf487ro7r6" path="res://Asset/Background/layer_1.png" id="1_l2xil"]
+[ext_resource type="Texture2D" uid="uid://drir4vbc1pa8e" path="res://Asset/Background/layer_2.png" id="2_yi5kk"]
+[ext_resource type="Texture2D" uid="uid://b1ctja2sh332s" path="res://Asset/Background/layer_3.png" id="3_2pi6l"]
+[ext_resource type="Script" path="res://Script/TitleBackground.gd" id="4_1qhjo"]
+
+[node name="TitleScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_l2xil")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 278.0
+offset_right = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_yi5kk")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 530.0
+offset_right = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_2pi6l")
+script = ExtResource("4_1qhjo")

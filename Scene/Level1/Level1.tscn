@@ -1,16 +1,16 @@
 [gd_scene load_steps=11 format=4 uid="uid://bha1g14bx11cl"]
 
-[ext_resource type="Texture2D" uid="uid://yv8aoy7vyjyw" path="res://Asset/1. DarkForest1.2/main_background.png" id="1_rj1pb"]
-[ext_resource type="Texture2D" uid="uid://nd3mv838bofx" path="res://Asset/1. DarkForest1.2/bgrd_tree5.png" id="2_hatcg"]
-[ext_resource type="Texture2D" uid="uid://cog3ekx1ry1co" path="res://Asset/1. DarkForest1.2/bgrd_tree4.png" id="3_vmv38"]
-[ext_resource type="Texture2D" uid="uid://n6kv7iofq20f" path="res://Asset/5.2 PF_Castle_v2.0/main_lev_buildA.png" id="4_axd86"]
-[ext_resource type="Texture2D" uid="uid://ckkdbicv6usi" path="res://Asset/1. DarkForest1.2/bgrd_tree3.png" id="4_kjb6u"]
-[ext_resource type="PackedScene" uid="uid://dm30ncxth5bqk" path="res://Scene/Player.tscn" id="5_hjqa5"]
-[ext_resource type="Texture2D" uid="uid://2j42ej2ndwc1" path="res://Asset/1. DarkForest1.2/bgrd_tree2.png" id="5_j4ies"]
-[ext_resource type="Texture2D" uid="uid://ds44lk7wqymog" path="res://Asset/1. DarkForest1.2/bgrd_tree1.png" id="6_w7vg2"]
+[ext_resource type="Texture2D" uid="uid://yv8aoy7vyjyw" path="res://Asset/1. DarkForest1.2/main_background.png" id="1_i3bh0"]
+[ext_resource type="Texture2D" uid="uid://nd3mv838bofx" path="res://Asset/1. DarkForest1.2/bgrd_tree5.png" id="2_cmmf3"]
+[ext_resource type="Texture2D" uid="uid://cog3ekx1ry1co" path="res://Asset/1. DarkForest1.2/bgrd_tree4.png" id="3_l36eq"]
+[ext_resource type="Texture2D" uid="uid://ckkdbicv6usi" path="res://Asset/1. DarkForest1.2/bgrd_tree3.png" id="4_c3dll"]
+[ext_resource type="Texture2D" uid="uid://2j42ej2ndwc1" path="res://Asset/1. DarkForest1.2/bgrd_tree2.png" id="5_o26pp"]
+[ext_resource type="Texture2D" uid="uid://ds44lk7wqymog" path="res://Asset/1. DarkForest1.2/bgrd_tree1.png" id="6_1t8lq"]
+[ext_resource type="Texture2D" uid="uid://n6kv7iofq20f" path="res://Asset/5.2 PF_Castle_v2.0/main_lev_buildA.png" id="7_ahdy2"]
+[ext_resource type="PackedScene" uid="uid://dm30ncxth5bqk" path="res://Scene/Player.tscn" id="8_j4xh6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xnhxt"]
-texture = ExtResource("4_axd86")
+texture = ExtResource("7_ahdy2")
 0:0/0 = 0
 1:0/0 = 0
 1:0/0/terrain_set = 0
@@ -2324,7 +2324,7 @@ sources/0 = SubResource("TileSetAtlasSource_xnhxt")
 motion_mirroring = Vector2(1024, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Background"]
-texture = ExtResource("1_rj1pb")
+texture = ExtResource("1_i3bh0")
 centered = false
 
 [node name="Middleground" type="ParallaxLayer" parent="ParallaxBackground"]
@@ -2334,7 +2334,7 @@ motion_mirroring = Vector2(816, 0)
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Middleground"]
 position = Vector2(-2, 101)
 scale = Vector2(1.09926, 1.30903)
-texture = ExtResource("2_hatcg")
+texture = ExtResource("2_cmmf3")
 centered = false
 
 [node name="Middleground2" type="ParallaxLayer" parent="ParallaxBackground"]
@@ -2344,7 +2344,7 @@ motion_mirroring = Vector2(816, 0)
 [node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/Middleground2"]
 position = Vector2(-9, 170)
 scale = Vector2(1.03309, 1.1363)
-texture = ExtResource("3_vmv38")
+texture = ExtResource("3_l36eq")
 centered = false
 
 [node name="Middleground3" type="ParallaxLayer" parent="ParallaxBackground"]
@@ -2354,7 +2354,7 @@ motion_mirroring = Vector2(816, 0)
 [node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/Middleground3"]
 position = Vector2(4, 207)
 scale = Vector2(1.03799, 1.00782)
-texture = ExtResource("4_kjb6u")
+texture = ExtResource("4_c3dll")
 centered = false
 
 [node name="Middleground4" type="ParallaxLayer" parent="ParallaxBackground"]
@@ -2364,7 +2364,7 @@ motion_mirroring = Vector2(816, 0)
 [node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/Middleground4"]
 position = Vector2(-4, 235)
 scale = Vector2(1.04779, 0.889769)
-texture = ExtResource("5_j4ies")
+texture = ExtResource("5_o26pp")
 centered = false
 
 [node name="Middleground5" type="ParallaxLayer" parent="ParallaxBackground"]
@@ -2374,7 +2374,7 @@ motion_mirroring = Vector2(816, 0)
 [node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/Middleground5"]
 position = Vector2(-18, 277)
 scale = Vector2(1.04779, 0.889769)
-texture = ExtResource("6_w7vg2")
+texture = ExtResource("6_1t8lq")
 centered = false
 
 [node name="TileMapLayers" type="Node2D" parent="."]
@@ -2385,5 +2385,5 @@ tile_map_data = PackedByteArray("AAABAA4AAAACAAAAAAAOABMAAAAEAAMAAAAOABIAAAAPAAc
 tile_set = SubResource("TileSet_faxhl")
 metadata/_edit_lock_ = true
 
-[node name="Player" parent="." instance=ExtResource("5_hjqa5")]
+[node name="Player" parent="." instance=ExtResource("8_j4xh6")]
 position = Vector2(81, 375)

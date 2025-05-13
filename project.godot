@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="solaris"
-run/main_scene="res://Scene/Test.tscn"
+run/main_scene="res://Scene/TitleScreen.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://Asset/Karakter/Converted_Vampire/Hurt.png"
 

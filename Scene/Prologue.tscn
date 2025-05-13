@@ -1,0 +1,128 @@
+[gd_scene load_steps=10 format=3 uid="uid://b41wvlaiskci3"]
+
+[ext_resource type="Texture2D" uid="uid://dk6nf487ro7r6" path="res://Asset/Background/layer_1.png" id="1_8hhih"]
+[ext_resource type="Texture2D" uid="uid://drir4vbc1pa8e" path="res://Asset/Background/layer_2.png" id="2_tsidp"]
+[ext_resource type="Texture2D" uid="uid://b1ctja2sh332s" path="res://Asset/Background/layer_3.png" id="3_dbnyd"]
+[ext_resource type="Script" path="res://Script/TitleBackground.gd" id="4_ds7po"]
+[ext_resource type="Script" path="res://Script/Prologue.gd" id="5_ateun"]
+[ext_resource type="FontFile" uid="uid://bne4aewogwce5" path="res://Asset/Font/vampire_wars/Vampire Wars Italic.ttf" id="5_h4y0f"]
+[ext_resource type="FontFile" uid="uid://cvkojm80tadh5" path="res://Asset/Font/gumela/Gumela.ttf" id="7_ctvt5"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_eq6wg"]
+specular_color = Color(0.0823529, 0.12549, 0.223529, 1)
+
+[sub_resource type="Theme" id="Theme_8f0mo"]
+default_font = ExtResource("7_ctvt5")
+default_font_size = 20
+
+[node name="Prologue" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect3" type="TextureRect" parent="."]
+modulate = Color(0.0823529, 0.258824, 0.443137, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -2.0
+offset_right = 2.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CanvasTexture_eq6wg")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -105.0
+offset_top = -142.0
+offset_right = 3.0
+offset_bottom = -141.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_8hhih")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 401.0
+offset_bottom = 115.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_tsidp")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 568.0
+offset_right = 2.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_dbnyd")
+script = ExtResource("4_ds7po")
+
+[node name="Control2" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -318.0
+offset_right = 320.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_ateun")
+
+[node name="Prologue" type="Label" parent="Control2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.215
+anchor_right = 0.5
+anchor_bottom = 0.215
+offset_left = -151.0
+offset_top = 28.18
+offset_right = 151.0
+offset_bottom = 105.18
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("5_h4y0f")
+theme_override_font_sizes/font_size = 64
+text = "Prologue"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.099
+anchor_top = 0.485
+anchor_right = 0.099
+anchor_bottom = 0.485
+offset_left = -0.162003
+offset_top = -0.279999
+offset_right = 510.838
+offset_bottom = 162.72
+theme = SubResource("Theme_8f0mo")
+bbcode_enabled = true
+scroll_active = false

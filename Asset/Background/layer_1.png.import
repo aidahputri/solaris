@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ddhxqdlyg4y3a"
-path="res://.godot/imported/background_day2.png-4f980006cf942232a20d7d5d199841b0.ctex"
+uid="uid://dk6nf487ro7r6"
+path="res://.godot/imported/layer_1.png-802fb96e47ee1def44b94bc2274702c6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Asset/5.1 PF_Caslte_1.0/background_day2.png"
-dest_files=["res://.godot/imported/background_day2.png-4f980006cf942232a20d7d5d199841b0.ctex"]
+source_file="res://Asset/Background/layer_1.png"
+dest_files=["res://.godot/imported/layer_1.png-802fb96e47ee1def44b94bc2274702c6.ctex"]
 
 [params]
 

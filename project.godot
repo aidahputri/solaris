@@ -15,6 +15,10 @@ run/main_scene="res://Scene/TitleScreen.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://Asset/Karakter/Converted_Vampire/Hurt.png"
 
+[autoload]
+
+Global="*res://Script/Global.gd"
+
 [input]
 
 ui_left={

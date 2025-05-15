@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var SPEED := 200
+@export var SPEED := 400
 @export var JUMP_SPEED := -400
 @export var GRAVITY := 1200
 @onready var animplayer = $AnimatedSprite2D
@@ -72,7 +72,7 @@ func animations():
 		if velocity.x == 0:
 			animplayer.play("idle")
 		else:
-			animplayer.play("walk")
+			animplayer.play("run")
 
 func _on_weapon_hitbox_area_entered(area: Area2D) -> void:
 	if area is HitboxComponent:

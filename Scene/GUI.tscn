@@ -42,7 +42,6 @@ offset_top = 19.0
 offset_right = 108.0
 offset_bottom = 26.0
 max_value = 2.0
-step = 2.0
 nine_patch_stretch = true
 texture_under = ExtResource("1_kullm")
 texture_progress = ExtResource("3_x8reb")

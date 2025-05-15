@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://g25ig8jijn0o"]
+[gd_scene load_steps=8 format=3 uid="uid://cknetk7q7m7av"]
 
 [ext_resource type="Texture2D" uid="uid://cnqaf2xno1gkb" path="res://Asset/BlackandWhiteUI.png/underbar.png" id="1_kullm"]
 [ext_resource type="Texture2D" uid="uid://dvx5d7xmt4a17" path="res://Asset/BlackandWhiteUI.png/health_bar.png" id="2_ne08m"]
@@ -42,6 +42,7 @@ offset_top = 19.0
 offset_right = 108.0
 offset_bottom = 26.0
 max_value = 2.0
+step = 2.0
 nine_patch_stretch = true
 texture_under = ExtResource("1_kullm")
 texture_progress = ExtResource("3_x8reb")

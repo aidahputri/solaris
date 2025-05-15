@@ -7,15 +7,18 @@ extends CharacterBody2D
 @export var attack_damage := 10
 @export var knockback_force := 10
 @export var healthComponent: HealthComponent
+@export var total_jump = 1
 
 const UP = Vector2(0,-1)
 var is_attacking = false
-@export var total_jump = 1
 var jumps = total_jump
 
 var attack_cooldown := 1.0 
 var time_since_attack := 0.0
 
+func _ready():
+	Global.playerJump = jumps
+	
 func _physics_process(delta: float) -> void:
 	time_since_attack += delta
 	velocity.y += delta*GRAVITY
@@ -43,11 +46,13 @@ func move():
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		
 func jump():
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_SPEED
-	if Input.is_action_just_pressed("ui_accept") and not is_on_floor() and jumps > 0:
-		velocity.y = JUMP_SPEED
-		jumps = jumps - 1
+	if Input.is_action_just_pressed("ui_accept"):
+		if is_on_floor():
+			velocity.y = JUMP_SPEED
+		elif jumps > 0:
+			velocity.y = JUMP_SPEED
+			jumps -= 1
+			Global.playerJump = jumps
 
 func attack():
 	if Input.is_action_just_pressed("attack") and is_on_floor():
@@ -69,6 +74,7 @@ func animations():
 			animplayer.play("fall")
 	else:
 		jumps = total_jump
+		Global.playerJump = jumps
 		if velocity.x == 0:
 			animplayer.play("idle")
 		else:

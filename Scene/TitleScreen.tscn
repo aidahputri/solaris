@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://ndqpynq50iet"]
+[gd_scene load_steps=10 format=3 uid="uid://ndqpynq50iet"]
 
 [ext_resource type="Texture2D" uid="uid://dk6nf487ro7r6" path="res://Asset/Background/layer_1.png" id="1_l2xil"]
 [ext_resource type="Texture2D" uid="uid://drir4vbc1pa8e" path="res://Asset/Background/layer_2.png" id="2_yi5kk"]
@@ -6,6 +6,9 @@
 [ext_resource type="Script" path="res://Script/TitleBackground.gd" id="4_1qhjo"]
 [ext_resource type="FontFile" uid="uid://cqndawobmni03" path="res://Asset/Font/vampire_wars/Vampire Wars.ttf" id="5_noy1m"]
 [ext_resource type="Script" path="res://Script/TitleButton.gd" id="6_oh3j7"]
+[ext_resource type="Texture2D" uid="uid://bcybsdoqoubsf" path="res://Asset/BlackandWhiteUI.png/button-bg.png" id="7_fm3h5"]
+[ext_resource type="Texture2D" uid="uid://c8smr6lhgdncc" path="res://Asset/BlackandWhiteUI.png/button-bg-normal.png" id="7_om5j3"]
+[ext_resource type="FontFile" uid="uid://cvkojm80tadh5" path="res://Asset/Font/gumela/Gumela.ttf" id="8_phwi5"]
 
 [node name="TitleScreen" type="Control"]
 layout_mode = 3
@@ -47,7 +50,7 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 568.0
+offset_top = 883.0
 offset_right = 2.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -56,62 +59,104 @@ script = ExtResource("4_1qhjo")
 
 [node name="Control2" type="Control" parent="."]
 layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -596.0
-offset_top = -151.0
-offset_bottom = 151.0
+anchor_left = 0.651
+anchor_top = 0.382
+anchor_right = 0.651
+anchor_bottom = 0.382
+offset_left = -0.920044
+offset_top = 0.439972
+offset_right = 595.08
+offset_bottom = 302.44
 grow_horizontal = 0
 grow_vertical = 2
 
 [node name="Label" type="Label" parent="Control2"]
-layout_mode = 0
-offset_left = 29.0
-offset_top = -36.0
-offset_right = 569.0
-offset_bottom = 87.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.456
+anchor_top = -0.119
+anchor_right = -0.456
+anchor_bottom = -0.119
+offset_left = -0.223969
+offset_top = -28.062
+offset_right = 840.776
+offset_bottom = 101.938
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0.054902, 0.27451, 0.490196, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("5_noy1m")
-theme_override_font_sizes/font_size = 72
+theme_override_font_sizes/font_size = 108
 text = "Noctis Solaris"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="Start" type="Button" parent="Control2"]
+[node name="Start" type="TextureButton" parent="Control2"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.638
+anchor_left = 0.579
 anchor_top = 0.437
-anchor_right = 0.638
+anchor_right = 0.579
 anchor_bottom = 0.437
-offset_left = -0.248016
-offset_top = 0.026001
-offset_right = 184.752
-offset_bottom = 48.026
-theme_override_font_sizes/font_size = 24
-text = "PLAY"
+offset_left = -7.08405
+offset_top = -5.974
+offset_right = 212.916
+offset_bottom = 75.026
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("7_om5j3")
+texture_pressed = ExtResource("7_fm3h5")
+texture_hover = ExtResource("7_fm3h5")
+texture_focused = ExtResource("7_fm3h5")
+stretch_mode = 0
 script = ExtResource("6_oh3j7")
 
-[node name="Exit" type="Button" parent="Control2"]
+[node name="Label" type="Label" parent="Control2/Start"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("8_phwi5")
+theme_override_font_sizes/font_size = 32
+text = "PLAY"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Exit" type="TextureButton" parent="Control2"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.636
-anchor_top = 0.722
-anchor_right = 0.636
-anchor_bottom = 0.722
-offset_left = -0.0560303
-offset_top = -0.0440216
-offset_right = 185.944
-offset_bottom = 47.956
-theme_override_font_sizes/font_size = 24
-text = "EXIT"
+anchor_left = 0.579
+anchor_top = 0.437
+anchor_right = 0.579
+anchor_bottom = 0.437
+offset_left = -7.08405
+offset_top = 104.026
+offset_right = 212.916
+offset_bottom = 185.026
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("7_om5j3")
+texture_pressed = ExtResource("7_fm3h5")
+texture_hover = ExtResource("7_fm3h5")
+texture_focused = ExtResource("7_fm3h5")
+stretch_mode = 0
 script = ExtResource("6_oh3j7")
+
+[node name="Label" type="Label" parent="Control2/Exit"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("8_phwi5")
+theme_override_font_sizes/font_size = 32
+text = "EXIT
+"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="Control2/Start" to="Control2/Start" method="_on_pressed"]
 [connection signal="pressed" from="Control2/Exit" to="Control2/Exit" method="_on_exit_pressed"]

@@ -1,4 +1,4 @@
-extends Button
+extends TextureButton
 
 func _on_pressed():
 	call_deferred("start_scene")

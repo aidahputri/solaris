@@ -15,6 +15,10 @@ run/main_scene="res://Scene/Test.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://Asset/Karakter/Converted_Vampire/Hurt.png"
 
+[autoload]
+
+Global="*res://Script/Global.gd"
+
 [input]
 
 attack={

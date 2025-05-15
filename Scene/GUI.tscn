@@ -1,0 +1,59 @@
+[gd_scene load_steps=8 format=3 uid="uid://g25ig8jijn0o"]
+
+[ext_resource type="Texture2D" uid="uid://cnqaf2xno1gkb" path="res://Asset/BlackandWhiteUI.png/underbar.png" id="1_kullm"]
+[ext_resource type="Texture2D" uid="uid://dvx5d7xmt4a17" path="res://Asset/BlackandWhiteUI.png/health_bar.png" id="2_ne08m"]
+[ext_resource type="Texture2D" uid="uid://dwdccdocbnfq5" path="res://Asset/BlackandWhiteUI.png/jump_bar.png" id="3_x8reb"]
+[ext_resource type="Texture2D" uid="uid://c0n1kddqj5mfb" path="res://Asset/BlackandWhiteUI.png/icon_removed.png" id="4_1c46e"]
+[ext_resource type="Texture2D" uid="uid://yw6fv0pg4bej" path="res://Asset/BlackandWhiteUI.png/vampire_head.png" id="5_4e6i7"]
+[ext_resource type="Texture2D" uid="uid://dfwf6k5xlv6n0" path="res://Asset/BlackandWhiteUI.png/vampire_head_2.png" id="6_axakd"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ogh0j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_4e6i7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_axakd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 0.5
+}]
+
+[node name="GUI" type="CanvasLayer"]
+offset = Vector2(25.6, 31.09)
+scale = Vector2(4.875, 4.875)
+transform = Transform2D(4.875, 0, 0, 4.875, 25.6, 31.09)
+
+[node name="HealthBar" type="TextureProgressBar" parent="."]
+offset_left = 40.2597
+offset_top = 4.87013
+offset_right = 157.26
+offset_bottom = 18.8701
+rounded = true
+nine_patch_stretch = true
+texture_under = ExtResource("1_kullm")
+texture_progress = ExtResource("2_ne08m")
+
+[node name="JumpBar" type="TextureProgressBar" parent="."]
+offset_left = 40.0
+offset_top = 19.0
+offset_right = 108.0
+offset_bottom = 26.0
+max_value = 2.0
+nine_patch_stretch = true
+texture_under = ExtResource("1_kullm")
+texture_progress = ExtResource("3_x8reb")
+
+[node name="CharacterFrame" type="Sprite2D" parent="."]
+position = Vector2(24.0195, 20.3734)
+scale = Vector2(1.37413, 1.46104)
+texture = ExtResource("4_1c46e")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(21.4154, 21.1097)
+scale = Vector2(-1.06656, 1.20521)
+sprite_frames = SubResource("SpriteFrames_ogh0j")
+autoplay = "default"
+frame_progress = 0.154556

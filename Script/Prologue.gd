@@ -5,7 +5,7 @@ extends Control
 var prologue_lines = [
 	"[i]For centuries, the world forgot his name…[/i]",
 	"",
-	"Deep in a shadowed land stood an old, silent castle. Inside, a vampire named [b]Noctis[/b] slept — a noble of ancient blood, long lost to time. Once powerful, once feared… now just a legend.",
+	"Deep in a shadowed land stood an old, silent castle. Inside, a vampire named [b]Noctis[/b] slept — a noble of ancient blood, long lost to time.",
 	"",
 	"He survived thanks to the [color=gold][b]Solaris Gem[/b][/color] — a glowing relic from Queen Malavara that let him walk in sunlight, safe from its deadly touch.",
 	"",
@@ -39,5 +39,5 @@ func show_next_line(index: int) -> void:
 		return
 
 	label.text = "[center]" + prologue_lines[index] + "[/center]"
-	await get_tree().create_timer(4.0).timeout
+	await get_tree().create_timer(3.0).timeout
 	show_next_line(index + 1)

@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://bha1g14bx11cl"]
+[gd_scene load_steps=11 format=3 uid="uid://bha1g14bx11cl"]
 
 [ext_resource type="Texture2D" uid="uid://yv8aoy7vyjyw" path="res://Asset/1. DarkForest1.2/main_background.png" id="1_i3bh0"]
+[ext_resource type="Script" path="res://Script/Level.gd" id="1_roi20"]
 [ext_resource type="Texture2D" uid="uid://nd3mv838bofx" path="res://Asset/1. DarkForest1.2/bgrd_tree5.png" id="2_cmmf3"]
 [ext_resource type="Texture2D" uid="uid://cog3ekx1ry1co" path="res://Asset/1. DarkForest1.2/bgrd_tree4.png" id="3_l36eq"]
 [ext_resource type="Texture2D" uid="uid://ckkdbicv6usi" path="res://Asset/1. DarkForest1.2/bgrd_tree3.png" id="4_c3dll"]
@@ -8,8 +9,10 @@
 [ext_resource type="Texture2D" uid="uid://ds44lk7wqymog" path="res://Asset/1. DarkForest1.2/bgrd_tree1.png" id="6_1t8lq"]
 [ext_resource type="PackedScene" uid="uid://dyat4bpav2uob" path="res://Scene/Level1/Level1Map.tscn" id="7_e6gqb"]
 [ext_resource type="PackedScene" uid="uid://dm30ncxth5bqk" path="res://Scene/Player.tscn" id="8_j4xh6"]
+[ext_resource type="PackedScene" uid="uid://cknetk7q7m7av" path="res://Scene/GUI.tscn" id="10_iukvg"]
 
 [node name="Level1" type="Node2D"]
+script = ExtResource("1_roi20")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -91,17 +94,19 @@ centered = false
 [node name="ColorRect2" type="ColorRect" parent="ParallaxBackground/Middleground5"]
 offset_left = 2.0
 offset_top = 479.0
-offset_right = 818.0
-offset_bottom = 696.0
+offset_right = 827.0
+offset_bottom = 737.0
 color = Color(0, 0, 0, 1)
 
 [node name="Level1Map" parent="." instance=ExtResource("7_e6gqb")]
 position = Vector2(-3, 50)
 
 [node name="Player" parent="." instance=ExtResource("8_j4xh6")]
-position = Vector2(203, 400)
+position = Vector2(61, 394)
 
 [node name="Barrier" type="StaticBody2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Barrier"]
 polygon = PackedVector2Array(0, -2, 4, 615, 20, 615, 15, 22, 3467, 16, 3468, 611, 3489, 613, 3486, -1)
+
+[node name="GUI" parent="." instance=ExtResource("10_iukvg")]

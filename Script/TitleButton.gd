@@ -5,7 +5,7 @@ func _on_pressed():
 
 func start_scene():
 	#get_tree().change_scene_to_file(str("res://Scene/Prologue.tscn"))
-	get_tree().change_scene_to_file(str("res://Scene/Level1/Level1.tscn"))
+	get_tree().change_scene_to_file(str("res://Scene/Level3/Level3.tscn"))
 
 func _on_exit_pressed():
 	call_deferred("exit_game")

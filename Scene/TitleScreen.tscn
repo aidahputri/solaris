@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://ndqpynq50iet"]
+[gd_scene load_steps=8 format=3 uid="uid://ndqpynq50iet"]
 
 [ext_resource type="Texture2D" uid="uid://dk6nf487ro7r6" path="res://Asset/Background/layer_1.png" id="1_l2xil"]
 [ext_resource type="Texture2D" uid="uid://drir4vbc1pa8e" path="res://Asset/Background/layer_2.png" id="2_yi5kk"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Script/TitleBackground.gd" id="4_1qhjo"]
 [ext_resource type="FontFile" uid="uid://cqndawobmni03" path="res://Asset/Font/vampire_wars/Vampire Wars.ttf" id="5_noy1m"]
 [ext_resource type="Script" path="res://Script/TitleButton.gd" id="6_oh3j7"]
+[ext_resource type="Texture2D" uid="uid://bcybsdoqoubsf" path="res://Asset/BlackandWhiteUI.png/button-bg.png" id="7_fm3h5"]
 
 [node name="TitleScreen" type="Control"]
 layout_mode = 3
@@ -99,10 +100,18 @@ anchor_bottom = 0.437
 offset_left = -0.248016
 offset_top = 0.026001
 offset_right = 184.752
-offset_bottom = 48.026
+offset_bottom = 60.026
 theme_override_font_sizes/font_size = 24
-text = "PLAY"
 script = ExtResource("6_oh3j7")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Control2/Start"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_fm3h5")
 
 [node name="Exit" type="Button" parent="Control2"]
 layout_mode = 1

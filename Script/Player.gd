@@ -7,7 +7,7 @@ extends CharacterBody2D
 @export var attack_damage := 10
 @export var knockback_force := 10
 @export var healthComponent: HealthComponent
-@export var total_jump = 1
+@export var total_jump = 2
 
 const UP = Vector2(0,-1)
 var is_attacking = false
@@ -47,11 +47,9 @@ func move():
 		
 func jump():
 	if Input.is_action_just_pressed("ui_accept"):
-		if is_on_floor():
+		if is_on_floor() or jumps > 0:
 			velocity.y = JUMP_SPEED
-		elif jumps > 0:
-			velocity.y = JUMP_SPEED
-			jumps -= 1
+			jumps-=1
 			Global.playerJump = jumps
 
 func attack():

@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://bha1g14bx11cl"]
+[gd_scene load_steps=11 format=3 uid="uid://bha1g14bx11cl"]
 
 [ext_resource type="Texture2D" uid="uid://yv8aoy7vyjyw" path="res://Asset/1. DarkForest1.2/main_background.png" id="1_i3bh0"]
+[ext_resource type="Script" path="res://Script/Level.gd" id="1_roi20"]
 [ext_resource type="Texture2D" uid="uid://nd3mv838bofx" path="res://Asset/1. DarkForest1.2/bgrd_tree5.png" id="2_cmmf3"]
 [ext_resource type="Texture2D" uid="uid://cog3ekx1ry1co" path="res://Asset/1. DarkForest1.2/bgrd_tree4.png" id="3_l36eq"]
 [ext_resource type="Texture2D" uid="uid://ckkdbicv6usi" path="res://Asset/1. DarkForest1.2/bgrd_tree3.png" id="4_c3dll"]
@@ -8,15 +9,35 @@
 [ext_resource type="Texture2D" uid="uid://ds44lk7wqymog" path="res://Asset/1. DarkForest1.2/bgrd_tree1.png" id="6_1t8lq"]
 [ext_resource type="PackedScene" uid="uid://dyat4bpav2uob" path="res://Scene/Level1/Level1Map.tscn" id="7_e6gqb"]
 [ext_resource type="PackedScene" uid="uid://dm30ncxth5bqk" path="res://Scene/Player.tscn" id="8_j4xh6"]
+[ext_resource type="PackedScene" uid="uid://cknetk7q7m7av" path="res://Scene/GUI.tscn" id="10_iukvg"]
 
 [node name="Level1" type="Node2D"]
+script = ExtResource("1_roi20")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="Background2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(1024, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Background2"]
+visible = false
+position = Vector2(0, -137)
+scale = Vector2(1.00781, 1.23785)
+texture = ExtResource("1_i3bh0")
+centered = false
+
+[node name="ColorRect" type="ColorRect" parent="ParallaxBackground/Background2"]
+offset_top = -222.0
+offset_right = 1026.0
+offset_bottom = -1.0
+color = Color(0.176471, 0.145098, 0.133333, 1)
 
 [node name="Background" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_mirroring = Vector2(1024, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Background"]
+position = Vector2(-9, -2)
+scale = Vector2(1.01074, 1)
 texture = ExtResource("1_i3bh0")
 centered = false
 
@@ -25,8 +46,8 @@ motion_scale = Vector2(1, 1.111)
 motion_mirroring = Vector2(816, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Middleground"]
-position = Vector2(-2, 101)
-scale = Vector2(1.09926, 1.30903)
+position = Vector2(-10, 101)
+scale = Vector2(1.10906, 1.30903)
 texture = ExtResource("2_cmmf3")
 centered = false
 
@@ -70,8 +91,22 @@ scale = Vector2(1.04779, 0.889769)
 texture = ExtResource("6_1t8lq")
 centered = false
 
+[node name="ColorRect2" type="ColorRect" parent="ParallaxBackground/Middleground5"]
+offset_left = 2.0
+offset_top = 479.0
+offset_right = 827.0
+offset_bottom = 737.0
+color = Color(0, 0, 0, 1)
+
 [node name="Level1Map" parent="." instance=ExtResource("7_e6gqb")]
-position = Vector2(-2, 66)
+position = Vector2(-3, 50)
 
 [node name="Player" parent="." instance=ExtResource("8_j4xh6")]
-position = Vector2(81, 375)
+position = Vector2(61, 394)
+
+[node name="Barrier" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Barrier"]
+polygon = PackedVector2Array(0, -2, 4, 615, 20, 615, 15, 22, 3467, 16, 3468, 611, 3489, 613, 3486, -1)
+
+[node name="GUI" parent="." instance=ExtResource("10_iukvg")]

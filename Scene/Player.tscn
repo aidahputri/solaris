@@ -23,9 +23,7 @@ position = Vector2(0, -32)
 sprite_frames = ExtResource("1_5vhtm")
 animation = &"walk"
 
-[node name="HealthComponent" parent="." node_paths=PackedStringArray("progressBar") instance=ExtResource("3_f63as")]
-MAX_HEALTH = 100.0
-progressBar = NodePath("../Control/ProgressBar")
+[node name="HealthComponent" parent="." instance=ExtResource("3_f63as")]
 
 [node name="HitboxComponent" parent="." node_paths=PackedStringArray("healthComponent") instance=ExtResource("4_4ualu")]
 healthComponent = NodePath("../HealthComponent")
@@ -49,18 +47,5 @@ shape = SubResource("RectangleShape2D_0jj2g")
 position = Vector2(0, -100)
 zoom = Vector2(3.02, 3.02)
 limit_left = 0
-
-[node name="Control" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="ProgressBar" type="ProgressBar" parent="Control"]
-layout_mode = 0
-offset_left = -15.0
-offset_top = -82.0
-offset_right = -11.0
-offset_bottom = -55.0
 
 [connection signal="area_entered" from="WeaponHitbox" to="." method="_on_weapon_hitbox_area_entered"]

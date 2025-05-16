@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://677ay4d0u0lu"]
+
+[ext_resource type="Script" path="res://Script/ZoomArea.gd" id="1_m26l8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_86ouh"]
+size = Vector2(1168.88, 231)
+
+[node name="ZoomArea" type="Area2D"]
+script = ExtResource("1_m26l8")
+end_zoom = 1.5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(486.563, 104.5)
+shape = SubResource("RectangleShape2D_86ouh")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

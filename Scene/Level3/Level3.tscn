@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://bwvbfqb8oc8qh"]
+[gd_scene load_steps=22 format=4 uid="uid://bwvbfqb8oc8qh"]
 
 [ext_resource type="Script" path="res://Script/Level.gd" id="1_xjcls"]
 [ext_resource type="Texture2D" uid="uid://bogwujynel2ym" path="res://Asset/3. PF_StrangeMountains_v1.0/background1.png" id="2_klwus"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://c3bdr4nbfvt1s" path="res://Asset/3. PF_StrangeMountains_v1.0/mainlevbuild2.png" id="9_2yq43"]
 [ext_resource type="PackedScene" uid="uid://dm30ncxth5bqk" path="res://Scene/Player.tscn" id="10_xmq3k"]
 [ext_resource type="PackedScene" uid="uid://cknetk7q7m7av" path="res://Scene/GUI.tscn" id="11_uo4rg"]
+[ext_resource type="PackedScene" uid="uid://ccdekmxf8jqhe" path="res://Scene/LedgeArea.tscn" id="12_avsi6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_suict"]
 texture = ExtResource("8_lrepl")
@@ -7826,3 +7827,13 @@ tile_map_data = PackedByteArray("AABxAB8AAAAcAC4AAABxACAAAAAcAC8AAAByAB8AAAAdAC4
 tile_set = SubResource("TileSet_qo4m7")
 
 [node name="GUI" parent="." instance=ExtResource("11_uo4rg")]
+
+[node name="LedgeArea1" parent="." instance=ExtResource("12_avsi6")]
+position = Vector2(1124, 75)
+scale = Vector2(0.205, 1.505)
+
+[node name="LedgeArea2" parent="." instance=ExtResource("12_avsi6")]
+position = Vector2(1668, 142)
+scale = Vector2(0.175, 1.385)
+start_y = 100
+end_y = -20

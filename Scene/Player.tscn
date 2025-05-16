@@ -23,9 +23,7 @@ position = Vector2(0, -32)
 sprite_frames = ExtResource("1_5vhtm")
 animation = &"walk"
 
-[node name="HealthComponent" parent="." node_paths=PackedStringArray("progressBar") instance=ExtResource("3_f63as")]
-MAX_HEALTH = 100.0
-progressBar = NodePath("")
+[node name="HealthComponent" parent="." instance=ExtResource("3_f63as")]
 
 [node name="HitboxComponent" parent="." node_paths=PackedStringArray("healthComponent") instance=ExtResource("4_4ualu")]
 healthComponent = NodePath("../HealthComponent")

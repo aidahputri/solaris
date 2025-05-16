@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b41wvlaiskci3"]
+[gd_scene load_steps=13 format=3 uid="uid://b41wvlaiskci3"]
 
 [ext_resource type="Texture2D" uid="uid://dk6nf487ro7r6" path="res://Asset/Background/layer_1.png" id="1_8hhih"]
 [ext_resource type="Texture2D" uid="uid://drir4vbc1pa8e" path="res://Asset/Background/layer_2.png" id="2_tsidp"]
@@ -7,6 +7,9 @@
 [ext_resource type="Script" path="res://Script/Prologue.gd" id="5_ateun"]
 [ext_resource type="FontFile" uid="uid://bne4aewogwce5" path="res://Asset/Font/vampire_wars/Vampire Wars Italic.ttf" id="5_h4y0f"]
 [ext_resource type="FontFile" uid="uid://cvkojm80tadh5" path="res://Asset/Font/gumela/Gumela.ttf" id="7_ctvt5"]
+[ext_resource type="Texture2D" uid="uid://c8smr6lhgdncc" path="res://Asset/BlackandWhiteUI.png/button-bg-normal.png" id="8_pm88p"]
+[ext_resource type="Texture2D" uid="uid://bcybsdoqoubsf" path="res://Asset/BlackandWhiteUI.png/button-bg.png" id="9_g0v30"]
+[ext_resource type="Script" path="res://Script/TitleButton.gd" id="10_uj0pt"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_eq6wg"]
 specular_color = Color(0.0823529, 0.12549, 0.223529, 1)
@@ -127,4 +130,40 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_8f0mo")
 bbcode_enabled = true
+text = "He was protected by the [b][color=gold]Solaris Gem[/color][/b], a gift that let him walk in sunlight."
 scroll_active = false
+
+[node name="Skip" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -110.0
+offset_top = -337.0
+offset_right = 110.0
+offset_bottom = -256.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("8_pm88p")
+texture_pressed = ExtResource("9_g0v30")
+texture_hover = ExtResource("9_g0v30")
+texture_focused = ExtResource("9_g0v30")
+stretch_mode = 0
+script = ExtResource("10_uj0pt")
+
+[node name="Label" type="Label" parent="Skip"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("7_ctvt5")
+theme_override_font_sizes/font_size = 32
+text = "SKIP"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Skip" to="Skip" method="_on_skip_pressed"]

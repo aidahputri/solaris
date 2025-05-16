@@ -14,11 +14,9 @@ func toggle_pause_menu():
 	get_viewport().set_input_as_handled()
 
 func _on_continue_pressed():
-	print("continue pressed")
 	toggle_pause_menu()
 
 func _on_exit_pressed():
-	print("continue pressed")
 	get_tree().paused = false
 	call_deferred("go_home")
 	

@@ -8,6 +8,8 @@ extends CharacterBody2D
 @export var knockback_force := 10
 @export var healthComponent: HealthComponent
 @export var total_jump = 2
+@onready var dust_particle = $DustParticle
+@onready var drop_particle = preload("res://Scene/DropParticle.tscn")
 
 const UP = Vector2(0,-1)
 var is_attacking = false
@@ -15,6 +17,7 @@ var jumps = total_jump
 
 var attack_cooldown := 1.0 
 var time_since_attack := 0.0
+var is_grounded = true
 
 func _ready():
 	Global.playerJump = jumps
@@ -22,6 +25,8 @@ func _ready():
 func _physics_process(delta: float) -> void:
 	time_since_attack += delta
 	velocity.y += delta*GRAVITY
+	drop_dust_animation()
+	is_grounded = is_on_floor()
 	move()
 	jump()
 	attack()
@@ -42,8 +47,13 @@ func move():
 		else:
 			animplayer.flip_h = false
 			$WeaponHitbox.position.x = 37.5
+		if is_on_floor():
+			dust_particle.set_emitting(true)
+		else:
+			dust_particle.set_emitting(false)
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
+		dust_particle.set_emitting(false)
 		
 func jump():
 	if Input.is_action_just_pressed("ui_accept"):
@@ -97,3 +107,9 @@ func perform_attack() -> void:
 	var attack = Attack.new()
 	attack.attack_damage = 5
 	healthComponent.damage(attack)
+
+func drop_dust_animation():
+	if is_grounded == false and is_on_floor() == true:
+		var instance = drop_particle.instantiate()
+		instance.global_position = $Marker2D.global_position
+		get_parent().add_child(instance)

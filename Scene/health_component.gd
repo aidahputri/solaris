@@ -7,13 +7,11 @@ var health: float
 
 func _ready() -> void:
 	health = MAX_HEALTH
-	Global.playerHealth = health
+	#Global.playerHealth = health
 
-	
 func damage(attack: Attack):
 	health -= attack.attack_damage
-		
-	Global.playerHealth = health
+	#Global.playerHealth = health
 	
 	#if health <= 0:
 		#get_parent().queue_free()

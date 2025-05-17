@@ -1,9 +1,9 @@
 [gd_resource type="SpriteFrames" load_steps=46 format=3 uid="uid://dob520s8jtcvt"]
 
-[ext_resource type="Texture2D" uid="uid://c8duvkchdo86c" path="res://Asset/Karakter/Converted_Vampire/Idle.png" id="1_oeoxu"]
 [ext_resource type="Texture2D" uid="uid://bfpdi4046iau4" path="res://Asset/Karakter/Converted_Vampire/Attack_3.png" id="1_vb53c"]
 [ext_resource type="Texture2D" uid="uid://cpdh16pfj15fy" path="res://Asset/Karakter/Converted_Vampire/Dead.png" id="2_8gj5e"]
 [ext_resource type="Texture2D" uid="uid://bjxk54g3g7m31" path="res://Asset/Karakter/Converted_Vampire/Hurt.png" id="3_omy24"]
+[ext_resource type="Texture2D" uid="uid://krels7biytbb" path="res://Asset/Karakter/Converted_Vampire/idle_without_smile.png" id="5_lcvc5"]
 [ext_resource type="Texture2D" uid="uid://056ki5g4ey0i" path="res://Asset/Karakter/Converted_Vampire/Jump.png" id="5_nsack"]
 [ext_resource type="Texture2D" uid="uid://bh2dead2c6ruw" path="res://Asset/Karakter/Converted_Vampire/Run.png" id="5_p2kqb"]
 [ext_resource type="Texture2D" uid="uid://dafjs5xj4abyh" path="res://Asset/Karakter/Converted_Vampire/Walk.png" id="6_nm6dm"]
@@ -64,24 +64,24 @@ region = Rect2(640, 0, 128, 128)
 atlas = ExtResource("3_omy24")
 region = Rect2(0, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_36tde"]
-atlas = ExtResource("1_oeoxu")
+[sub_resource type="AtlasTexture" id="AtlasTexture_edj00"]
+atlas = ExtResource("5_lcvc5")
 region = Rect2(0, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ihmfl"]
-atlas = ExtResource("1_oeoxu")
+[sub_resource type="AtlasTexture" id="AtlasTexture_etcpv"]
+atlas = ExtResource("5_lcvc5")
 region = Rect2(128, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1n2vh"]
-atlas = ExtResource("1_oeoxu")
+[sub_resource type="AtlasTexture" id="AtlasTexture_necb4"]
+atlas = ExtResource("5_lcvc5")
 region = Rect2(256, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rqmyy"]
-atlas = ExtResource("1_oeoxu")
+[sub_resource type="AtlasTexture" id="AtlasTexture_vf234"]
+atlas = ExtResource("5_lcvc5")
 region = Rect2(384, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3st6b"]
-atlas = ExtResource("1_oeoxu")
+[sub_resource type="AtlasTexture" id="AtlasTexture_qjjyv"]
+atlas = ExtResource("5_lcvc5")
 region = Rect2(512, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_km20m"]
@@ -226,19 +226,19 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_36tde")
+"texture": SubResource("AtlasTexture_edj00")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ihmfl")
+"texture": SubResource("AtlasTexture_etcpv")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_1n2vh")
+"texture": SubResource("AtlasTexture_necb4")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_rqmyy")
+"texture": SubResource("AtlasTexture_vf234")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_3st6b")
+"texture": SubResource("AtlasTexture_qjjyv")
 }],
 "loop": true,
 "name": &"idle",

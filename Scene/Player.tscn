@@ -69,4 +69,7 @@ process_material = SubResource("ParticleProcessMaterial_ho55h")
 texture = ExtResource("5_npvel")
 lifetime = 0.5
 
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(-3, 20)
+
 [connection signal="area_entered" from="WeaponHitbox" to="." method="_on_weapon_hitbox_area_entered"]

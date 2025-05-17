@@ -7901,7 +7901,7 @@ tile_set = SubResource("TileSet_qo4m7")
 [node name="GUI" parent="." instance=ExtResource("11_uo4rg")]
 
 [node name="LedgeArea1" parent="." instance=ExtResource("12_avsi6")]
-position = Vector2(1124, 75)
+position = Vector2(1125, 75)
 scale = Vector2(0.205, 1.505)
 
 [node name="LedgeArea2" parent="." instance=ExtResource("12_avsi6")]

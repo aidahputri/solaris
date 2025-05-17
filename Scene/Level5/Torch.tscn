@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://bneaab7eys6v2"]
+
+[ext_resource type="Texture2D" uid="uid://bkhb40la431t3" path="res://Asset/5.2 PF_Castle_v2.0/decorative_castle.png" id="1_d1dae"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sejtr"]
+atlas = ExtResource("1_d1dae")
+region = Rect2(192, 66, 16, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uipll"]
+atlas = ExtResource("1_d1dae")
+region = Rect2(208, 66, 16, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d8y1k"]
+atlas = ExtResource("1_d1dae")
+region = Rect2(224, 66, 16, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ronh"]
+atlas = ExtResource("1_d1dae")
+region = Rect2(240, 66, 16, 46)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_isn6m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sejtr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uipll")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d8y1k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ronh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Torch" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_isn6m")
+autoplay = "default"
+frame_progress = 0.359654

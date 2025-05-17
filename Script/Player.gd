@@ -8,6 +8,7 @@ extends CharacterBody2D
 @export var knockback_force := 10
 @export var healthComponent: HealthComponent
 @export var total_jump = 2
+@onready var dust_particle = $DustParticle
 
 const UP = Vector2(0,-1)
 var is_attacking = false
@@ -42,8 +43,13 @@ func move():
 		else:
 			animplayer.flip_h = false
 			$WeaponHitbox.position.x = 37.5
+		if is_on_floor():
+			dust_particle.set_emitting(true)
+		else:
+			dust_particle.set_emitting(false)
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
+		dust_particle.set_emitting(false)
 		
 func jump():
 	if Input.is_action_just_pressed("ui_accept"):

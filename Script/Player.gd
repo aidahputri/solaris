@@ -27,6 +27,7 @@ var direction = 0
 
 func _ready():
 	Global.playerJump = jumps
+	run_sfx_player.stream = load("res://Asset/Sfx/" + sfx)
 	
 func _physics_process(delta: float) -> void:
 	if Global.is_dialog_active:

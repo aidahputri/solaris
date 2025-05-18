@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://bwvbfqb8oc8qh"]
+[gd_scene load_steps=25 format=4 uid="uid://bwvbfqb8oc8qh"]
 
 [ext_resource type="Script" path="res://Script/Level.gd" id="1_xjcls"]
 [ext_resource type="Texture2D" uid="uid://bogwujynel2ym" path="res://Asset/3. PF_StrangeMountains_v1.0/background1.png" id="2_klwus"]
@@ -13,6 +13,8 @@
 [ext_resource type="PackedScene" uid="uid://cknetk7q7m7av" path="res://Scene/GUI.tscn" id="11_uo4rg"]
 [ext_resource type="PackedScene" uid="uid://ccdekmxf8jqhe" path="res://Scene/LedgeArea.tscn" id="12_avsi6"]
 [ext_resource type="PackedScene" uid="uid://677ay4d0u0lu" path="res://Scene/ZoomArea.tscn" id="13_d42i7"]
+[ext_resource type="PackedScene" uid="uid://dnuek73cevx73" path="res://Scene/PauseGUI.tscn" id="14_a4j8d"]
+[ext_resource type="PackedScene" uid="uid://pe0qmwlpo6dj" path="res://Scene/FadeCanvas.tscn" id="15_1571v"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_suict"]
 texture = ExtResource("8_lrepl")
@@ -7933,3 +7935,7 @@ position = Vector2(3975, 208)
 scale = Vector2(0.41, 1.615)
 start_zoom = 3.02
 end_zoom = 4.5
+
+[node name="PauseGUI" parent="." instance=ExtResource("14_a4j8d")]
+
+[node name="FadeCanvas" parent="." instance=ExtResource("15_1571v")]

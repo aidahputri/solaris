@@ -20,6 +20,11 @@ func _ready():
 	Global.playerJump = jumps
 	
 func _physics_process(delta: float) -> void:
+	if Global.is_dialog_active:
+		velocity = Vector2.ZERO
+		animplayer.play("idle")
+		return
+		
 	time_since_attack += delta
 	velocity.y += delta*GRAVITY
 	move()

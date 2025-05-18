@@ -43,7 +43,7 @@ anchor_right = 0.122
 anchor_bottom = 0.33
 offset_left = 0.071991
 offset_top = -0.0199814
-offset_right = 704.072
+offset_right = 768.072
 offset_bottom = 62.98
 grow_horizontal = 2
 grow_vertical = 2
@@ -113,3 +113,5 @@ theme_override_font_sizes/font_size = 32
 text = "tes"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[connection signal="pressed" from="Panel/DialogBox/NextButton" to="Panel/DialogBox" method="_on_next_button_pressed"]

@@ -1,6 +1,6 @@
 [gd_resource type="SpriteFrames" load_steps=46 format=3 uid="uid://dob520s8jtcvt"]
 
-[ext_resource type="Texture2D" uid="uid://bfpdi4046iau4" path="res://Asset/Karakter/Converted_Vampire/Attack_3.png" id="1_vb53c"]
+[ext_resource type="Texture2D" uid="uid://dalgnd1nls73g" path="res://Asset/Karakter/Converted_Vampire/attack_with_sparks_3.png" id="1_oser8"]
 [ext_resource type="Texture2D" uid="uid://cpdh16pfj15fy" path="res://Asset/Karakter/Converted_Vampire/Dead.png" id="2_8gj5e"]
 [ext_resource type="Texture2D" uid="uid://bjxk54g3g7m31" path="res://Asset/Karakter/Converted_Vampire/Hurt.png" id="3_omy24"]
 [ext_resource type="Texture2D" uid="uid://krels7biytbb" path="res://Asset/Karakter/Converted_Vampire/idle_without_smile.png" id="5_lcvc5"]
@@ -8,20 +8,20 @@
 [ext_resource type="Texture2D" uid="uid://bh2dead2c6ruw" path="res://Asset/Karakter/Converted_Vampire/Run.png" id="5_p2kqb"]
 [ext_resource type="Texture2D" uid="uid://dafjs5xj4abyh" path="res://Asset/Karakter/Converted_Vampire/Walk.png" id="6_nm6dm"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6cu15"]
-atlas = ExtResource("1_vb53c")
+[sub_resource type="AtlasTexture" id="AtlasTexture_6x2hn"]
+atlas = ExtResource("1_oser8")
 region = Rect2(0, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6uwar"]
-atlas = ExtResource("1_vb53c")
+[sub_resource type="AtlasTexture" id="AtlasTexture_iqd34"]
+atlas = ExtResource("1_oser8")
 region = Rect2(128, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_i4yqm"]
-atlas = ExtResource("1_vb53c")
+[sub_resource type="AtlasTexture" id="AtlasTexture_xwsgo"]
+atlas = ExtResource("1_oser8")
 region = Rect2(256, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6xxu8"]
-atlas = ExtResource("1_vb53c")
+[sub_resource type="AtlasTexture" id="AtlasTexture_vxa6h"]
+atlas = ExtResource("1_oser8")
 region = Rect2(384, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xp0dk"]
@@ -164,16 +164,16 @@ region = Rect2(896, 0, 128, 128)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_6cu15")
+"texture": SubResource("AtlasTexture_6x2hn")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_6uwar")
+"texture": SubResource("AtlasTexture_iqd34")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_i4yqm")
+"texture": SubResource("AtlasTexture_xwsgo")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_6xxu8")
+"texture": SubResource("AtlasTexture_vxa6h")
 }],
 "loop": false,
 "name": &"attack",

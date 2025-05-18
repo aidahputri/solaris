@@ -1,0 +1,63 @@
+[gd_scene load_steps=10 format=3 uid="uid://8qrou5300smu"]
+
+[ext_resource type="Texture2D" uid="uid://cj36m0ogwkcrp" path="res://Asset/Particles/Particle FX 1.3 Free/Spritesheets/Sparks-Sheet.png" id="1_6hj2s"]
+[ext_resource type="Script" path="res://Script/DropParticle.gd" id="2_jasud"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bx2lc"]
+atlas = ExtResource("1_6hj2s")
+region = Rect2(0, 0, 96, 97)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cd5o3"]
+atlas = ExtResource("1_6hj2s")
+region = Rect2(96, 0, 96, 97)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_thfq3"]
+atlas = ExtResource("1_6hj2s")
+region = Rect2(192, 0, 96, 97)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b2rsr"]
+atlas = ExtResource("1_6hj2s")
+region = Rect2(0, 97, 96, 97)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lwi8f"]
+atlas = ExtResource("1_6hj2s")
+region = Rect2(96, 97, 96, 97)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_corxp"]
+atlas = ExtResource("1_6hj2s")
+region = Rect2(192, 97, 96, 97)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pu7fv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bx2lc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cd5o3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_thfq3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b2rsr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lwi8f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_corxp")
+}],
+"loop": false,
+"name": &"default",
+"speed": 6.0
+}]
+
+[node name="SparkParticle" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_pu7fv")
+autoplay = "default"
+frame = 5
+frame_progress = 1.0
+script = ExtResource("2_jasud")
+
+[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://bwvbfqb8oc8qh"]
+[gd_scene load_steps=24 format=4 uid="uid://bwvbfqb8oc8qh"]
 
 [ext_resource type="Script" path="res://Script/Level.gd" id="1_xjcls"]
 [ext_resource type="Texture2D" uid="uid://bogwujynel2ym" path="res://Asset/3. PF_StrangeMountains_v1.0/background1.png" id="2_klwus"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://cknetk7q7m7av" path="res://Scene/GUI.tscn" id="11_uo4rg"]
 [ext_resource type="PackedScene" uid="uid://ccdekmxf8jqhe" path="res://Scene/LedgeArea.tscn" id="12_avsi6"]
 [ext_resource type="PackedScene" uid="uid://677ay4d0u0lu" path="res://Scene/ZoomArea.tscn" id="13_d42i7"]
+[ext_resource type="AudioStream" uid="uid://bjwwuvcxmxi1c" path="res://Asset/Bgm/16-Bit Fantasy RPG OST - Ancient Ruins of Light.wav" id="14_lbell"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_suict"]
 texture = ExtResource("8_lrepl")
@@ -7737,6 +7738,12 @@ sources/0 = SubResource("TileSetAtlasSource_cwg8u")
 [node name="Level3" type="Node2D"]
 script = ExtResource("1_xjcls")
 
+[node name="BGM" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("14_lbell")
+volume_db = -10.0
+autoplay = true
+max_distance = 9.22337e+18
+
 [node name="sky" type="ParallaxBackground" parent="."]
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="sky"]
@@ -7893,6 +7900,7 @@ tile_set = SubResource("TileSet_qo4m7")
 
 [node name="Player" parent="." instance=ExtResource("10_xmq3k")]
 position = Vector2(78, 385)
+sfx = "RPG_Essentials_Free/12_Player_Movement_SFX/08_Step_rock_02.wav"
 
 [node name="vines" type="TileMapLayer" parent="."]
 position = Vector2(0, 100)

@@ -204,9 +204,7 @@ offset_left = 0.0958862
 offset_right = 65.0958
 offset_bottom = 62.0
 texture_normal = ExtResource("12_wch44")
-texture_pressed = ExtResource("13_51nge")
 texture_hover = ExtResource("13_51nge")
-texture_focused = ExtResource("13_51nge")
 stretch_mode = 0
 
 [node name="NinePatchRect" type="NinePatchRect" parent="Dialogue/Panel/DialogBox/NextButton"]

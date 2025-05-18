@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dxyw0uci7ftu5" path="res://Asset/BlackandWhiteUI.png/dialogue-name.png" id="6_0obwu"]
 
 [node name="DialogueSystem" type="CanvasLayer"]
+script = ExtResource("1_j6evc")
 
 [node name="Panel" type="Panel" parent="."]
 self_modulate = Color(1, 1, 1, 0)
@@ -32,7 +33,6 @@ offset_bottom = 63.72
 grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("1_ieaw6")
-script = ExtResource("1_j6evc")
 
 [node name="LabelDialog" type="Label" parent="Panel/DialogBox"]
 layout_mode = 1
@@ -66,9 +66,7 @@ offset_top = -14.938
 offset_right = 65.0959
 offset_bottom = 47.062
 texture_normal = ExtResource("2_bb0mh")
-texture_pressed = ExtResource("3_5lkdq")
 texture_hover = ExtResource("3_5lkdq")
-texture_focused = ExtResource("3_5lkdq")
 stretch_mode = 0
 
 [node name="NinePatchRect" type="NinePatchRect" parent="Panel/DialogBox/NextButton"]
@@ -114,4 +112,4 @@ text = "tes"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="pressed" from="Panel/DialogBox/NextButton" to="Panel/DialogBox" method="_on_next_button_pressed"]
+[connection signal="pressed" from="Panel/DialogBox/NextButton" to="." method="_on_next_button_pressed"]

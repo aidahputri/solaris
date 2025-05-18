@@ -1,20 +1,21 @@
 extends CanvasLayer
 
-
-@onready var char_box = $CharacterBox
-@onready var label_character = $CharacterBox/LabelCharacter
-@onready var label_dialog = $LabelDialog
-@onready var next_button = $NextButton
+@onready var char_box = $Panel/DialogBox/CharacterBox
+@onready var label_character = $Panel/DialogBox/CharacterBox/LabelCharacter
+@onready var label_dialog = $Panel/DialogBox/LabelDialog
+@onready var next_button = $Panel/DialogBox/NextButton
 
 var dialog_data = {
 	# Level1
-	#"prologue": [
-		#{"character": "", "text": "[i]Long forgotten, the vampire Noctis slept in silence.[/i]"},
-		#{"character": "", "text": "The air is heavy and still, with faint gusts of wind swirling through the dead landscape."},
-		#{"character": "Aeria", "text": "Where am I supposed to go? Everything feels... so unfamiliar."},
-		#{"character": "Anemoi", "text": "Follow the path ahead. In the face of uncertainty, the wind shall reveal what you cannot see."},
-		##{"character": "", "text": ""},
-	#],
+	"level1": [
+		{"character": "", "text": "The forest is cold... yet his blood burns."},
+		{"character": "", "text": "Every moment awake drains his strength — the curse of daylight without the Solaris Gem."},
+		{"character": "", "text": "Only one thing feeds the flame inside him now: blood."},
+		{"character": "", "text": "The creatures in the mist — Vesperwings — are his only salvation."},
+		{"character": "", "text": "He must hunt... or wither."},
+		#{"character": "", "text": ""},
+	],
+	# Level2
 }
 
 var current_dialog = []
@@ -67,3 +68,8 @@ func type_text(text: String):
 		label_dialog.text += text[i]
 		await get_tree().create_timer(typing_speed).timeout
 	is_typing = false
+
+# Level 1 Dialogues
+func _on_level_1_dialogue_trigger_body_entered(body: Node2D):
+	if body.name == "Player": 
+		start_dialog("level1")

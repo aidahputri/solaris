@@ -1,10 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://dm30ncxth5bqk"]
+[gd_scene load_steps=13 format=3 uid="uid://dm30ncxth5bqk"]
 
 [ext_resource type="Script" path="res://Script/Player.gd" id="1_1tflu"]
 [ext_resource type="SpriteFrames" uid="uid://dob520s8jtcvt" path="res://PlayerSpriteFrame.tres" id="1_5vhtm"]
 [ext_resource type="PackedScene" uid="uid://bacytinuyqjts" path="res://Scene/health_component.tscn" id="3_f63as"]
 [ext_resource type="PackedScene" uid="uid://vkoy8dp5t3sp" path="res://Scene/hitbox_component.tscn" id="4_4ualu"]
 [ext_resource type="Texture2D" uid="uid://dd7v5e763ocdh" path="res://Asset/Particles/Particles/Particles/Complex/smoke/smoke2_1.png" id="5_npvel"]
+[ext_resource type="AudioStream" uid="uid://cmq7mf5iq1o2a" path="res://Asset/Sfx/RPG_Essentials_Free/12_Player_Movement_SFX/56_Attack_03.wav" id="6_ok7kq"]
+[ext_resource type="AudioStream" uid="uid://bc8ybmxx7s0ja" path="res://Asset/Sfx/RPG_Essentials_Free/12_Player_Movement_SFX/45_Landing_01.wav" id="7_kqac0"]
+[ext_resource type="AudioStream" uid="uid://j7ne6ud6jur" path="res://Asset/Sfx/RPG_Essentials_Free/12_Player_Movement_SFX/08_Step_rock_02.wav" id="8_mujax"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nd1dm"]
 size = Vector2(33, 77)
@@ -70,4 +73,18 @@ lifetime = 0.5
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(-3, 20)
 
+[node name="AttackSfxPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_ok7kq")
+volume_db = 5.0
+
+[node name="LandingSfxPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_kqac0")
+volume_db = -2.0
+
+[node name="RunSfxPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_mujax")
+
+[node name="RunTimer" type="Timer" parent="."]
+
 [connection signal="area_entered" from="WeaponHitbox" to="." method="_on_weapon_hitbox_area_entered"]
+[connection signal="timeout" from="RunTimer" to="." method="_on_run_timer_timeout"]

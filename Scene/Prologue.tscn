@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://b41wvlaiskci3"]
+[gd_scene load_steps=19 format=3 uid="uid://b41wvlaiskci3"]
 
 [ext_resource type="Texture2D" uid="uid://c373s1ny64mj4" path="res://Asset/Background/prologue-1.png" id="1_t0gfb"]
 [ext_resource type="Texture2D" uid="uid://b1ctja2sh332s" path="res://Asset/Background/layer_3.png" id="3_dbnyd"]
@@ -9,7 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://c8smr6lhgdncc" path="res://Asset/BlackandWhiteUI.png/button-bg-normal.png" id="8_pm88p"]
 [ext_resource type="Texture2D" uid="uid://bcybsdoqoubsf" path="res://Asset/BlackandWhiteUI.png/button-bg.png" id="9_g0v30"]
 [ext_resource type="Texture2D" uid="uid://kccy33r4vvgr" path="res://Asset/BlackandWhiteUI.png/dialogue-bar.png" id="10_b2a50"]
-[ext_resource type="Script" path="res://Script/TitleButton.gd" id="10_uj0pt"]
 [ext_resource type="Texture2D" uid="uid://dvy2c7ugjy3nt" path="res://Asset/BlackandWhiteUI.png/dialogue-next-button-normal.png" id="12_wch44"]
 [ext_resource type="Texture2D" uid="uid://br12xlpvv3bl4" path="res://Asset/BlackandWhiteUI.png/dialogue-next-button-hovered.png" id="13_51nge"]
 [ext_resource type="Texture2D" uid="uid://xfw2dsgdfwg3" path="res://Asset/BlackandWhiteUI.png/next-arrow-right.png" id="14_y534u"]
@@ -81,6 +80,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("5_ateun")
+next_scene = "res://Scene/Level1/Level1.tscn"
 
 [node name="BgControl" type="Panel" parent="."]
 layout_mode = 1
@@ -144,7 +144,6 @@ texture_pressed = ExtResource("9_g0v30")
 texture_hover = ExtResource("9_g0v30")
 texture_focused = ExtResource("9_g0v30")
 stretch_mode = 0
-script = ExtResource("10_uj0pt")
 
 [node name="Label" type="Label" parent="Dialogue/Panel/Skip"]
 layout_mode = 1
@@ -307,5 +306,5 @@ libraries = {
 "": SubResource("AnimationLibrary_7f2ip")
 }
 
-[connection signal="pressed" from="Dialogue/Panel/Skip" to="Dialogue/Panel/Skip" method="_on_skip_pressed"]
+[connection signal="pressed" from="Dialogue/Panel/Skip" to="." method="_on_skip_pressed"]
 [connection signal="pressed" from="Dialogue/Panel/DialogBox/NextButton" to="." method="_on_next_button_pressed"]

@@ -6,6 +6,7 @@ extends Control
 @onready var label_character = $Dialogue/Panel/DialogBox/CharacterBox/LabelCharacter
 @onready var label_dialog = $Dialogue/Panel/DialogBox/LabelDialog
 @onready var next_button = $Dialogue/Panel/DialogBox/NextButton
+@export var next_scene = ""
 
 var dialog_data = [
 	{"character": "", "text": "Long forgotten, the vampire Noctis slept in silence.", "bg": "res://Asset/Background/prologue-1.png"},
@@ -79,4 +80,7 @@ func go_to_next_scene():
 	call_deferred("change_scene")
 	
 func change_scene():
-	get_tree().change_scene_to_file("res://Scene/Level1/Level1.tscn")
+	get_tree().change_scene_to_file(next_scene)
+	
+func _on_skip_pressed():
+	go_to_next_scene()

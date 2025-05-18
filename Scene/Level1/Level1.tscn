@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bha1g14bx11cl"]
+[gd_scene load_steps=16 format=3 uid="uid://bha1g14bx11cl"]
 
 [ext_resource type="Texture2D" uid="uid://yv8aoy7vyjyw" path="res://Asset/1. DarkForest1.2/main_background.png" id="1_i3bh0"]
 [ext_resource type="Script" path="res://Script/Level.gd" id="1_roi20"]
@@ -11,9 +11,18 @@
 [ext_resource type="PackedScene" uid="uid://dm30ncxth5bqk" path="res://Scene/Player.tscn" id="8_j4xh6"]
 [ext_resource type="PackedScene" uid="uid://cknetk7q7m7av" path="res://Scene/GUI.tscn" id="10_iukvg"]
 [ext_resource type="PackedScene" uid="uid://dnuek73cevx73" path="res://Scene/PauseGUI.tscn" id="11_6rywj"]
+[ext_resource type="PackedScene" uid="uid://pe0qmwlpo6dj" path="res://Scene/FadeCanvas.tscn" id="12_wnfwv"]
+[ext_resource type="PackedScene" uid="uid://crfx06vy8h3dc" path="res://Scene/DialogueSystem.tscn" id="13_wktex"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8fsvo"]
+size = Vector2(58, 311)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_37y3y"]
+size = Vector2(26, 227)
 
 [node name="Level1" type="Node2D"]
 script = ExtResource("1_roi20")
+nextScene = "res://Scene/Level3/Level3.tscn"
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -113,3 +122,24 @@ polygon = PackedVector2Array(0, -2, 4, 615, 20, 615, 15, 22, 3467, 16, 3468, 611
 [node name="GUI" parent="." instance=ExtResource("10_iukvg")]
 
 [node name="PauseGUI" parent="." instance=ExtResource("11_6rywj")]
+
+[node name="FadeCanvas" parent="." instance=ExtResource("12_wnfwv")]
+
+[node name="DialogueSystem" parent="." instance=ExtResource("13_wktex")]
+visible = false
+
+[node name="FinishArea" type="Area2D" parent="."]
+position = Vector2(3388, 142)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FinishArea"]
+position = Vector2(15, 88)
+shape = SubResource("RectangleShape2D_8fsvo")
+
+[node name="Level1DialogueTrigger" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level1DialogueTrigger"]
+position = Vector2(106, 316.5)
+shape = SubResource("RectangleShape2D_37y3y")
+
+[connection signal="body_entered" from="FinishArea" to="." method="_on_finish_area_body_entered"]
+[connection signal="body_entered" from="Level1DialogueTrigger" to="DialogueSystem" method="_on_level_1_dialogue_trigger_body_entered"]

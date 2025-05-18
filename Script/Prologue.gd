@@ -1,37 +1,82 @@
 extends Control
 
-@onready var label = $RichTextLabel
+@onready var bg_texture = $BgControl/Background
+@onready var anim_player = $AnimationPlayer
+@onready var char_box = $Dialogue/Panel/DialogBox/CharacterBox
+@onready var label_character = $Dialogue/Panel/DialogBox/CharacterBox/LabelCharacter
+@onready var label_dialog = $Dialogue/Panel/DialogBox/LabelDialog
+@onready var next_button = $Dialogue/Panel/DialogBox/NextButton
 
-var prologue_lines = [
-  "[i]Long forgotten, the vampire Noctis slept in silence.[/i]",
-  "",
-  "He was protected by the [b][color=gold]Solaris Gem[/color][/b], a gift that let him walk in sunlight.",
-  "",
-  "But one day, he awoke — and the gem was gone.",
-  "",
-  "[i]Sunlight burned.[/i] [b][color=crimson]Someone had stolen it.[/color][/b]",
-  "",
-  "Noctis rose, filled with fury.",
-  "",
-  "[i]He would find the thief.[/i]",
-  "",
-  "[b][color=white]The hunt begins.[/color][/b]"
+var dialog_data = [
+	{"character": "", "text": "Long forgotten, the vampire Noctis slept in silence.", "bg": "res://Asset/Background/prologue-1.png"},
+	{"character": "", "text": "He was protected by the Solaris Gem, a gift that let him walk in sunlight."},
+	{"character": "", "text": "But one day, he awoke — and the gem was gone.", "bg": "res://Asset/Background/prologue-2.png"},
+	{"character": "", "text": "Sunlight burned. Someone had stolen it."},
+	{"character": "", "text": "Noctis rose, filled with fury.", "bg": "res://Asset/Background/prologue-3.png"},
+	{"character": "", "text": "He would find the thief."},
+	{"character": "", "text": "The hunt begins."},
+	#{"character": "", "text": "", "bg": ""},
 ]
+var current_index = 0
+var typing_speed = 0.07
+var is_typing = false
+var skip_typing = false
 
 func _ready():
-	label.bbcode_enabled = true
-	label.clear()
-	start_prologue()
+	show_dialog()
+	
+func show_dialog():
+	if current_index < dialog_data.size():
+		var current_dialog = dialog_data[current_index]
+		var raw_text = current_dialog["text"]
+		var centered_text = "[center]" + raw_text + "[/center]"
+		label_dialog.text = centered_text
 
-func start_prologue() -> void:
-	show_next_line(0)
+		if current_dialog["character"] != "":
+			label_character.text = current_dialog["character"]
+			char_box.show()
+		else:
+			char_box.hide()
 
-func show_next_line(index: int) -> void:
-	if index >= prologue_lines.size():
-		await get_tree().create_timer(2.0).timeout
-		get_tree().change_scene_to_file("res://Scene/Level1/Level1.tscn")
-		return
+		if "bg" in current_dialog:
+			if current_index > 0 and "bg" in dialog_data[current_index - 1]: 
+				if current_dialog["bg"] != dialog_data[current_index - 1]["bg"]:
+					anim_player.play("fade_out")
+					await anim_player.animation_finished
+			
+			bg_texture.texture = load(current_dialog["bg"])
+			anim_player.play("fade_in")
+		
+		await type_text(current_dialog["text"])
+	else:
+		queue_free()
 
-	label.text = "[center]" + prologue_lines[index] + "[/center]"
-	await get_tree().create_timer(3.0).timeout
-	show_next_line(index + 1)
+func _on_next_button_pressed():
+	if is_typing:
+		skip_typing = true
+	else:
+		current_index += 1
+		if current_index < dialog_data.size():
+			show_dialog()
+		else:
+			go_to_next_scene()
+
+func type_text(text: String):
+	is_typing = true
+	skip_typing = false
+	label_dialog.text = ""
+	for i in range(text.length()):
+		if skip_typing:
+			label_dialog.text = text
+			break
+		label_dialog.text += text[i]
+		await get_tree().create_timer(typing_speed).timeout
+	is_typing = false
+
+func go_to_next_scene():
+	anim_player.play("fade_out")
+	await anim_player.animation_finished
+	call_deferred("change_scene")
+	
+func change_scene():
+	get_tree().change_scene_to_file("res://Scene/Level1/Level1.tscn")

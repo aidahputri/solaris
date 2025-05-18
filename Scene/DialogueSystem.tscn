@@ -26,30 +26,32 @@ anchor_top = 0.711
 anchor_right = 0.768
 anchor_bottom = 0.891
 offset_left = -0.200012
-offset_top = 0.119995
+offset_top = 64.12
 offset_right = 0.439941
-offset_bottom = -0.280029
+offset_bottom = 63.72
 grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("1_ieaw6")
 script = ExtResource("1_j6evc")
 
-[node name="LabelDialog" type="RichTextLabel" parent="Panel/DialogBox"]
+[node name="LabelDialog" type="Label" parent="Panel/DialogBox"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.184
+anchor_left = 0.122
 anchor_top = 0.33
-anchor_right = 0.184
+anchor_right = 0.122
 anchor_bottom = 0.33
-offset_left = -0.416016
-offset_top = -0.0200043
-offset_right = 640.584
+offset_left = 0.071991
+offset_top = -0.0199814
+offset_right = 704.072
 offset_bottom = 62.98
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/normal_font = ExtResource("2_u62we")
-theme_override_font_sizes/normal_font_size = 32
+theme_override_fonts/font = ExtResource("2_u62we")
+theme_override_font_sizes/font_size = 30
 text = "helo"
+horizontal_alignment = 1
+vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="NextButton" type="TextureButton" parent="Panel/DialogBox"]

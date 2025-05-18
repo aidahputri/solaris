@@ -1,0 +1,86 @@
+[gd_scene load_steps=13 format=3 uid="uid://bmi30g53k5ere"]
+
+[ext_resource type="Script" path="res://Script/Enemy.gd" id="1_xy753"]
+[ext_resource type="SpriteFrames" uid="uid://dj87ujgsi5mbb" path="res://Asset/Musuh/spriteframe/BlueSlime.tres" id="2_o04k6"]
+[ext_resource type="Script" path="res://Script/FiniteStateMachine.gd" id="5_gjiow"]
+[ext_resource type="Script" path="res://Script/idle.gd" id="6_dybbv"]
+[ext_resource type="Script" path="res://Scene/health_component.gd" id="6_kv7ey"]
+[ext_resource type="Script" path="res://Script/AttackState.gd" id="7_dmq4o"]
+[ext_resource type="Script" path="res://Scene/hitbox_component.gd" id="7_nk3vr"]
+[ext_resource type="Script" path="res://Script/WalkState.gd" id="8_on86j"]
+[ext_resource type="Script" path="res://Script/DeathState.gd" id="9_ubhpd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_16vgy"]
+size = Vector2(46, 31.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cs8rv"]
+size = Vector2(20, 27)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qfcpb"]
+radius = 100.0
+
+[node name="BlueSlime" type="CharacterBody2D"]
+script = ExtResource("1_xy753")
+spriteFrame = ExtResource("2_o04k6")
+xSpriteFrame = 3
+ySpriteFrame = -64
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(3, -64)
+sprite_frames = ExtResource("2_o04k6")
+animation = &"idle"
+frame = 1
+frame_progress = 0.537921
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -16.25)
+shape = SubResource("RectangleShape2D_16vgy")
+
+[node name="HealthComponent" type="Node2D" parent="."]
+script = ExtResource("6_kv7ey")
+MAX_HEALTH = 50.0
+
+[node name="Hitbox" type="Area2D" parent="." node_paths=PackedStringArray("healthComponent")]
+script = ExtResource("7_nk3vr")
+healthComponent = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(1, -16)
+shape = SubResource("RectangleShape2D_16vgy")
+
+[node name="WeaponHitbox" type="Area2D" parent="."]
+position = Vector2(-35, -10)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WeaponHitbox"]
+position = Vector2(0, -3.5)
+shape = SubResource("RectangleShape2D_cs8rv")
+disabled = true
+
+[node name="Detection" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detection"]
+shape = SubResource("CircleShape2D_qfcpb")
+
+[node name="debug" type="Label" parent="."]
+offset_left = -24.0
+offset_top = -62.0
+offset_right = 16.0
+offset_bottom = -39.0
+
+[node name="FiniteStateMachine" type="Node2D" parent="."]
+script = ExtResource("5_gjiow")
+
+[node name="idle" type="Node2D" parent="FiniteStateMachine"]
+script = ExtResource("6_dybbv")
+
+[node name="walk" type="Node2D" parent="FiniteStateMachine"]
+script = ExtResource("8_on86j")
+
+[node name="attack" type="Node2D" parent="FiniteStateMachine"]
+script = ExtResource("7_dmq4o")
+
+[node name="death" type="Node2D" parent="FiniteStateMachine"]
+script = ExtResource("9_ubhpd")
+
+[connection signal="area_entered" from="WeaponHitbox" to="." method="_on_weapon_hitbox_area_entered"]
+[connection signal="body_entered" from="Detection" to="FiniteStateMachine/idle" method="_on_player_detection_body_entered"]

@@ -10,6 +10,10 @@ extends CharacterBody2D
 @export var total_jump = 2
 @onready var dust_particle = $DustParticle
 @onready var drop_particle = preload("res://Scene/DropParticle.tscn")
+@onready var attack_sfx_player = $AttackSfxPlayer
+@onready var run_sfx_player = $RunSfxPlayer
+@onready var landing_sfx_player = $LandingSfxPlayer
+@export var sfx:String = ""
 
 const UP = Vector2(0,-1)
 var is_attacking = false
@@ -18,6 +22,8 @@ var jumps = total_jump
 var attack_cooldown := 1.0 
 var time_since_attack := 0.0
 var is_grounded = true
+
+var direction = 0
 
 func _ready():
 	Global.playerJump = jumps
@@ -43,7 +49,7 @@ func _physics_process(delta: float) -> void:
 		time_since_attack = 0.0
 	
 func move():
-	var direction := Input.get_axis("ui_left", "ui_right")
+	direction = Input.get_axis("ui_left", "ui_right")
 	if direction:
 		velocity.x = direction * SPEED
 		if direction < 0:
@@ -56,6 +62,8 @@ func move():
 			dust_particle.set_emitting(true)
 		else:
 			dust_particle.set_emitting(false)
+		if $RunTimer.is_stopped():
+			$RunTimer.start(0.3)
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		dust_particle.set_emitting(false)
@@ -73,6 +81,7 @@ func attack():
 		animplayer.play("attack")
 		$WeaponHitbox/CollisionShape2D.disabled = false
 		await animplayer.animation_finished
+		attack_sfx_player.play()
 		$WeaponHitbox/CollisionShape2D.disabled = true
 		is_attacking = false
 
@@ -118,3 +127,25 @@ func drop_dust_animation():
 		var instance = drop_particle.instantiate()
 		instance.global_position = $Marker2D.global_position
 		get_parent().add_child(instance)
+		play_landing_sfx()
+
+func play_attack_sfx():
+	var random_pitch = randf_range(0.9,1.1)
+	attack_sfx_player.pitch_scale = random_pitch
+	attack_sfx_player.play()
+
+func play_run_sfx():
+	var random_pitch = randf_range(0.8,1.2)
+	run_sfx_player.pitch_scale = random_pitch
+	run_sfx_player.play()
+
+func play_landing_sfx():
+	var random_pitch = randf_range(0.8,1.2)
+	landing_sfx_player.pitch_scale = random_pitch
+	landing_sfx_player.play()
+	
+func _on_run_timer_timeout() -> void:
+	if is_on_floor() and direction != 0:
+		play_run_sfx()
+	else:
+		$RunTimer.stop()

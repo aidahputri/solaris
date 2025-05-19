@@ -15,17 +15,21 @@ var tempSpeed: int = 0
 var direction: Vector2
 
 @export_group("Combat")
+@export var health: int = 50
 @export var attack_damage: int = 10
 @export var knockback_force: int = 10
 @export var weaponPosition: int = 35
 @export var timeBeforeAttack: float = 0.5
 
 func _ready() -> void:
+	$HealthComponent.health = health
 	sprite.sprite_frames = spriteFrame
 	sprite.position.x = xSpriteFrame
 	sprite.position.y = ySpriteFrame
 	
 func _process(_delta):
+	if $HealthComponent.health <= 0:
+		find_child("FiniteStateMachine").change_state("death")
 	direction = player.position - position
 	velocity.y += gravity * _delta
 	

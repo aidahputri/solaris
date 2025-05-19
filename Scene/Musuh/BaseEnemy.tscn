@@ -20,6 +20,7 @@ size = Vector2(20, 27)
 radius = 100.0
 
 [node name="BlueSlime" type="CharacterBody2D"]
+collision_layer = 2
 script = ExtResource("1_xy753")
 spriteFrame = ExtResource("2_o04k6")
 xSpriteFrame = 3

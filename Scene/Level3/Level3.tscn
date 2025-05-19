@@ -7895,6 +7895,7 @@ tile_set = SubResource("TileSet_qo4m7")
 
 [node name="Player" parent="." instance=ExtResource("10_xmq3k")]
 position = Vector2(78, 385)
+sfx = "RPG_Essentials_Free/12_Player_Movement_SFX/08_Step_rock_02.wav"
 
 [node name="vines" type="TileMapLayer" parent="."]
 position = Vector2(0, 100)
@@ -7939,3 +7940,7 @@ end_zoom = 4.5
 [node name="PauseGUI" parent="." instance=ExtResource("14_a4j8d")]
 
 [node name="FadeCanvas" parent="." instance=ExtResource("15_1571v")]
+
+[node name="BGM" type="AudioStreamPlayer2D" parent="."]
+autoplay = true
+max_distance = 1e+17

@@ -24,6 +24,8 @@ var time_since_attack := 0.0
 var is_grounded = true
 
 var direction = 0
+var combo = 0
+var attack_finish = true
 
 func _ready():
 	Global.playerJump = jumps
@@ -78,13 +80,20 @@ func jump():
 
 func attack():
 	if Input.is_action_just_pressed("attack") and is_on_floor():
-		is_attacking = true
-		animplayer.play("attack")
-		$WeaponHitbox/CollisionShape2D.disabled = false
-		await animplayer.animation_finished
-		attack_sfx_player.play()
-		$WeaponHitbox/CollisionShape2D.disabled = true
-		is_attacking = false
+		if $ComboTimer.is_stopped():
+			combo = 0
+			$ComboTimer.start(0.6)
+		
+		if !$ComboTimer.is_stopped():
+			is_attacking = true
+			play_combo_animation(combo)
+			attack_finish = false
+			combo += 1
+			$WeaponHitbox/CollisionShape2D.disabled = false
+			play_attack_sfx()
+			await animplayer.animation_finished
+			$WeaponHitbox/CollisionShape2D.disabled = true
+			is_attacking = false
 
 func animations():
 	if is_attacking:
@@ -155,3 +164,17 @@ func _on_run_timer_timeout() -> void:
 		play_run_sfx()
 	else:
 		$RunTimer.stop()
+
+func play_combo_animation(step: int):
+	match step:
+		0:
+			animplayer.play("attack1")
+		1:
+			animplayer.play("attack2")
+		2:
+			animplayer.play("attack3")
+
+
+func _on_combo_timer_timeout() -> void:
+	combo = 0
+	$ComboTimer.stop()

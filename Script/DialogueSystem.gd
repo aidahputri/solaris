@@ -16,6 +16,11 @@ var dialog_data = {
 		#{"character": "", "text": ""},
 	],
 	# Level2
+	# Level3
+	"enterLevel3": [
+		{"character": "", "text": "I feel my heart is burning."},
+		{"character": "", "text": "I can feel, I am getting closer to my gem."}
+	]
 }
 
 var current_dialog = []
@@ -73,3 +78,7 @@ func type_text(text: String):
 func _on_level_1_dialogue_trigger_body_entered(body: Node2D):
 	if body.name == "Player": 
 		start_dialog("level1")
+
+func _on_enter_level_3_dialogue_trigger_body_entered(body: Node2D):
+	if body.name == "Player":
+		start_dialog("enterLevel3")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://bwvbfqb8oc8qh"]
+[gd_scene load_steps=28 format=4 uid="uid://bwvbfqb8oc8qh"]
 
 [ext_resource type="Script" path="res://Script/Level.gd" id="1_xjcls"]
 [ext_resource type="Texture2D" uid="uid://bogwujynel2ym" path="res://Asset/3. PF_StrangeMountains_v1.0/background1.png" id="2_klwus"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://677ay4d0u0lu" path="res://Scene/ZoomArea.tscn" id="13_d42i7"]
 [ext_resource type="PackedScene" uid="uid://dnuek73cevx73" path="res://Scene/PauseGUI.tscn" id="14_a4j8d"]
 [ext_resource type="PackedScene" uid="uid://pe0qmwlpo6dj" path="res://Scene/FadeCanvas.tscn" id="15_1571v"]
+[ext_resource type="PackedScene" uid="uid://crfx06vy8h3dc" path="res://Scene/DialogueSystem.tscn" id="17_skwrk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_suict"]
 texture = ExtResource("8_lrepl")
@@ -7737,6 +7738,9 @@ texture = ExtResource("8_lrepl")
 [sub_resource type="TileSet" id="TileSet_ls8kt"]
 sources/0 = SubResource("TileSetAtlasSource_cwg8u")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c6anj"]
+size = Vector2(46, 225)
+
 [node name="Level3" type="Node2D"]
 script = ExtResource("1_xjcls")
 
@@ -7896,7 +7900,6 @@ tile_set = SubResource("TileSet_qo4m7")
 
 [node name="BlueSlime" parent="." instance=ExtResource("10_vubkd")]
 position = Vector2(276, 416)
-timeBeforeAttack = 1.0
 
 [node name="Player" parent="." instance=ExtResource("10_xmq3k")]
 position = Vector2(78, 385)
@@ -7946,6 +7949,16 @@ end_zoom = 4.5
 
 [node name="FadeCanvas" parent="." instance=ExtResource("15_1571v")]
 
+[node name="DialogueSystem" parent="." instance=ExtResource("17_skwrk")]
+
 [node name="BGM" type="AudioStreamPlayer2D" parent="."]
 autoplay = true
 max_distance = 1e+17
+
+[node name="EnterLevel3DialogueArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnterLevel3DialogueArea"]
+position = Vector2(75, 332)
+shape = SubResource("RectangleShape2D_c6anj")
+
+[connection signal="body_entered" from="EnterLevel3DialogueArea" to="DialogueSystem" method="_on_enter_level_3_dialogue_trigger_body_entered"]

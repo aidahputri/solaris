@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b55v8ssiok5wn"
+path="res://.godot/imported/16-Bit Fantasy RPG OST - Onward and Upward.mp3-b594f8fb4babdb79bfc413be1c982f8f.mp3str"
+
+[deps]
+
+source_file="res://Asset/Bgm/16-Bit Fantasy RPG OST - Onward and Upward.mp3"
+dest_files=["res://.godot/imported/16-Bit Fantasy RPG OST - Onward and Upward.mp3-b594f8fb4babdb79bfc413be1c982f8f.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

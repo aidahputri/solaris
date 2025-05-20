@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ndqpynq50iet"]
+[gd_scene load_steps=11 format=3 uid="uid://ndqpynq50iet"]
 
 [ext_resource type="Texture2D" uid="uid://dk6nf487ro7r6" path="res://Asset/Background/layer_1.png" id="1_l2xil"]
 [ext_resource type="Texture2D" uid="uid://drir4vbc1pa8e" path="res://Asset/Background/layer_2.png" id="2_yi5kk"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bcybsdoqoubsf" path="res://Asset/BlackandWhiteUI.png/button-bg.png" id="7_fm3h5"]
 [ext_resource type="Texture2D" uid="uid://c8smr6lhgdncc" path="res://Asset/BlackandWhiteUI.png/button-bg-normal.png" id="7_om5j3"]
 [ext_resource type="FontFile" uid="uid://cvkojm80tadh5" path="res://Asset/Font/gumela/Gumela.ttf" id="8_phwi5"]
+[ext_resource type="AudioStream" uid="uid://dstrjml4pm86i" path="res://Asset/Bgm/Elden Ring, If It Were a Retro Pixel Art Game (Original Music and Art)-[AudioTrimmer.com].mp3" id="10_3k2i4"]
 
 [node name="TitleScreen" type="Control"]
 layout_mode = 3
@@ -157,6 +158,10 @@ text = "EXIT
 "
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="BGM" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_3k2i4")
+autoplay = true
 
 [connection signal="pressed" from="Control2/Start" to="Control2/Start" method="_on_pressed"]
 [connection signal="pressed" from="Control2/Exit" to="Control2/Exit" method="_on_exit_pressed"]

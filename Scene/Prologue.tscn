@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://b41wvlaiskci3"]
+[gd_scene load_steps=20 format=3 uid="uid://b41wvlaiskci3"]
 
 [ext_resource type="Texture2D" uid="uid://c373s1ny64mj4" path="res://Asset/Background/prologue-1.png" id="1_t0gfb"]
 [ext_resource type="Texture2D" uid="uid://b1ctja2sh332s" path="res://Asset/Background/layer_3.png" id="3_dbnyd"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://kccy33r4vvgr" path="res://Asset/BlackandWhiteUI.png/dialogue-bar.png" id="10_b2a50"]
 [ext_resource type="Texture2D" uid="uid://dvy2c7ugjy3nt" path="res://Asset/BlackandWhiteUI.png/dialogue-next-button-normal.png" id="12_wch44"]
 [ext_resource type="Texture2D" uid="uid://br12xlpvv3bl4" path="res://Asset/BlackandWhiteUI.png/dialogue-next-button-hovered.png" id="13_51nge"]
+[ext_resource type="AudioStream" uid="uid://dstrjml4pm86i" path="res://Asset/Bgm/Elden Ring, If It Were a Retro Pixel Art Game (Original Music and Art)-[AudioTrimmer.com].mp3" id="14_bamie"]
 [ext_resource type="Texture2D" uid="uid://xfw2dsgdfwg3" path="res://Asset/BlackandWhiteUI.png/next-arrow-right.png" id="14_y534u"]
 [ext_resource type="Texture2D" uid="uid://dxyw0uci7ftu5" path="res://Asset/BlackandWhiteUI.png/dialogue-name.png" id="15_dr4v2"]
 
@@ -303,6 +304,10 @@ scroll_active = false
 libraries = {
 "": SubResource("AnimationLibrary_7f2ip")
 }
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("14_bamie")
+autoplay = true
 
 [connection signal="pressed" from="Dialogue/Panel/Skip" to="." method="_on_skip_pressed"]
 [connection signal="pressed" from="Dialogue/Panel/DialogBox/NextButton" to="." method="_on_next_button_pressed"]

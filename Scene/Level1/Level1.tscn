@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bha1g14bx11cl"]
+[gd_scene load_steps=18 format=3 uid="uid://bha1g14bx11cl"]
 
 [ext_resource type="Texture2D" uid="uid://yv8aoy7vyjyw" path="res://Asset/1. DarkForest1.2/main_background.png" id="1_i3bh0"]
 [ext_resource type="Script" path="res://Script/Level.gd" id="1_roi20"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://pe0qmwlpo6dj" path="res://Scene/FadeCanvas.tscn" id="12_wnfwv"]
 [ext_resource type="PackedScene" uid="uid://crfx06vy8h3dc" path="res://Scene/DialogueSystem.tscn" id="13_wktex"]
 [ext_resource type="PackedScene" uid="uid://ccdekmxf8jqhe" path="res://Scene/LedgeArea.tscn" id="14_8brww"]
+[ext_resource type="AudioStream" uid="uid://b55v8ssiok5wn" path="res://Asset/Bgm/16-Bit Fantasy RPG OST - Onward and Upward.mp3" id="15_8bjj8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8fsvo"]
 size = Vector2(138, 312.5)
@@ -113,7 +114,8 @@ color = Color(0, 0, 0, 1)
 position = Vector2(-20, 95)
 
 [node name="Player" parent="." instance=ExtResource("8_j4xh6")]
-position = Vector2(66, 445)
+position = Vector2(66, 444)
+sfx = "RPG_Essentials_Free/12_Player_Movement_SFX/03_Step_grass_03.wav"
 
 [node name="Barrier" type="StaticBody2D" parent="."]
 
@@ -137,10 +139,9 @@ position = Vector2(-23, 106)
 shape = SubResource("RectangleShape2D_8fsvo")
 
 [node name="Level1DialogueTrigger" type="Area2D" parent="."]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level1DialogueTrigger"]
-position = Vector2(106, 339)
+position = Vector2(128, 341)
 shape = SubResource("RectangleShape2D_37y3y")
 
 [node name="LedgeArea1" parent="." instance=ExtResource("14_8brww")]
@@ -158,6 +159,12 @@ start_y = 70
 position = Vector2(384, 160)
 scale = Vector2(0.1, 1.385)
 end_y = 50
+
+[node name="BGM" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("15_8bjj8")
+volume_db = -20.799
+autoplay = true
+max_distance = 1e+17
 
 [connection signal="body_entered" from="FinishArea" to="." method="_on_finish_area_body_entered"]
 [connection signal="body_entered" from="Level1DialogueTrigger" to="DialogueSystem" method="_on_level_1_dialogue_trigger_body_entered"]

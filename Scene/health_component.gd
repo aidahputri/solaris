@@ -4,6 +4,7 @@ class_name HealthComponent
 @export var MAX_HEALTH: float = 100.0
 var health: float
 @export var progressBar: ProgressBar
+var knockback: bool
 
 func _ready() -> void:
 	health = MAX_HEALTH
@@ -11,6 +12,18 @@ func _ready() -> void:
 
 func damage(attack: Attack):
 	health -= attack.attack_damage
+	if attack.attack_dir != 0:
+		var knockback_vector = Vector2(
+			500 * attack.attack_dir,  # X direction
+			-500 * 0.8  # Y direction (slightly reduced)
+			)
+
+		# Apply the knockback
+		owner.velocity = knockback_vector
+
+	#owner.velocity.y = -500
+	#owner.velocity.x = 500 * attack.attack_dir
+	
 	#Global.playerHealth = health
 	
 	#if health <= 0:

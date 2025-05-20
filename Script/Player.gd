@@ -46,7 +46,7 @@ func _physics_process(delta: float) -> void:
 	animations()
 	
 	if time_since_attack >= attack_cooldown:
-		perform_attack()
+		#health_drain()
 		time_since_attack = 0.0
 	
 func move():
@@ -111,14 +111,19 @@ func _on_weapon_hitbox_area_entered(area: Area2D) -> void:
 		attack.attack_damage = attack_damage
 		attack.knockback_force = knockback_force
 		attack.attack_position = global_position
+		if direction < 0:
+			attack.attack_dir = -1
+		else:
+			attack.attack_dir = 1
 		
 		hitbox.damage(attack)
 		
+		# Heal player on successful attack
 		attack = Attack.new()
 		attack.attack_damage = -10
 		healthComponent.damage(attack)
 
-func perform_attack() -> void:
+func health_drain() -> void:
 	var attack = Attack.new()
 	attack.attack_damage = 5
 	healthComponent.damage(attack)

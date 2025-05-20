@@ -26,7 +26,8 @@ func _ready() -> void:
 	sprite.sprite_frames = spriteFrame
 	sprite.position.x = xSpriteFrame
 	sprite.position.y = ySpriteFrame
-	
+	#$Detection/CollisionShape2D.shape.radius = 200
+
 func _process(_delta):
 	if $HealthComponent.health <= 0:
 		find_child("FiniteStateMachine").change_state("death")
@@ -43,20 +44,28 @@ func _process(_delta):
 func _physics_process(delta):
 	velocity.y += gravity * delta
 	
-	if direction.length() > 0:
+	if direction.length() > 0 && is_on_floor():
 		velocity.x = direction.normalized().x * (speed * tempSpeed)
-	else:
-		velocity.x = 0
-	
+	#if direction.length() > 0:
+		#velocity.x = direction.normalized().x * (speed * tempSpeed)
+	#else:
+		#velocity.x = 0
+
 	move_and_slide()
 
 func _on_weapon_hitbox_area_entered(area: Area2D) -> void:
 	if area is HitboxComponent:
+		#$WeaponHitbox/CollisionShape2D.disabled = true
 		var hitbox: HitboxComponent = area
 		
 		var attack = Attack.new()
 		attack.attack_damage = attack_damage
 		attack.knockback_force = knockback_force
 		attack.attack_position = global_position
+		
+		if direction.x < 0:
+			attack.attack_dir = -1
+		else:
+			attack.attack_dir = 1
 		
 		hitbox.damage(attack)

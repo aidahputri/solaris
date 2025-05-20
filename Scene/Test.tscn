@@ -32,4 +32,4 @@ health = 20
 position = Vector2(766, 308)
 spriteFrame = ExtResource("3_knxj3")
 ySpriteFrame = -32
-timeBeforeAttack = 0.0
+timeBeforeAttack = 0.25

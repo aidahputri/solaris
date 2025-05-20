@@ -20,6 +20,8 @@ var direction: Vector2
 @export var knockback_force: int = 10
 @export var weaponPosition: int = 35
 @export var timeBeforeAttack: float = 0.5
+var hitbox = null
+var attack = null
 
 func _ready() -> void:
 	$HealthComponent.health = health
@@ -56,9 +58,9 @@ func _physics_process(delta):
 func _on_weapon_hitbox_area_entered(area: Area2D) -> void:
 	if area is HitboxComponent:
 		#$WeaponHitbox/CollisionShape2D.disabled = true
-		var hitbox: HitboxComponent = area
+		hitbox = area
 		
-		var attack = Attack.new()
+		attack = Attack.new()
 		attack.attack_damage = attack_damage
 		attack.knockback_force = knockback_force
 		attack.attack_position = global_position
@@ -68,4 +70,16 @@ func _on_weapon_hitbox_area_entered(area: Area2D) -> void:
 		else:
 			attack.attack_dir = 1
 		
+		if $AttackTimer.is_stopped() and ($AnimatedSprite2D.animation == "attack"):
+			$AttackTimer.start(timeBeforeAttack)
+
+
+func _on_attack_timer_timeout() -> void:
+	if hitbox != null and attack != null:
 		hitbox.damage(attack)
+	$AttackTimer.stop()
+
+
+func _on_weapon_hitbox_area_exited(area: Area2D) -> void:
+	hitbox = null
+	attack = null

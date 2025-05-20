@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://bwvbfqb8oc8qh"]
+[gd_scene load_steps=26 format=4 uid="uid://bwvbfqb8oc8qh"]
 
 [ext_resource type="Script" path="res://Script/Level.gd" id="1_xjcls"]
 [ext_resource type="Texture2D" uid="uid://bogwujynel2ym" path="res://Asset/3. PF_StrangeMountains_v1.0/background1.png" id="2_klwus"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://2oq78lmbqfvx" path="res://Asset/3. PF_StrangeMountains_v1.0/background6.png" id="7_phrij"]
 [ext_resource type="Texture2D" uid="uid://vuf6ibcd5t3j" path="res://Asset/3. PF_StrangeMountains_v1.0/mainlevbuild1.png" id="8_lrepl"]
 [ext_resource type="Texture2D" uid="uid://c3bdr4nbfvt1s" path="res://Asset/3. PF_StrangeMountains_v1.0/mainlevbuild2.png" id="9_2yq43"]
+[ext_resource type="PackedScene" uid="uid://bmi30g53k5ere" path="res://Scene/Musuh/BaseEnemy.tscn" id="10_vubkd"]
 [ext_resource type="PackedScene" uid="uid://dm30ncxth5bqk" path="res://Scene/Player.tscn" id="10_xmq3k"]
 [ext_resource type="PackedScene" uid="uid://cknetk7q7m7av" path="res://Scene/GUI.tscn" id="11_uo4rg"]
 [ext_resource type="PackedScene" uid="uid://ccdekmxf8jqhe" path="res://Scene/LedgeArea.tscn" id="12_avsi6"]
@@ -7892,6 +7893,10 @@ tile_set = SubResource("TileSet_upica")
 position = Vector2(0, 100)
 tile_map_data = PackedByteArray("AABxAB8AAAAcAC4AAABxACAAAAAcAC8AAAByAB8AAAAdAC4AAAByACAAAAAdAC8AAABZAB8AAAAcAC4AAABZACAAAAAcAC8AAABaAB8AAAAdAC4AAABaACAAAAAdAC8AAABSABoAAAAaAC4AAABSABsAAAAaAC8AAACIABQAAAAXADcAAACJABMAAAAYADYAAACJABQAAAAYADcAAACKABMAAAAZADYAAACKABQAAAAZADcAAACLABMAAAAZADYAAACLABQAAAAZADcAAACMABMAAAAaADYAAACMABQAAAAaADcAAABmABUAAAAXADcAAABnABQAAAAYADYAAABnABUAAAAYADcAAABoABQAAAAZADYAAABoABUAAAAZADcAAABpABQAAAAZADYAAABpABUAAAAZADcAAABqABQAAAAaADYAAABqABUAAAAaADcAAADPABQAAAAYADYAAADPABUAAAAYADcAAADQABQAAAAZADYAAADQABUAAAAZADcAAADRABQAAAAZADYAAADRABUAAAAZADcAAADSABQAAAAaADYAAADSABUAAAAaADcAAADcABsAAAAYADYAAADcABwAAAAYADcAAADdABsAAAAZADYAAADdABwAAAAZADcAAADeABsAAAAZADYAAADeABwAAAAZADcAAADfABsAAAAaADYAAADfABwAAAAaADcAAAA=")
 tile_set = SubResource("TileSet_qo4m7")
+
+[node name="BlueSlime" parent="." instance=ExtResource("10_vubkd")]
+position = Vector2(276, 416)
+timeBeforeAttack = 1.0
 
 [node name="Player" parent="." instance=ExtResource("10_xmq3k")]
 position = Vector2(78, 385)

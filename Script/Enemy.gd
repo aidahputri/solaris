@@ -29,6 +29,10 @@ var attack = null
 var immune = false
 
 func _ready() -> void:
+	$ProgressBar.max_value = health
+	$ProgressBar.value = health
+	$ProgressBar.position.y = $CollisionShape2D.position.y * 2.5 - 5
+	
 	$HealthComponent.health = health
 	sprite.sprite_frames = spriteFrame
 	sprite.position.x = xSpriteFrame
@@ -38,7 +42,9 @@ func _ready() -> void:
 	#$Detection/CollisionShape2D.shape.radius = 200
 
 func _process(_delta):
+	$ProgressBar.value = $HealthComponent.health
 	if $HealthComponent.health <= 0:
+		$ProgressBar.visible = false
 		find_child("FiniteStateMachine").change_state("death")
 	direction = player.position - position
 	velocity.y += gravity * _delta

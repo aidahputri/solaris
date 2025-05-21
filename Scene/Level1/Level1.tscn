@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bha1g14bx11cl"]
+[gd_scene load_steps=21 format=3 uid="uid://bha1g14bx11cl"]
 
 [ext_resource type="Texture2D" uid="uid://yv8aoy7vyjyw" path="res://Asset/1. DarkForest1.2/main_background.png" id="1_i3bh0"]
 [ext_resource type="Script" path="res://Script/Level.gd" id="1_roi20"]
@@ -16,12 +16,16 @@
 [ext_resource type="PackedScene" uid="uid://ccdekmxf8jqhe" path="res://Scene/LedgeArea.tscn" id="14_8brww"]
 [ext_resource type="AudioStream" uid="uid://b55v8ssiok5wn" path="res://Asset/Bgm/16-Bit Fantasy RPG OST - Onward and Upward.mp3" id="15_8bjj8"]
 [ext_resource type="PackedScene" uid="uid://bmi30g53k5ere" path="res://Scene/Musuh/BaseEnemy.tscn" id="16_khyqs"]
+[ext_resource type="Script" path="res://Script/LoseArea.gd" id="17_6dmda"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8fsvo"]
 size = Vector2(138, 312.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_37y3y"]
 size = Vector2(26, 272)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_px3be"]
+size = Vector2(4049, 170)
 
 [node name="Level1" type="Node2D"]
 script = ExtResource("1_roi20")
@@ -121,7 +125,7 @@ sfx = "RPG_Essentials_Free/12_Player_Movement_SFX/03_Step_grass_03.wav"
 [node name="Barrier" type="StaticBody2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Barrier"]
-polygon = PackedVector2Array(0, -2, 5, 456, 4, 615, 20, 615, 15, 22, 3951, 35, 3963, 607, 4001, 611, 3989, 13)
+polygon = PackedVector2Array(0, -2, 5, 456, 4, 768, 16, 765, 15, 22, 3951, 35, 3971, 771, 4002, 774, 3989, 13)
 
 [node name="GUI" parent="." instance=ExtResource("10_iukvg")]
 
@@ -187,5 +191,13 @@ position = Vector2(3421, 430)
 collision_mask = 2
 health = 30
 
+[node name="LoseArea" type="Area2D" parent="."]
+script = ExtResource("17_6dmda")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LoseArea"]
+position = Vector2(2003, 681)
+shape = SubResource("RectangleShape2D_px3be")
+
 [connection signal="body_entered" from="FinishArea" to="." method="_on_finish_area_body_entered"]
 [connection signal="body_entered" from="Level1DialogueTrigger" to="DialogueSystem" method="_on_level_1_dialogue_trigger_body_entered"]
+[connection signal="body_entered" from="LoseArea" to="LoseArea" method="_on_body_entered"]

@@ -14,12 +14,13 @@ func damage(attack: Attack):
 	health -= attack.attack_damage
 	if attack.attack_dir != 0:
 		var knockback_vector = Vector2(
-			500 * attack.attack_dir,  # X direction
-			-500 * 0.8  # Y direction (slightly reduced)
+			100 * attack.attack_dir,  # X direction
+			-50
 			)
 
 		# Apply the knockback
 		owner.velocity = knockback_vector
+		owner.move_and_slide()
 
 	#owner.velocity.y = -500
 	#owner.velocity.x = 500 * attack.attack_dir

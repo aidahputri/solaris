@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bha1g14bx11cl"]
+[gd_scene load_steps=22 format=3 uid="uid://bha1g14bx11cl"]
 
 [ext_resource type="Texture2D" uid="uid://yv8aoy7vyjyw" path="res://Asset/1. DarkForest1.2/main_background.png" id="1_i3bh0"]
 [ext_resource type="Script" path="res://Script/Level.gd" id="1_roi20"]
@@ -13,12 +13,22 @@
 [ext_resource type="PackedScene" uid="uid://dnuek73cevx73" path="res://Scene/PauseGUI.tscn" id="11_6rywj"]
 [ext_resource type="PackedScene" uid="uid://pe0qmwlpo6dj" path="res://Scene/FadeCanvas.tscn" id="12_wnfwv"]
 [ext_resource type="PackedScene" uid="uid://crfx06vy8h3dc" path="res://Scene/DialogueSystem.tscn" id="13_wktex"]
+[ext_resource type="PackedScene" uid="uid://ccdekmxf8jqhe" path="res://Scene/LedgeArea.tscn" id="14_8brww"]
+[ext_resource type="AudioStream" uid="uid://b55v8ssiok5wn" path="res://Asset/Bgm/16-Bit Fantasy RPG OST - Onward and Upward.mp3" id="15_8bjj8"]
+[ext_resource type="PackedScene" uid="uid://bmi30g53k5ere" path="res://Scene/Musuh/BaseEnemy.tscn" id="16_khyqs"]
+[ext_resource type="Script" path="res://Script/LoseArea.gd" id="17_6dmda"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8fsvo"]
-size = Vector2(58, 311)
+size = Vector2(138, 312.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_37y3y"]
-size = Vector2(26, 227)
+size = Vector2(26, 272)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_px3be"]
+size = Vector2(4049, 170)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b3itk"]
+size = Vector2(28, 295.5)
 
 [node name="Level1" type="Node2D"]
 script = ExtResource("1_roi20")
@@ -86,7 +96,7 @@ motion_scale = Vector2(0.8, 1)
 motion_mirroring = Vector2(816, 0)
 
 [node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/Middleground4"]
-position = Vector2(-4, 235)
+position = Vector2(-13, 231)
 scale = Vector2(1.04779, 0.889769)
 texture = ExtResource("5_o26pp")
 centered = false
@@ -109,15 +119,16 @@ offset_bottom = 737.0
 color = Color(0, 0, 0, 1)
 
 [node name="Level1Map" parent="." instance=ExtResource("7_e6gqb")]
-position = Vector2(-3, 50)
+position = Vector2(-20, 95)
 
 [node name="Player" parent="." instance=ExtResource("8_j4xh6")]
-position = Vector2(61, 394)
+position = Vector2(66, 444)
+sfx = "RPG_Essentials_Free/12_Player_Movement_SFX/03_Step_grass_03.wav"
 
 [node name="Barrier" type="StaticBody2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Barrier"]
-polygon = PackedVector2Array(0, -2, 4, 615, 20, 615, 15, 22, 3467, 16, 3468, 611, 3489, 613, 3486, -1)
+polygon = PackedVector2Array(0, -2, 5, 456, 4, 768, 16, 765, 15, 22, 3951, 35, 3971, 771, 4002, 774, 3989, 13)
 
 [node name="GUI" parent="." instance=ExtResource("10_iukvg")]
 
@@ -129,17 +140,124 @@ polygon = PackedVector2Array(0, -2, 4, 615, 20, 615, 15, 22, 3467, 16, 3468, 611
 visible = false
 
 [node name="FinishArea" type="Area2D" parent="."]
-position = Vector2(3388, 142)
+position = Vector2(3648, 168)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FinishArea"]
-position = Vector2(15, 88)
+position = Vector2(-23, 106)
 shape = SubResource("RectangleShape2D_8fsvo")
 
 [node name="Level1DialogueTrigger" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level1DialogueTrigger"]
-position = Vector2(106, 316.5)
+position = Vector2(128, 341)
 shape = SubResource("RectangleShape2D_37y3y")
+
+[node name="LedgeArea1" parent="." instance=ExtResource("14_8brww")]
+position = Vector2(1875, 82)
+scale = Vector2(0.175, 1.385)
+start_y = 50
+end_y = 70
+
+[node name="LedgeArea2" parent="." instance=ExtResource("14_8brww")]
+position = Vector2(3065, 75)
+scale = Vector2(0.12, 1.5)
+start_y = 70
+
+[node name="LedgeArea3" parent="." instance=ExtResource("14_8brww")]
+position = Vector2(384, 160)
+scale = Vector2(0.1, 1.385)
+end_y = 50
+
+[node name="BGM" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("15_8bjj8")
+autoplay = true
+max_distance = 1e+17
+
+[node name="BlueSlime" parent="." instance=ExtResource("16_khyqs")]
+position = Vector2(582, 447)
+collision_mask = 2
+health = 30
+timeBeforeAttack = 0.25
+
+[node name="BlueSlime2" parent="." instance=ExtResource("16_khyqs")]
+position = Vector2(1592, 448)
+collision_mask = 2
+health = 30
+timeBeforeAttack = 0.25
+
+[node name="BlueSlime3" parent="." instance=ExtResource("16_khyqs")]
+position = Vector2(2829, 350)
+collision_mask = 2
+health = 30
+timeBeforeAttack = 0.25
+
+[node name="BlueSlime4" parent="." instance=ExtResource("16_khyqs")]
+position = Vector2(3421, 430)
+collision_mask = 2
+health = 30
+timeBeforeAttack = 0.25
+
+[node name="LoseArea" type="Area2D" parent="."]
+script = ExtResource("17_6dmda")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LoseArea"]
+position = Vector2(2003, 681)
+shape = SubResource("RectangleShape2D_px3be")
+
+[node name="InvisibleWall1" type="StaticBody2D" parent="."]
+position = Vector2(682, 381)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InvisibleWall1"]
+position = Vector2(9, -71.75)
+shape = SubResource("RectangleShape2D_b3itk")
+
+[node name="InvisibleWall2" type="StaticBody2D" parent="."]
+position = Vector2(1366, 386)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InvisibleWall2"]
+position = Vector2(9, -71.75)
+shape = SubResource("RectangleShape2D_b3itk")
+
+[node name="InvisibleWall3" type="StaticBody2D" parent="."]
+position = Vector2(1966, 318)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InvisibleWall3"]
+position = Vector2(9, -71.75)
+shape = SubResource("RectangleShape2D_b3itk")
+
+[node name="InvisibleWall4" type="StaticBody2D" parent="."]
+position = Vector2(2647, 293)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InvisibleWall4"]
+position = Vector2(9, -71.75)
+shape = SubResource("RectangleShape2D_b3itk")
+
+[node name="InvisibleWall5" type="StaticBody2D" parent="."]
+position = Vector2(3029, 308)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InvisibleWall5"]
+position = Vector2(9, -82.25)
+shape = SubResource("RectangleShape2D_b3itk")
+
+[node name="InvisibleWall6" type="StaticBody2D" parent="."]
+position = Vector2(3125, 322)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InvisibleWall6"]
+position = Vector2(9, -71.75)
+shape = SubResource("RectangleShape2D_b3itk")
 
 [connection signal="body_entered" from="FinishArea" to="." method="_on_finish_area_body_entered"]
 [connection signal="body_entered" from="Level1DialogueTrigger" to="DialogueSystem" method="_on_level_1_dialogue_trigger_body_entered"]
+[connection signal="body_entered" from="LoseArea" to="LoseArea" method="_on_body_entered"]

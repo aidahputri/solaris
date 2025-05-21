@@ -161,19 +161,30 @@ func drop_dust_animation():
 		play_landing_sfx()
 
 func play_attack_sfx():
+	if Global.is_dialog_active:
+		return
 	var random_pitch = randf_range(0.9,1.1)
 	attack_sfx_player.pitch_scale = random_pitch
 	attack_sfx_player.play()
 
 func play_run_sfx():
+	if Global.is_dialog_active:
+		return
 	var random_pitch = randf_range(0.8,1.2)
 	run_sfx_player.pitch_scale = random_pitch
 	run_sfx_player.play()
 
 func play_landing_sfx():
+	if Global.is_dialog_active:
+		return
 	var random_pitch = randf_range(0.8,1.2)
 	landing_sfx_player.pitch_scale = random_pitch
 	landing_sfx_player.play()
+	
+func play_hurt_sfx():
+	var random_pitch = randf_range(0.8,1.2)
+	hurt_sfx_player.pitch_scale = random_pitch
+	hurt_sfx_player.play()
 	
 func _on_run_timer_timeout() -> void:
 	if is_on_floor() and direction != 0:
@@ -214,7 +225,7 @@ func _on_attack_timer_timeout() -> void:
 	
 func hurt():
 	animplayer.play("hurt")
-	hurt_sfx_player.play()
+	play_hurt_sfx()
 	is_hurt = true
 	await animplayer.animation_finished
 	is_hurt = false

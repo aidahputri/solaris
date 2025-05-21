@@ -13,7 +13,7 @@ var dialog_data = [
 	{"character": "", "text": "He was protected by the Solaris Gem, a gift that let him walk in sunlight."},
 	{"character": "", "text": "But one day, he awoke — and the gem was gone.", "bg": "res://Asset/Background/prologue-2.png"},
 	{"character": "", "text": "Sunlight burned. Someone had stolen it."},
-	{"character": "", "text": "Noctis rose, filled with fury.", "bg": "res://Asset/Background/prologue-3.png"},
+	{"character": "", "text": "Noctis rose, filled with fury.", "bg": "res://Asset/Background/prologue-3-2.png"},
 	{"character": "", "text": "He would find the thief."},
 	{"character": "", "text": "The hunt begins."},
 	#{"character": "", "text": "", "bg": ""},

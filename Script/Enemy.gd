@@ -24,6 +24,7 @@ var direction: Vector2
 @export var attack_damage: int = 10
 @export var knockback_force: int = 10
 @export var weaponPosition: int = 35
+@export var bodyOffset: int = 35
 @export var timeBeforeAttack: float = 0.5
 
 @export_group("Sfx")
@@ -56,10 +57,10 @@ func _process(_delta):
 	direction = player.position - position
 	velocity.y += gravity * _delta
 	if direction.x < 0:
-		$WeaponHitbox.position.x = weaponPosition * -1
+		$WeaponHitbox.position.x = bodyOffset * -1
 		sprite.flip_h = true
 	else:
-		$WeaponHitbox.position.x = weaponPosition
+		$WeaponHitbox.position.x = bodyOffset
 		sprite.flip_h = false
 
 func _physics_process(delta):
@@ -78,19 +79,20 @@ func _on_weapon_hitbox_area_entered(area: Area2D) -> void:
 	if area is HitboxComponent:
 		#$WeaponHitbox/CollisionShape2D.disabled = true
 		hitbox = area
-		
-		attack = Attack.new()
-		attack.attack_damage = attack_damage
-		attack.knockback_force = knockback_force
-		attack.attack_position = global_position
-		
-		if direction.x < 0:
-			attack.attack_dir = -1
-		else:
-			attack.attack_dir = 1
-		play_attack_sfx()
-		if $AttackTimer.is_stopped() and ($AnimatedSprite2D.animation == "attack"):
-			$AttackTimer.start(timeBeforeAttack)
+		var object = hitbox.get_parent()
+		if object.name == "Player":
+			attack = Attack.new()
+			attack.attack_damage = attack_damage
+			attack.knockback_force = knockback_force
+			attack.attack_position = global_position
+			
+			if direction.x < 0:
+				attack.attack_dir = -1
+			else:
+				attack.attack_dir = 1
+			play_attack_sfx()
+			if $AttackTimer.is_stopped() and ($AnimatedSprite2D.animation == "attack"):
+				$AttackTimer.start(timeBeforeAttack)
 
 func play_attack_sfx():
 	if attackSfx != "":

@@ -7926,7 +7926,7 @@ offset_top = -33.0
 offset_bottom = -28.0
 
 [node name="Golem2" parent="." instance=ExtResource("10_vubkd")]
-position = Vector2(1529, 608)
+position = Vector2(720, 415)
 scale = Vector2(1.435, 1.435)
 collision_mask = 2
 spriteFrame = ExtResource("11_n0w36")
@@ -7934,6 +7934,11 @@ ySpriteFrame = -32
 speed = 80
 flipped = true
 knockback_force = 2
+weaponPosition = 60
+
+[node name="WeaponHitbox" parent="Golem2" index="4"]
+position = Vector2(-13.9373, -10.453)
+scale = Vector2(3.795, 1)
 
 [node name="Golem3" parent="." instance=ExtResource("10_vubkd")]
 position = Vector2(1892, 368)
@@ -8025,3 +8030,4 @@ shape = SubResource("RectangleShape2D_xlrjk")
 [connection signal="body_entered" from="EnterLevel3DialogueArea" to="DialogueSystem" method="_on_enter_level_3_dialogue_trigger_body_entered"]
 
 [editable path="Golem1"]
+[editable path="Golem2"]

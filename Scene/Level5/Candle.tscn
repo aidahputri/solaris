@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://clxig6qbc7tw8"]
+
+[ext_resource type="Texture2D" uid="uid://bkhb40la431t3" path="res://Asset/5.2 PF_Castle_v2.0/decorative_castle.png" id="1_h344o"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ojvk"]
+atlas = ExtResource("1_h344o")
+region = Rect2(128, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3qul6"]
+atlas = ExtResource("1_h344o")
+region = Rect2(144, 48, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p11h2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ojvk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3qul6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Candle" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_p11h2")
+autoplay = "default"
+frame_progress = 0.248614

@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" path="res://Scene/PauseGUI.tscn" id="5_37oep"]
 [ext_resource type="SpriteFrames" uid="uid://cd1vbbic5rw4v" path="res://Asset/Musuh/spriteframe/Bat.tres" id="7_ghhxr"]
 [ext_resource type="PackedScene" path="res://Scene/FadeCanvas.tscn" id="7_y00sk"]
-[ext_resource type="PackedScene" uid="uid://dgup4qhnts6um" path="res://Scene/DialogueSystem.tscn" id="9_bcr04"]
+[ext_resource type="PackedScene" uid="uid://crfx06vy8h3dc" path="res://Scene/DialogueSystem.tscn" id="9_bcr04"]
 [ext_resource type="AudioStream" uid="uid://bcyylm6gt0gtg" path="res://Asset/Bgm/phantoms_castle.wav" id="9_sl1rn"]
 [ext_resource type="Script" path="res://Script/LoseArea.gd" id="12_bm5hp"]
 
@@ -487,7 +487,7 @@ visible = false
 script = ExtResource("12_bm5hp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LoseArea"]
-position = Vector2(3742, 255)
+position = Vector2(3746, 725)
 shape = SubResource("WorldBoundaryShape2D_wpd5y")
 
 [node name="BGM" type="AudioStreamPlayer2D" parent="."]

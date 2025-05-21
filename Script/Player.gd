@@ -14,7 +14,7 @@ extends CharacterBody2D
 @onready var run_sfx_player = $RunSfxPlayer
 @onready var landing_sfx_player = $LandingSfxPlayer
 @onready var hurt_sfx_player = $HurtSfxPlayer
-@export var sfx:String = ""
+@export var sfx:String = "RPG_Essentials_Free/12_Player_Movement_SFX/08_Step_rock_02.wav"
 @onready var camera = $Camera2D
 
 const UP = Vector2(0,-1)
@@ -58,7 +58,7 @@ func _physics_process(delta: float) -> void:
 		shake(delta)
 		
 		if time_since_attack >= attack_cooldown:
-			#health_drain()
+			health_drain()
 			time_since_attack = 0.0
 	
 func move():
@@ -145,12 +145,12 @@ func _on_weapon_hitbox_area_entered(area: Area2D) -> void:
 			
 			# Heal player on successful attack
 			attack = Attack.new()
-			attack.attack_damage = -10
+			attack.attack_damage = -3
 			healthComponent.damage(attack)
 
 func health_drain() -> void:
 	var attack = Attack.new()
-	attack.attack_damage = 5
+	attack.attack_damage = 2
 	healthComponent.damage(attack)
 
 func drop_dust_animation():

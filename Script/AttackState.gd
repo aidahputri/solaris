@@ -9,5 +9,5 @@ func enter():
 	$"../../WeaponHitbox/CollisionShape2D".disabled = true
  
 func transition():
-	if owner.direction.length() > owner.weaponPosition and not animation_player.is_playing():
+	if not animation_player.is_playing():
 		get_parent().change_state("walk")

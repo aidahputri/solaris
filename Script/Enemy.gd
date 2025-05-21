@@ -2,6 +2,9 @@ extends CharacterBody2D
 
 @onready var player = get_parent().find_child("Player")
 @onready var sprite = $AnimatedSprite2D
+@onready var attack_sfx_player = $AttackSfxPlayer
+@onready var hurt_sfx_player = $HurtSfxPlayer
+@onready var death_sfx_player = $DeathSfxPlayer
 
 @export_group("Sprite Configuration")
 @export var spriteFrame: SpriteFrames
@@ -23,6 +26,10 @@ var direction: Vector2
 @export var weaponPosition: int = 35
 @export var timeBeforeAttack: float = 0.5
 
+@export_group("Sfx")
+@export var attackSfx = ""
+@export var hurtSfx = ""
+@export var deathSfx = ""
 
 var hitbox = null
 var attack = null
@@ -81,10 +88,30 @@ func _on_weapon_hitbox_area_entered(area: Area2D) -> void:
 			attack.attack_dir = -1
 		else:
 			attack.attack_dir = 1
-		
+		play_attack_sfx()
 		if $AttackTimer.is_stopped() and ($AnimatedSprite2D.animation == "attack"):
 			$AttackTimer.start(timeBeforeAttack)
 
+func play_attack_sfx():
+	if attackSfx != "":
+		attack_sfx_player.stream = load(attackSfx)
+	var random_pitch = randf_range(0.9,1.1)
+	attack_sfx_player.pitch_scale = random_pitch
+	attack_sfx_player.play()
+	
+func play_hurt_sfx():
+	if hurtSfx != "":
+		hurt_sfx_player.stream = load(hurtSfx)
+	var random_pitch = randf_range(0.8,1.2)
+	hurt_sfx_player.pitch_scale = random_pitch
+	hurt_sfx_player.play()
+
+func play_death_sfx():
+	if deathSfx != "":
+		death_sfx_player.stream = load(hurtSfx)
+	var random_pitch = randf_range(0.8,1.2)
+	death_sfx_player.pitch_scale = random_pitch
+	death_sfx_player.play()
 
 func _on_attack_timer_timeout() -> void:
 	if hitbox != null and attack != null:
@@ -93,17 +120,16 @@ func _on_attack_timer_timeout() -> void:
 		hitbox.damage(attack)
 	$AttackTimer.stop()
 
-
 func _on_weapon_hitbox_area_exited(area: Area2D) -> void:
 	hitbox = null
 	attack = null
 
 func hurt():
+	play_hurt_sfx()
 	$ImmuneTimer.start(0.5)
 	immune = true
 	$AnimatedSprite2D.play("hurt")
 	await $AnimatedSprite2D.animation_finished
-
 
 func _on_immune_timer_timeout() -> void:
 	immune = false

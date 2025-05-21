@@ -10,6 +10,8 @@ extends CharacterBody2D
 
 @export_group("Movement")
 @export var speed: int = 40
+@export var flipped = false
+
 var gravity: int = 980
 var tempSpeed: int = 0
 var direction: Vector2
@@ -20,6 +22,8 @@ var direction: Vector2
 @export var knockback_force: int = 10
 @export var weaponPosition: int = 35
 @export var timeBeforeAttack: float = 0.5
+
+
 var hitbox = null
 var attack = null
 var immune = false
@@ -29,6 +33,8 @@ func _ready() -> void:
 	sprite.sprite_frames = spriteFrame
 	sprite.position.x = xSpriteFrame
 	sprite.position.y = ySpriteFrame
+	if flipped:
+		sprite.flip_h = true
 	#$Detection/CollisionShape2D.shape.radius = 200
 
 func _process(_delta):
@@ -36,7 +42,6 @@ func _process(_delta):
 		find_child("FiniteStateMachine").change_state("death")
 	direction = player.position - position
 	velocity.y += gravity * _delta
-	
 	if direction.x < 0:
 		$WeaponHitbox.position.x = weaponPosition * -1
 		sprite.flip_h = true

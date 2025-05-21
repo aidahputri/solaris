@@ -4,7 +4,9 @@ func enter():
 	super.enter()
 	#owner.set_physics_process(true)
 	owner.tempSpeed = 1
-	animation_player.play("walk")
+	var enemy = get_parent().get_parent()
+	if enemy.speed != 0:
+		animation_player.play("walk")
 
 func exit():
 	super.exit()
@@ -15,5 +17,5 @@ func transition():
 	var distance = owner.direction.length()
 	if distance < owner.weaponPosition * 1.75:
 		get_parent().change_state("attack")
-	elif distance > $"../../Detection/CollisionShape2D".shape.radius:
+	elif distance > $"../../Detection/CollisionShape2D".shape.radius + 100:
 		get_parent().change_state("idle")

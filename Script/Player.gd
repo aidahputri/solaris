@@ -89,18 +89,20 @@ func attack():
 	if Input.is_action_just_pressed("attack") and is_on_floor():
 		if $ComboTimer.is_stopped():
 			combo = 0
-			$ComboTimer.start(0.6)
+			$ComboTimer.start(1.3)
 		
 		if !$ComboTimer.is_stopped():
-			is_attacking = true
-			play_combo_animation(combo)
-			attack_finish = false
-			combo += 1
-			$WeaponHitbox/CollisionShape2D.disabled = false
-			play_attack_sfx()
-			await animplayer.animation_finished
-			$WeaponHitbox/CollisionShape2D.disabled = true
-			is_attacking = false
+			if $AttackTimer.is_stopped() and combo < 3:
+				$AttackTimer.start(0.3)
+				is_attacking = true
+				play_combo_animation(combo)
+				attack_finish = false
+				combo += 1
+				$WeaponHitbox/CollisionShape2D.disabled = false
+				play_attack_sfx()
+				await animplayer.animation_finished
+				$WeaponHitbox/CollisionShape2D.disabled = true
+				is_attacking = false
 
 func animations():
 	if is_attacking:
@@ -202,3 +204,9 @@ func shake(delta):
 		camera.position = original_position + shake_offset
 	else:
 		camera.position = original_position
+
+
+
+func _on_attack_timer_timeout() -> void:
+	$AttackTimer.stop()
+	pass # Replace with function body.

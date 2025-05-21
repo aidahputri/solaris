@@ -13,6 +13,7 @@ extends CharacterBody2D
 @onready var attack_sfx_player = $AttackSfxPlayer
 @onready var run_sfx_player = $RunSfxPlayer
 @onready var landing_sfx_player = $LandingSfxPlayer
+@onready var hurt_sfx_player = $HurtSfxPlayer
 @export var sfx:String = ""
 @onready var camera = $Camera2D
 
@@ -31,6 +32,7 @@ var attack_finish = true
 var shake_duration := 0.0
 var shake_intensity := 10.0
 var original_position := Vector2.ZERO
+var is_hurt = false
 
 func _ready():
 	Global.playerJump = jumps
@@ -47,16 +49,17 @@ func _physics_process(delta: float) -> void:
 	velocity.y += delta*GRAVITY
 	drop_dust_animation()
 	is_grounded = is_on_floor()
-	move()
-	jump()
-	attack()
-	move_and_slide()
-	animations()
-	shake(delta)
-	
-	if time_since_attack >= attack_cooldown:
-		#health_drain()
-		time_since_attack = 0.0
+	if is_hurt == false:
+		move()
+		jump()
+		attack()
+		move_and_slide()
+		animations()
+		shake(delta)
+		
+		if time_since_attack >= attack_cooldown:
+			#health_drain()
+			time_since_attack = 0.0
 	
 func move():
 	direction = Input.get_axis("ui_left", "ui_right")
@@ -126,7 +129,7 @@ func _on_weapon_hitbox_area_entered(area: Area2D) -> void:
 		var hitbox: HitboxComponent = area
 		var enemy = hitbox.get_parent()
 		var enemy_cur_health = enemy.get_node("HealthComponent").health
-		if enemy_cur_health > 0:
+		if enemy_cur_health > 0 and enemy.immune == false:
 			var attack = Attack.new()
 			attack.attack_damage = attack_damage
 			attack.knockback_force = knockback_force
@@ -205,8 +208,13 @@ func shake(delta):
 	else:
 		camera.position = original_position
 
-
-
 func _on_attack_timer_timeout() -> void:
 	$AttackTimer.stop()
 	pass # Replace with function body.
+	
+func hurt():
+	animplayer.play("hurt")
+	hurt_sfx_player.play()
+	is_hurt = true
+	await animplayer.animation_finished
+	is_hurt = false

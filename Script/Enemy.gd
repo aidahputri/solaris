@@ -22,6 +22,7 @@ var direction: Vector2
 @export var timeBeforeAttack: float = 0.5
 var hitbox = null
 var attack = null
+var immune = false
 
 func _ready() -> void:
 	$HealthComponent.health = health
@@ -77,6 +78,7 @@ func _on_weapon_hitbox_area_entered(area: Area2D) -> void:
 func _on_attack_timer_timeout() -> void:
 	if hitbox != null and attack != null:
 		var player = hitbox.get_parent()
+		player.hurt()
 		hitbox.damage(attack)
 	$AttackTimer.stop()
 
@@ -86,5 +88,12 @@ func _on_weapon_hitbox_area_exited(area: Area2D) -> void:
 	attack = null
 
 func hurt():
+	$ImmuneTimer.start(0.5)
+	immune = true
 	$AnimatedSprite2D.play("hurt")
 	await $AnimatedSprite2D.animation_finished
+
+
+func _on_immune_timer_timeout() -> void:
+	immune = false
+	$ImmuneTimer.stop()

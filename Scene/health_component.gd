@@ -14,7 +14,7 @@ func damage(attack: Attack):
 	health -= attack.attack_damage
 	if attack.attack_dir != 0:
 		var knockback_vector = Vector2(
-			100 * attack.attack_dir,  # X direction
+			30 * attack.attack_dir,  # X direction
 			-50
 			)
 

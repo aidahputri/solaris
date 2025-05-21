@@ -12,9 +12,12 @@ func _ready() -> void:
 
 func damage(attack: Attack):
 	health -= attack.attack_damage
+	if health > MAX_HEALTH:
+		health = MAX_HEALTH
+		
 	if attack.attack_dir != 0:
 		var knockback_vector = Vector2(
-			30 * attack.attack_dir,  # X direction
+			50 * attack.attack_dir,  # X direction
 			-50
 			)
 

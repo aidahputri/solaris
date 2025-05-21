@@ -8,27 +8,25 @@ var knockback: bool
 
 func _ready() -> void:
 	health = MAX_HEALTH
-	Global.playerHealth = health
+	var object = get_parent()
+	if object.name == "Player":
+		Global.playerHealth = health
 
 func damage(attack: Attack):
 	health -= attack.attack_damage
+	var object = get_parent()
+	
 	if health > MAX_HEALTH:
 		health = MAX_HEALTH
 		
 	if attack.attack_dir != 0:
 		var knockback_vector = Vector2(
-			50 * attack.attack_dir,  # X direction
+			50 * attack.attack_dir, 
 			-50
 			)
 
-		# Apply the knockback
 		owner.velocity = knockback_vector
 		owner.move_and_slide()
-
-	#owner.velocity.y = -500
-	#owner.velocity.x = 500 * attack.attack_dir
 	
-	Global.playerHealth = health
-	
-	#if health <= 0:
-		#get_parent().queue_free()
+	if object.name == "Player":
+		Global.playerHealth = health

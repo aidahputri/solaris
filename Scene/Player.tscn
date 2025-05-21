@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dm30ncxth5bqk"]
+[gd_scene load_steps=13 format=3 uid="uid://dm30ncxth5bqk"]
 
 [ext_resource type="Script" path="res://Script/Player.gd" id="1_1tflu"]
 [ext_resource type="SpriteFrames" uid="uid://dob520s8jtcvt" path="res://PlayerSpriteFrame.tres" id="1_5vhtm"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dd7v5e763ocdh" path="res://Asset/Particles/Particles/Particles/Complex/smoke/smoke2_1.png" id="5_npvel"]
 [ext_resource type="AudioStream" uid="uid://cmq7mf5iq1o2a" path="res://Asset/Sfx/RPG_Essentials_Free/12_Player_Movement_SFX/56_Attack_03.wav" id="6_ok7kq"]
 [ext_resource type="AudioStream" uid="uid://bc8ybmxx7s0ja" path="res://Asset/Sfx/RPG_Essentials_Free/12_Player_Movement_SFX/45_Landing_01.wav" id="7_kqac0"]
+[ext_resource type="AudioStream" uid="uid://b5lspxqgt1wdt" path="res://Asset/Sfx/RPG_Essentials_Free/10_Battle_SFX/15_Impact_flesh_02.wav" id="8_pbtur"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nd1dm"]
 size = Vector2(33, 77)
@@ -35,7 +36,9 @@ healthComponent = NodePath("HealthComponent")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -32)
 sprite_frames = ExtResource("1_5vhtm")
-animation = &"attack1"
+animation = &"hurt"
+frame = 2
+frame_progress = 1.0
 
 [node name="HealthComponent" parent="." instance=ExtResource("3_f63as")]
 
@@ -81,6 +84,9 @@ stream = ExtResource("7_kqac0")
 volume_db = -2.0
 
 [node name="RunSfxPlayer" type="AudioStreamPlayer2D" parent="."]
+
+[node name="HurtSfxPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_pbtur")
 
 [node name="RunTimer" type="Timer" parent="."]
 

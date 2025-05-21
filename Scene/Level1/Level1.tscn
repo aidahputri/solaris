@@ -168,11 +168,11 @@ autoplay = true
 max_distance = 1e+17
 
 [node name="BlueSlime" parent="." instance=ExtResource("16_khyqs")]
-position = Vector2(619, 447)
+position = Vector2(582, 447)
 health = 20
 
 [node name="BlueSlime2" parent="." instance=ExtResource("16_khyqs")]
-position = Vector2(1648, 448)
+position = Vector2(1592, 448)
 health = 20
 
 [node name="BlueSlime3" parent="." instance=ExtResource("16_khyqs")]

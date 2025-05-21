@@ -11,7 +11,7 @@ var dialog_data = {
 		{"character": "", "text": "The forest is cold... yet his blood burns."},
 		{"character": "", "text": "Every moment awake drains his strength — the curse of daylight without the Solaris Gem."},
 		{"character": "", "text": "Only one thing feeds the flame inside him now: blood."},
-		{"character": "", "text": "The creatures in the mist — Vesperwings — are his only salvation."},
+		{"character": "", "text": "The creatures in the mist — Gelatus, oozing slimes — are his only salvation."},
 		{"character": "", "text": "He must hunt... or wither."},
 		#{"character": "", "text": ""},
 	],

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bha1g14bx11cl"]
+[gd_scene load_steps=19 format=3 uid="uid://bha1g14bx11cl"]
 
 [ext_resource type="Texture2D" uid="uid://yv8aoy7vyjyw" path="res://Asset/1. DarkForest1.2/main_background.png" id="1_i3bh0"]
 [ext_resource type="Script" path="res://Script/Level.gd" id="1_roi20"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://crfx06vy8h3dc" path="res://Scene/DialogueSystem.tscn" id="13_wktex"]
 [ext_resource type="PackedScene" uid="uid://ccdekmxf8jqhe" path="res://Scene/LedgeArea.tscn" id="14_8brww"]
 [ext_resource type="AudioStream" uid="uid://b55v8ssiok5wn" path="res://Asset/Bgm/16-Bit Fantasy RPG OST - Onward and Upward.mp3" id="15_8bjj8"]
+[ext_resource type="PackedScene" uid="uid://bmi30g53k5ere" path="res://Scene/Musuh/BaseEnemy.tscn" id="16_khyqs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8fsvo"]
 size = Vector2(138, 312.5)
@@ -88,7 +89,7 @@ motion_scale = Vector2(0.8, 1)
 motion_mirroring = Vector2(816, 0)
 
 [node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/Middleground4"]
-position = Vector2(-4, 235)
+position = Vector2(-13, 231)
 scale = Vector2(1.04779, 0.889769)
 texture = ExtResource("5_o26pp")
 centered = false
@@ -120,7 +121,7 @@ sfx = "RPG_Essentials_Free/12_Player_Movement_SFX/03_Step_grass_03.wav"
 [node name="Barrier" type="StaticBody2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Barrier"]
-polygon = PackedVector2Array(0, -2, 4, 615, 20, 615, 15, 22, 3951, 35, 3963, 607, 4001, 611, 3989, 13)
+polygon = PackedVector2Array(0, -2, 5, 456, 4, 615, 20, 615, 15, 22, 3951, 35, 3963, 607, 4001, 611, 3989, 13)
 
 [node name="GUI" parent="." instance=ExtResource("10_iukvg")]
 
@@ -165,6 +166,22 @@ stream = ExtResource("15_8bjj8")
 volume_db = -20.799
 autoplay = true
 max_distance = 1e+17
+
+[node name="BlueSlime" parent="." instance=ExtResource("16_khyqs")]
+position = Vector2(619, 447)
+health = 20
+
+[node name="BlueSlime2" parent="." instance=ExtResource("16_khyqs")]
+position = Vector2(1648, 448)
+health = 20
+
+[node name="BlueSlime3" parent="." instance=ExtResource("16_khyqs")]
+position = Vector2(2829, 350)
+health = 20
+
+[node name="BlueSlime4" parent="." instance=ExtResource("16_khyqs")]
+position = Vector2(3421, 430)
+health = 20
 
 [connection signal="body_entered" from="FinishArea" to="." method="_on_finish_area_body_entered"]
 [connection signal="body_entered" from="Level1DialogueTrigger" to="DialogueSystem" method="_on_level_1_dialogue_trigger_body_entered"]

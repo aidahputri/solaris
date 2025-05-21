@@ -8,8 +8,18 @@ size = Vector2(1928, 643)
 
 [node name="Node2D" type="Node2D"]
 
+[node name="Boss" parent="." instance=ExtResource("2_puw4h")]
+position = Vector2(624, 376)
+scale = Vector2(2.47, 2.47)
+collision_mask = 2
+timeBeforeAttack = 0.5
+
+[node name="WeaponHitbox" parent="Boss" index="4"]
+position = Vector2(-71.25, -20.605)
+scale = Vector2(1.055, 0.585)
+
 [node name="Player" parent="." instance=ExtResource("1_dvqsh")]
-position = Vector2(315, 270)
+position = Vector2(1, 399)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_layer = 3
@@ -25,5 +35,4 @@ shape = SubResource("RectangleShape2D_0f4vm")
 position = Vector2(3096, 769)
 shape = SubResource("RectangleShape2D_0f4vm")
 
-[node name="Boss" parent="." instance=ExtResource("2_puw4h")]
-position = Vector2(624, 376)
+[editable path="Boss"]

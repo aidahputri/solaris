@@ -15,7 +15,9 @@ func exit():
  
 func transition():
 	var distance = owner.direction.length()
-	if distance < owner.weaponPosition * 1.5:
+	if distance < owner.weaponPosition * 1:
+		get_parent().change_state("flame")
+	elif distance < owner.weaponPosition * 4:
 		get_parent().change_state("attack")
 	#if distance > owner.weaponPosition * 1.75:
 		#get_parent().change_state("flamethrower")

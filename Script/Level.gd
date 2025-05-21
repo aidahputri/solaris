@@ -18,6 +18,8 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	healthBar.value = Global.playerHealth
 	jumpBar.value = Global.playerJump
+	if Global.playerHealth <= 0:
+		await fade_out()
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_pause"):
@@ -35,6 +37,8 @@ func fade_out():
 	call_deferred("change_scene")
 	
 func change_scene():
+	if Global.playerHealth <= 0:
+		nextScene = "res://Scene/DeathScene.tscn"
 	get_tree().change_scene_to_file(nextScene)
 
 func _on_finish_area_body_entered(body: Node2D):

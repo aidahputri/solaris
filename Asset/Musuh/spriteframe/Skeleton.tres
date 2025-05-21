@@ -1,8 +1,9 @@
-[gd_resource type="SpriteFrames" load_steps=46 format=3 uid="uid://b53v28b5uklqd"]
+[gd_resource type="SpriteFrames" load_steps=54 format=3 uid="uid://i4im6hgas8be"]
 
 [ext_resource type="Texture2D" uid="uid://c8vor0kwr44e7" path="res://Asset/Musuh/4 Enemy/Skeletons_Free_Pack/Skeleton_Sword/Skeleton_White/Skeleton_With_VFX/Skeleton_01_White_Attack1.png" id="1_h0tfx"]
 [ext_resource type="Texture2D" uid="uid://dwdcj8jvyeumx" path="res://Asset/Musuh/4 Enemy/Skeletons_Free_Pack/Skeleton_Sword/Skeleton_White/Skeleton_With_VFX/Skeleton_01_White_Die.png" id="2_j2tng"]
 [ext_resource type="Texture2D" uid="uid://e8jupfkrcxs0" path="res://Asset/Musuh/4 Enemy/Skeletons_Free_Pack/Skeleton_Sword/Skeleton_White/Skeleton_With_VFX/Skeleton_01_White_Idle.png" id="3_76go0"]
+[ext_resource type="Texture2D" uid="uid://cq1dipv1fjg63" path="res://Asset/Musuh/4 Enemy/Skeletons_Free_Pack/Skeleton_Sword/Skeleton_White/Skeleton_With_VFX/Skeleton_01_White_Hurt.png" id="3_p7t4p"]
 [ext_resource type="Texture2D" uid="uid://fl2lvv7g360v" path="res://Asset/Musuh/4 Enemy/Skeletons_Free_Pack/Skeleton_Sword/Skeleton_White/Skeleton_With_VFX/Skeleton_01_White_Walk.png" id="4_v8xll"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2figr"]
@@ -96,6 +97,34 @@ region = Rect2(1056, 0, 96, 64)
 [sub_resource type="AtlasTexture" id="AtlasTexture_3fp6c"]
 atlas = ExtResource("2_j2tng")
 region = Rect2(1152, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6k48h"]
+atlas = ExtResource("3_p7t4p")
+region = Rect2(0, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gp0ix"]
+atlas = ExtResource("3_p7t4p")
+region = Rect2(96, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3clyi"]
+atlas = ExtResource("3_p7t4p")
+region = Rect2(192, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0a6cx"]
+atlas = ExtResource("3_p7t4p")
+region = Rect2(96, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4lieq"]
+atlas = ExtResource("3_p7t4p")
+region = Rect2(192, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sw5vs"]
+atlas = ExtResource("3_p7t4p")
+region = Rect2(96, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eromt"]
+atlas = ExtResource("3_p7t4p")
+region = Rect2(192, 0, 96, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_38hbu"]
 atlas = ExtResource("3_76go0")
@@ -204,7 +233,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"attack",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -248,7 +277,33 @@ animations = [{
 }],
 "loop": false,
 "name": &"death",
-"speed": 5.0
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6k48h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gp0ix")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3clyi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0a6cx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4lieq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sw5vs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eromt")
+}],
+"loop": false,
+"name": &"hurt",
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -277,7 +332,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle",
-"speed": 5.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -312,5 +367,5 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk",
-"speed": 5.0
+"speed": 10.0
 }]

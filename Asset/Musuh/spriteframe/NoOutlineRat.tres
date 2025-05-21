@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=29 format=3 uid="uid://c47xyepf0cyog"]
+[gd_resource type="SpriteFrames" load_steps=29 format=3 uid="uid://bslfehu7j65c4"]
 
 [ext_resource type="Texture2D" uid="uid://bqkergjvbplqq" path="res://Asset/Musuh/4 Enemy/NoneOutlinedRat/rat-attack.png" id="1_1jasq"]
 [ext_resource type="Texture2D" uid="uid://ckmm0gaewntts" path="res://Asset/Musuh/4 Enemy/NoneOutlinedRat/rat-death.png" id="2_ih1tx"]
@@ -147,7 +147,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"death",
-"speed": 5.0
+"speed": 6.0
 }, {
 "frames": [{
 "duration": 1.0,

@@ -26,9 +26,11 @@ shape = SubResource("RectangleShape2D_0f4vm")
 
 [node name="BlueSlime" parent="." instance=ExtResource("3_do4om")]
 position = Vector2(499, 307)
+health = 20
+timeBeforeAttack = 1.0
 
 [node name="BlueSlime2" parent="." instance=ExtResource("3_do4om")]
 position = Vector2(766, 308)
 spriteFrame = ExtResource("3_knxj3")
 ySpriteFrame = -32
-timeBeforeAttack = 0.0
+timeBeforeAttack = 1.0

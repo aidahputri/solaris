@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://bwvbfqb8oc8qh"]
+[gd_scene load_steps=30 format=4 uid="uid://bwvbfqb8oc8qh"]
 
 [ext_resource type="Script" path="res://Script/Level.gd" id="1_xjcls"]
 [ext_resource type="Texture2D" uid="uid://bogwujynel2ym" path="res://Asset/3. PF_StrangeMountains_v1.0/background1.png" id="2_klwus"]
@@ -9,12 +9,16 @@
 [ext_resource type="Texture2D" uid="uid://2oq78lmbqfvx" path="res://Asset/3. PF_StrangeMountains_v1.0/background6.png" id="7_phrij"]
 [ext_resource type="Texture2D" uid="uid://vuf6ibcd5t3j" path="res://Asset/3. PF_StrangeMountains_v1.0/mainlevbuild1.png" id="8_lrepl"]
 [ext_resource type="Texture2D" uid="uid://c3bdr4nbfvt1s" path="res://Asset/3. PF_StrangeMountains_v1.0/mainlevbuild2.png" id="9_2yq43"]
+[ext_resource type="PackedScene" uid="uid://bmi30g53k5ere" path="res://Scene/Musuh/BaseEnemy.tscn" id="10_vubkd"]
 [ext_resource type="PackedScene" uid="uid://dm30ncxth5bqk" path="res://Scene/Player.tscn" id="10_xmq3k"]
+[ext_resource type="SpriteFrames" uid="uid://dlhv5vqwoagnb" path="res://Asset/Musuh/spriteframe/BlueGolem.tres" id="11_n0w36"]
 [ext_resource type="PackedScene" uid="uid://cknetk7q7m7av" path="res://Scene/GUI.tscn" id="11_uo4rg"]
 [ext_resource type="PackedScene" uid="uid://ccdekmxf8jqhe" path="res://Scene/LedgeArea.tscn" id="12_avsi6"]
 [ext_resource type="PackedScene" uid="uid://677ay4d0u0lu" path="res://Scene/ZoomArea.tscn" id="13_d42i7"]
 [ext_resource type="PackedScene" uid="uid://dnuek73cevx73" path="res://Scene/PauseGUI.tscn" id="14_a4j8d"]
 [ext_resource type="PackedScene" uid="uid://pe0qmwlpo6dj" path="res://Scene/FadeCanvas.tscn" id="15_1571v"]
+[ext_resource type="PackedScene" uid="uid://crfx06vy8h3dc" path="res://Scene/DialogueSystem.tscn" id="17_skwrk"]
+[ext_resource type="AudioStream" uid="uid://jd7tu3d47gdm" path="res://Asset/Bgm/16-Bit Fantasy RPG OST - Ancient Ruins of Light.wav" id="19_j1idd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_suict"]
 texture = ExtResource("8_lrepl")
@@ -4661,7 +4665,8 @@ texture = ExtResource("8_lrepl")
 30:18/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_upica"]
-physics_layer_0/collision_layer = 1
+physics_layer_0/collision_layer = 3
+physics_layer_0/collision_mask = 3
 sources/0 = SubResource("TileSetAtlasSource_ywtlg")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kx24f"]
@@ -7736,6 +7741,9 @@ texture = ExtResource("8_lrepl")
 [sub_resource type="TileSet" id="TileSet_ls8kt"]
 sources/0 = SubResource("TileSetAtlasSource_cwg8u")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c6anj"]
+size = Vector2(46, 225)
+
 [node name="Level3" type="Node2D"]
 script = ExtResource("1_xjcls")
 
@@ -7743,7 +7751,7 @@ script = ExtResource("1_xjcls")
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="sky"]
 position = Vector2(0, -250)
-motion_scale = Vector2(0.5, 1)
+motion_scale = Vector2(0.3, 1)
 motion_mirroring = Vector2(2048, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="sky/ParallaxLayer"]
@@ -7758,7 +7766,7 @@ centered = false
 [node name="main" type="ParallaxBackground" parent="."]
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="main"]
-motion_scale = Vector2(0.5, 1)
+motion_scale = Vector2(0.3, 1)
 motion_mirroring = Vector2(2048, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="main/ParallaxLayer"]
@@ -7771,6 +7779,7 @@ texture = ExtResource("2_klwus")
 centered = false
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="main"]
+motion_scale = Vector2(0.5, 1)
 motion_mirroring = Vector2(2048, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="main/ParallaxLayer2"]
@@ -7783,6 +7792,7 @@ texture = ExtResource("3_hjkws")
 centered = false
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="main"]
+motion_scale = Vector2(0.7, 1)
 motion_mirroring = Vector2(2048, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="main/ParallaxLayer3"]
@@ -7795,6 +7805,7 @@ texture = ExtResource("4_l1ryt")
 centered = false
 
 [node name="ParallaxLayer4" type="ParallaxLayer" parent="main"]
+motion_scale = Vector2(0.8, 1)
 motion_mirroring = Vector2(2048, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="main/ParallaxLayer4"]
@@ -7807,6 +7818,7 @@ texture = ExtResource("5_pc0h0")
 centered = false
 
 [node name="ParallaxLayer5" type="ParallaxLayer" parent="main"]
+motion_scale = Vector2(0.85, 1)
 motion_mirroring = Vector2(2048, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="main/ParallaxLayer5"]
@@ -7819,6 +7831,7 @@ texture = ExtResource("6_1m1gk")
 centered = false
 
 [node name="ParallaxLayer6" type="ParallaxLayer" parent="main"]
+motion_scale = Vector2(0.9, 1)
 motion_mirroring = Vector2(2048, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="main/ParallaxLayer6"]
@@ -7834,6 +7847,7 @@ centered = false
 
 [node name="ParallaxLayer6" type="ParallaxLayer" parent="underground"]
 position = Vector2(0, 101.05)
+motion_scale = Vector2(0.9, 1)
 motion_mirroring = Vector2(2048, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="underground/ParallaxLayer6"]
@@ -7849,6 +7863,7 @@ centered = false
 
 [node name="ParallaxLayer6" type="ParallaxLayer" parent="underground2"]
 position = Vector2(0, 221.475)
+motion_scale = Vector2(0.9, 1)
 motion_mirroring = Vector2(2048, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="underground2/ParallaxLayer6"]
@@ -7864,6 +7879,7 @@ centered = false
 
 [node name="ParallaxLayer6" type="ParallaxLayer" parent="underground3"]
 position = Vector2(0, 351.95)
+motion_scale = Vector2(0.9, 1)
 motion_mirroring = Vector2(2048, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="underground3/ParallaxLayer6"]
@@ -7892,6 +7908,35 @@ tile_set = SubResource("TileSet_upica")
 position = Vector2(0, 100)
 tile_map_data = PackedByteArray("AABxAB8AAAAcAC4AAABxACAAAAAcAC8AAAByAB8AAAAdAC4AAAByACAAAAAdAC8AAABZAB8AAAAcAC4AAABZACAAAAAcAC8AAABaAB8AAAAdAC4AAABaACAAAAAdAC8AAABSABoAAAAaAC4AAABSABsAAAAaAC8AAACIABQAAAAXADcAAACJABMAAAAYADYAAACJABQAAAAYADcAAACKABMAAAAZADYAAACKABQAAAAZADcAAACLABMAAAAZADYAAACLABQAAAAZADcAAACMABMAAAAaADYAAACMABQAAAAaADcAAABmABUAAAAXADcAAABnABQAAAAYADYAAABnABUAAAAYADcAAABoABQAAAAZADYAAABoABUAAAAZADcAAABpABQAAAAZADYAAABpABUAAAAZADcAAABqABQAAAAaADYAAABqABUAAAAaADcAAADPABQAAAAYADYAAADPABUAAAAYADcAAADQABQAAAAZADYAAADQABUAAAAZADcAAADRABQAAAAZADYAAADRABUAAAAZADcAAADSABQAAAAaADYAAADSABUAAAAaADcAAADcABsAAAAYADYAAADcABwAAAAYADcAAADdABsAAAAZADYAAADdABwAAAAZADcAAADeABsAAAAZADYAAADeABwAAAAZADcAAADfABsAAAAaADYAAADfABwAAAAaADcAAAA=")
 tile_set = SubResource("TileSet_qo4m7")
+
+[node name="Golem1" parent="." instance=ExtResource("10_vubkd")]
+position = Vector2(1802, 608)
+scale = Vector2(1.435, 1.435)
+collision_mask = 2
+spriteFrame = ExtResource("11_n0w36")
+ySpriteFrame = -32
+speed = 80
+knockback_force = 2
+
+[node name="Golem2" parent="." instance=ExtResource("10_vubkd")]
+position = Vector2(1529, 608)
+scale = Vector2(1.435, 1.435)
+collision_mask = 2
+spriteFrame = ExtResource("11_n0w36")
+ySpriteFrame = -32
+speed = 80
+flipped = true
+knockback_force = 2
+
+[node name="Golem3" parent="." instance=ExtResource("10_vubkd")]
+position = Vector2(1891, 371)
+scale = Vector2(2.17, 2.17)
+collision_mask = 2
+spriteFrame = ExtResource("11_n0w36")
+ySpriteFrame = -32
+speed = 0
+flipped = true
+knockback_force = 2
 
 [node name="Player" parent="." instance=ExtResource("10_xmq3k")]
 position = Vector2(78, 385)
@@ -7941,6 +7986,17 @@ end_zoom = 4.5
 
 [node name="FadeCanvas" parent="." instance=ExtResource("15_1571v")]
 
+[node name="DialogueSystem" parent="." instance=ExtResource("17_skwrk")]
+
 [node name="BGM" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("19_j1idd")
 autoplay = true
 max_distance = 1e+17
+
+[node name="EnterLevel3DialogueArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnterLevel3DialogueArea"]
+position = Vector2(75, 332)
+shape = SubResource("RectangleShape2D_c6anj")
+
+[connection signal="body_entered" from="EnterLevel3DialogueArea" to="DialogueSystem" method="_on_enter_level_3_dialogue_trigger_body_entered"]

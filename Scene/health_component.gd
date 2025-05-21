@@ -8,7 +8,7 @@ var knockback: bool
 
 func _ready() -> void:
 	health = MAX_HEALTH
-	#Global.playerHealth = health
+	Global.playerHealth = health
 
 func damage(attack: Attack):
 	health -= attack.attack_damage
@@ -25,7 +25,7 @@ func damage(attack: Attack):
 	#owner.velocity.y = -500
 	#owner.velocity.x = 500 * attack.attack_dir
 	
-	#Global.playerHealth = health
+	Global.playerHealth = health
 	
 	#if health <= 0:
 		#get_parent().queue_free()

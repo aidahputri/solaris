@@ -20,6 +20,7 @@ size = Vector2(20, 27)
 radius = 100.0
 
 [node name="BlueSlime" type="CharacterBody2D"]
+collision_layer = 2
 script = ExtResource("1_xy753")
 spriteFrame = ExtResource("2_o04k6")
 xSpriteFrame = 3
@@ -82,5 +83,9 @@ script = ExtResource("7_dmq4o")
 [node name="death" type="Node2D" parent="FiniteStateMachine"]
 script = ExtResource("9_ubhpd")
 
+[node name="AttackTimer" type="Timer" parent="."]
+
 [connection signal="area_entered" from="WeaponHitbox" to="." method="_on_weapon_hitbox_area_entered"]
+[connection signal="area_exited" from="WeaponHitbox" to="." method="_on_weapon_hitbox_area_exited"]
 [connection signal="body_entered" from="Detection" to="FiniteStateMachine/idle" method="_on_player_detection_body_entered"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

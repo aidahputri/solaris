@@ -14,6 +14,7 @@ extends CharacterBody2D
 @onready var run_sfx_player = $RunSfxPlayer
 @onready var landing_sfx_player = $LandingSfxPlayer
 @export var sfx:String = ""
+@onready var camera = $Camera2D
 
 const UP = Vector2(0,-1)
 var is_attacking = false
@@ -24,10 +25,17 @@ var time_since_attack := 0.0
 var is_grounded = true
 
 var direction = 0
+var combo = 0
+var attack_finish = true
+
+var shake_duration := 0.0
+var shake_intensity := 10.0
+var original_position := Vector2.ZERO
 
 func _ready():
 	Global.playerJump = jumps
 	run_sfx_player.stream = load("res://Asset/Sfx/" + sfx)
+	original_position = camera.position
 	
 func _physics_process(delta: float) -> void:
 	if Global.is_dialog_active:
@@ -44,9 +52,10 @@ func _physics_process(delta: float) -> void:
 	attack()
 	move_and_slide()
 	animations()
+	shake(delta)
 	
 	if time_since_attack >= attack_cooldown:
-		perform_attack()
+		#health_drain()
 		time_since_attack = 0.0
 	
 func move():
@@ -78,13 +87,22 @@ func jump():
 
 func attack():
 	if Input.is_action_just_pressed("attack") and is_on_floor():
-		is_attacking = true
-		animplayer.play("attack")
-		$WeaponHitbox/CollisionShape2D.disabled = false
-		await animplayer.animation_finished
-		attack_sfx_player.play()
-		$WeaponHitbox/CollisionShape2D.disabled = true
-		is_attacking = false
+		if $ComboTimer.is_stopped():
+			combo = 0
+			$ComboTimer.start(1.3)
+		
+		if !$ComboTimer.is_stopped():
+			if $AttackTimer.is_stopped() and combo < 3:
+				$AttackTimer.start(0.3)
+				is_attacking = true
+				play_combo_animation(combo)
+				attack_finish = false
+				combo += 1
+				$WeaponHitbox/CollisionShape2D.disabled = false
+				play_attack_sfx()
+				await animplayer.animation_finished
+				$WeaponHitbox/CollisionShape2D.disabled = true
+				is_attacking = false
 
 func animations():
 	if is_attacking:
@@ -106,19 +124,28 @@ func animations():
 func _on_weapon_hitbox_area_entered(area: Area2D) -> void:
 	if area is HitboxComponent:
 		var hitbox: HitboxComponent = area
-		
-		var attack = Attack.new()
-		attack.attack_damage = attack_damage
-		attack.knockback_force = knockback_force
-		attack.attack_position = global_position
-		
-		hitbox.damage(attack)
-		
-		attack = Attack.new()
-		attack.attack_damage = -10
-		healthComponent.damage(attack)
+		var enemy = hitbox.get_parent()
+		var enemy_cur_health = enemy.get_node("HealthComponent").health
+		if enemy_cur_health > 0:
+			var attack = Attack.new()
+			attack.attack_damage = attack_damage
+			attack.knockback_force = knockback_force
+			attack.attack_position = global_position
+			if direction < 0:
+				attack.attack_dir = -1
+			else:
+				attack.attack_dir = 1
+			
+			hitbox.damage(attack)
+			enemy.hurt()
+			shake_camera(5.0, 0.1)
+			
+			# Heal player on successful attack
+			attack = Attack.new()
+			attack.attack_damage = -10
+			healthComponent.damage(attack)
 
-func perform_attack() -> void:
+func health_drain() -> void:
 	var attack = Attack.new()
 	attack.attack_damage = 5
 	healthComponent.damage(attack)
@@ -156,3 +183,36 @@ func _on_run_timer_timeout() -> void:
 		play_run_sfx()
 	else:
 		$RunTimer.stop()
+
+func play_combo_animation(step: int):
+	match step:
+		0:
+			animplayer.play("attack1")
+		1:
+			animplayer.play("attack2")
+		2:
+			animplayer.play("attack3")
+
+
+func _on_combo_timer_timeout() -> void:
+	combo = 0
+	$ComboTimer.stop()
+
+func shake_camera(intensity: float, duration: float):
+	shake_intensity = intensity
+	shake_duration = duration
+	original_position = camera.position
+	
+func shake(delta):
+	if shake_duration > 0:
+		shake_duration -= delta
+		var shake_offset = Vector2(randf_range(-shake_intensity, shake_intensity), randf_range(-shake_intensity, shake_intensity))
+		camera.position = original_position + shake_offset
+	else:
+		camera.position = original_position
+
+
+
+func _on_attack_timer_timeout() -> void:
+	$AttackTimer.stop()
+	pass # Replace with function body.

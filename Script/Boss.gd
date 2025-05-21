@@ -27,6 +27,7 @@ func _ready() -> void:
 	$ProgressBar.max_value = health
 	$ProgressBar.value = health
 	$ProgressBar.position.y = $CollisionShape2D.position.y * 2.5 - 5
+	direction = player.position - position
 	
 	$HealthComponent.health = health
 	if flipped:
@@ -58,22 +59,26 @@ func _physics_process(delta):
 func _on_weapon_hitbox_area_entered(area: Area2D) -> void:
 	if area is HitboxComponent:
 		hitbox = area
-		
-		attack = Attack.new()
-		attack.attack_damage = attack_damage
-		attack.knockback_force = knockback_force
-		attack.attack_position = global_position
-		
-		if direction.x < 0:
-			attack.attack_dir = -1
-		else:
-			attack.attack_dir = 1
-		
-		if $AttackTimer.is_stopped() and ($AnimatedSprite2D.animation == "attack"):
-			$AttackTimer.start(timeBeforeAttack)
+		var object = hitbox.get_parent()
+		if object.name == "Player":	
+			attack = Attack.new()
+			attack.attack_damage = attack_damage
+			attack.knockback_force = knockback_force
+			attack.attack_position = global_position
+			
+			if direction.x < 0:
+				attack.attack_dir = -1
+			else:
+				attack.attack_dir = 1
+			#print($AttackTimer.is_stopped() )
+			#print("$AnimatedSprite2D.animation == attack", $AnimatedSprite2D.animation == "attack")
+			if $AttackTimer.is_stopped() and ($AnimatedSprite2D.animation == "attack"):
+				print("hitbox1",hitbox)
+				$AttackTimer.start(timeBeforeAttack)
 
 
 func _on_attack_timer_timeout() -> void:
+	print("hitbox2", hitbox)
 	if hitbox != null and attack != null:
 		var player = hitbox.get_parent()
 		player.hurt()
@@ -81,16 +86,40 @@ func _on_attack_timer_timeout() -> void:
 	$AttackTimer.stop()
 
 func _on_weapon_hitbox_area_exited(area: Area2D) -> void:
-	hitbox = null
-	attack = null
+	if area.get_parent().name == "Player":
+		hitbox = null
+		attack = null
 
 func hurt():
-	$ImmuneTimer.start(0.5)
-	immune = true
 	if $AnimatedSprite2D.sprite_frames.has_animation("hurt"):
+		immune = true
 		$AnimatedSprite2D.play("hurt")
 		await $AnimatedSprite2D.animation_finished
+		immune = false
 
-func _on_immune_timer_timeout() -> void:
-	immune = false
-	$ImmuneTimer.stop()
+
+func _on_flame_hitbox_area_entered(area: Area2D) -> void:
+	if area is HitboxComponent:
+		hitbox = area
+		var object = hitbox.get_parent()
+		if object.name == "Player":
+			attack = Attack.new()
+			attack.attack_damage = 30
+			attack.knockback_force = knockback_force
+			attack.attack_position = global_position
+			
+			if direction.x < 0:
+				attack.attack_dir = -1
+			else:
+				attack.attack_dir = 1
+			
+			print("$AttackTimer.is_stopped()", $AttackTimer.is_stopped())
+			print("$AnimatedSprite2D.animation == flame", $AnimatedSprite2D.animation == "flame")
+			if $AttackTimer.is_stopped() and ($AnimatedSprite2D.animation == "flame"):
+				$AttackTimer.start(timeBeforeAttack)
+
+
+func _on_flame_hitbox_area_exited(area: Area2D) -> void:
+	if area.get_parent().name == "Player":
+		hitbox = null
+		attack = null

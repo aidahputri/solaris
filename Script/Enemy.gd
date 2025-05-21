@@ -44,6 +44,7 @@ func _ready() -> void:
 	initiate_sfx()
 	
 	$HealthComponent.health = health
+	
 	sprite.sprite_frames = spriteFrame
 	sprite.position.x = xSpriteFrame
 	sprite.position.y = ySpriteFrame

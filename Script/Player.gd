@@ -229,3 +229,10 @@ func hurt():
 	is_hurt = true
 	await animplayer.animation_finished
 	is_hurt = false
+	
+func special_hurt():
+	animplayer.play("special_hurt")
+	play_hurt_sfx()
+	is_hurt = true
+	await animplayer.animation_finished
+	is_hurt = false

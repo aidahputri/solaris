@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://csci20kpuc0tm"]
+[gd_scene load_steps=21 format=3 uid="uid://csci20kpuc0tm"]
 
 [ext_resource type="Script" path="res://Script/Boss.gd" id="1_6u5iv"]
 [ext_resource type="SpriteFrames" uid="uid://dicx4abqo8ugj" path="res://Asset/Musuh/spriteframe/Boss.tres" id="1_oec8t"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://Scene/Musuh/BossIdle.gd" id="6_b7h3b"]
 [ext_resource type="Script" path="res://Scene/Musuh/BossWalk.gd" id="7_2gd82"]
 [ext_resource type="Script" path="res://Scene/Musuh/BossAttack.gd" id="8_dpdxn"]
+[ext_resource type="Script" path="res://Script/BossFlameState.gd" id="9_5jfo4"]
 [ext_resource type="Script" path="res://Scene/Musuh/BossDeath.gd" id="9_fof36"]
 [ext_resource type="Script" path="res://Scene/Musuh/BossFlamethrower.gd" id="10_4qqa7"]
 [ext_resource type="PackedScene" uid="uid://cm5tbhnfgibkd" path="res://Scene/Musuh/Flame.tscn" id="11_dcfcp"]
@@ -23,6 +24,9 @@ size = Vector2(86.5, 68.5)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3ypeh"]
 radius = 100.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1a3dx"]
+size = Vector2(63, 37)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_88ami"]
 bg_color = Color(0.266667, 0.266667, 0.266667, 1)
@@ -76,6 +80,12 @@ disabled = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Detection"]
 shape = SubResource("CircleShape2D_3ypeh")
 
+[node name="FlameHitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FlameHitbox"]
+position = Vector2(3.5, -18.5)
+shape = SubResource("RectangleShape2D_1a3dx")
+
 [node name="FiniteStateMachine" type="Node2D" parent="."]
 script = ExtResource("4_dhi1g")
 
@@ -88,6 +98,9 @@ script = ExtResource("7_2gd82")
 [node name="attack" type="Node2D" parent="FiniteStateMachine"]
 script = ExtResource("8_dpdxn")
 
+[node name="flame" type="Node2D" parent="FiniteStateMachine"]
+script = ExtResource("9_5jfo4")
+
 [node name="death" type="Node2D" parent="FiniteStateMachine"]
 script = ExtResource("9_fof36")
 
@@ -97,10 +110,7 @@ flamethrower = ExtResource("11_dcfcp")
 
 [node name="AttackTimer" type="Timer" parent="."]
 
-[node name="ImmuneTimer" type="Timer" parent="."]
-
 [node name="debug" type="Label" parent="."]
-visible = false
 offset_left = -24.0
 offset_top = -116.0
 offset_right = 31.0
@@ -120,5 +130,6 @@ show_percentage = false
 [connection signal="area_entered" from="WeaponHitbox" to="." method="_on_weapon_hitbox_area_entered"]
 [connection signal="area_exited" from="WeaponHitbox" to="." method="_on_weapon_hitbox_area_exited"]
 [connection signal="body_entered" from="Detection" to="FiniteStateMachine/idle" method="_on_player_detection_body_entered"]
+[connection signal="area_entered" from="FlameHitbox" to="." method="_on_flame_hitbox_area_entered"]
+[connection signal="area_exited" from="FlameHitbox" to="." method="_on_flame_hitbox_area_exited"]
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
-[connection signal="timeout" from="ImmuneTimer" to="." method="_on_immune_timer_timeout"]

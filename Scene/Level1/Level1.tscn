@@ -169,19 +169,23 @@ max_distance = 1e+17
 
 [node name="BlueSlime" parent="." instance=ExtResource("16_khyqs")]
 position = Vector2(582, 447)
-health = 20
+collision_mask = 2
+health = 30
 
 [node name="BlueSlime2" parent="." instance=ExtResource("16_khyqs")]
 position = Vector2(1592, 448)
-health = 20
+collision_mask = 2
+health = 30
 
 [node name="BlueSlime3" parent="." instance=ExtResource("16_khyqs")]
 position = Vector2(2829, 350)
-health = 20
+collision_mask = 2
+health = 30
 
 [node name="BlueSlime4" parent="." instance=ExtResource("16_khyqs")]
 position = Vector2(3421, 430)
-health = 20
+collision_mask = 2
+health = 30
 
 [connection signal="body_entered" from="FinishArea" to="." method="_on_finish_area_body_entered"]
 [connection signal="body_entered" from="Level1DialogueTrigger" to="DialogueSystem" method="_on_level_1_dialogue_trigger_body_entered"]

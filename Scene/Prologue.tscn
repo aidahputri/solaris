@@ -1,7 +1,6 @@
-[gd_scene load_steps=13 format=3 uid="uid://b41wvlaiskci3"]
+[gd_scene load_steps=19 format=3 uid="uid://b41wvlaiskci3"]
 
-[ext_resource type="Texture2D" uid="uid://dk6nf487ro7r6" path="res://Asset/Background/layer_1.png" id="1_8hhih"]
-[ext_resource type="Texture2D" uid="uid://drir4vbc1pa8e" path="res://Asset/Background/layer_2.png" id="2_tsidp"]
+[ext_resource type="Texture2D" uid="uid://c373s1ny64mj4" path="res://Asset/Background/prologue-1.png" id="1_t0gfb"]
 [ext_resource type="Texture2D" uid="uid://b1ctja2sh332s" path="res://Asset/Background/layer_3.png" id="3_dbnyd"]
 [ext_resource type="Script" path="res://Script/TitleBackground.gd" id="4_ds7po"]
 [ext_resource type="Script" path="res://Script/Prologue.gd" id="5_ateun"]
@@ -9,14 +8,69 @@
 [ext_resource type="FontFile" uid="uid://cvkojm80tadh5" path="res://Asset/Font/gumela/Gumela.ttf" id="7_ctvt5"]
 [ext_resource type="Texture2D" uid="uid://c8smr6lhgdncc" path="res://Asset/BlackandWhiteUI.png/button-bg-normal.png" id="8_pm88p"]
 [ext_resource type="Texture2D" uid="uid://bcybsdoqoubsf" path="res://Asset/BlackandWhiteUI.png/button-bg.png" id="9_g0v30"]
-[ext_resource type="Script" path="res://Script/TitleButton.gd" id="10_uj0pt"]
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_eq6wg"]
-specular_color = Color(0.0823529, 0.12549, 0.223529, 1)
+[ext_resource type="Texture2D" uid="uid://kccy33r4vvgr" path="res://Asset/BlackandWhiteUI.png/dialogue-bar.png" id="10_b2a50"]
+[ext_resource type="Texture2D" uid="uid://dvy2c7ugjy3nt" path="res://Asset/BlackandWhiteUI.png/dialogue-next-button-normal.png" id="12_wch44"]
+[ext_resource type="Texture2D" uid="uid://br12xlpvv3bl4" path="res://Asset/BlackandWhiteUI.png/dialogue-next-button-hovered.png" id="13_51nge"]
+[ext_resource type="Texture2D" uid="uid://xfw2dsgdfwg3" path="res://Asset/BlackandWhiteUI.png/next-arrow-right.png" id="14_y534u"]
+[ext_resource type="Texture2D" uid="uid://dxyw0uci7ftu5" path="res://Asset/BlackandWhiteUI.png/dialogue-name.png" id="15_dr4v2"]
 
 [sub_resource type="Theme" id="Theme_8f0mo"]
 default_font = ExtResource("7_ctvt5")
 default_font_size = 40
+
+[sub_resource type="Animation" id="Animation_encf4"]
+resource_name = "fade_in"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BgControl/Background:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.333333, 0.466667, 0.6, 0.766667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.305882), Color(1, 1, 1, 0.509804), Color(1, 1, 1, 0.662745), Color(1, 1, 1, 0.886275), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_c7tjv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BgControl/Background:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ujv8s"]
+resource_name = "fade_out"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BgControl/Background:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.3, 0.433333, 0.6, 0.733333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.745098), Color(1, 1, 1, 0.611765), Color(1, 1, 1, 0.356863), Color(1, 1, 1, 0.156863), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7f2ip"]
+_data = {
+"RESET": SubResource("Animation_c7tjv"),
+"fade_in": SubResource("Animation_encf4"),
+"fade_out": SubResource("Animation_ujv8s")
+}
 
 [node name="Prologue" type="Control"]
 layout_mode = 3
@@ -25,45 +79,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("5_ateun")
+next_scene = "res://Scene/Level1/Level1.tscn"
 
-[node name="TextureRect3" type="TextureRect" parent="."]
-modulate = Color(0.0823529, 0.258824, 0.443137, 1)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -2.0
-offset_right = 2.0
-offset_bottom = 2.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("CanvasTexture_eq6wg")
-
-[node name="TextureRect" type="TextureRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -105.0
-offset_top = -142.0
-offset_right = 3.0
-offset_bottom = -141.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("1_8hhih")
-
-[node name="TextureRect2" type="TextureRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 401.0
-offset_bottom = 115.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_tsidp")
-
-[node name="Control" type="Control" parent="."]
+[node name="BgControl" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -71,7 +90,26 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="Control"]
+[node name="Background" type="TextureRect" parent="BgControl"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_t0gfb")
+
+[node name="FogEffect" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="TextureRect" type="TextureRect" parent="FogEffect"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -83,8 +121,137 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_dbnyd")
 script = ExtResource("4_ds7po")
+metadata/_edit_lock_ = true
+
+[node name="Dialogue" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="Dialogue"]
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Skip" type="TextureButton" parent="Dialogue/Panel"]
+layout_mode = 1
+offset_left = 64.0
+offset_top = 59.0
+offset_right = 284.0
+offset_bottom = 140.0
+texture_normal = ExtResource("8_pm88p")
+texture_pressed = ExtResource("9_g0v30")
+texture_hover = ExtResource("9_g0v30")
+texture_focused = ExtResource("9_g0v30")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="Dialogue/Panel/Skip"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("7_ctvt5")
+theme_override_font_sizes/font_size = 32
+text = "SKIP"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DialogBox" type="NinePatchRect" parent="Dialogue/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.235
+anchor_top = 0.711
+anchor_right = 0.768
+anchor_bottom = 0.891
+offset_left = -0.200012
+offset_top = 64.12
+offset_right = 0.439941
+offset_bottom = 63.72
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("10_b2a50")
+
+[node name="LabelDialog" type="Label" parent="Dialogue/Panel/DialogBox"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.122
+anchor_top = 0.33
+anchor_right = 0.122
+anchor_bottom = 0.33
+offset_left = 0.071991
+offset_top = -0.0200043
+offset_right = 767.072
+offset_bottom = 62.98
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("7_ctvt5")
+theme_override_font_sizes/font_size = 30
+text = "helo"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="NextButton" type="TextureButton" parent="Dialogue/Panel/DialogBox"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.871
+anchor_top = 0.5
+anchor_right = 0.871
+anchor_bottom = 0.5
+offset_left = 0.0958862
+offset_right = 65.0958
+offset_bottom = 62.0
+texture_normal = ExtResource("12_wch44")
+texture_hover = ExtResource("13_51nge")
+stretch_mode = 0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Dialogue/Panel/DialogBox/NextButton"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.323
+anchor_top = 0.306
+anchor_right = 0.323
+anchor_bottom = 0.306
+offset_left = -1.995
+offset_top = -0.972002
+offset_right = 27.005
+offset_bottom = 29.028
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("14_y534u")
+
+[node name="CharacterBox" type="NinePatchRect" parent="Dialogue/Panel/DialogBox"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.003
+anchor_top = -0.448
+anchor_right = -0.003
+anchor_bottom = -0.448
+offset_left = 7.072
+offset_top = -1.088
+offset_right = 239.072
+offset_bottom = 71.912
+texture = ExtResource("15_dr4v2")
+
+[node name="LabelCharacter" type="Label" parent="Dialogue/Panel/DialogBox/CharacterBox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -5.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("7_ctvt5")
+theme_override_font_sizes/font_size = 32
+text = "tes"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Control2" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 13
 anchor_left = 0.5
@@ -94,7 +261,6 @@ offset_left = -318.0
 offset_right = 320.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("5_ateun")
 
 [node name="Prologue" type="Label" parent="Control2"]
 layout_mode = 1
@@ -133,37 +299,10 @@ bbcode_enabled = true
 text = "He was protected by the [b][color=gold]Solaris Gem[/color][/b], a gift that let him walk in sunlight."
 scroll_active = false
 
-[node name="Skip" type="TextureButton" parent="."]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -110.0
-offset_top = -337.0
-offset_right = 110.0
-offset_bottom = -256.0
-grow_horizontal = 2
-grow_vertical = 0
-texture_normal = ExtResource("8_pm88p")
-texture_pressed = ExtResource("9_g0v30")
-texture_hover = ExtResource("9_g0v30")
-texture_focused = ExtResource("9_g0v30")
-stretch_mode = 0
-script = ExtResource("10_uj0pt")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_7f2ip")
+}
 
-[node name="Label" type="Label" parent="Skip"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("7_ctvt5")
-theme_override_font_sizes/font_size = 32
-text = "SKIP"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[connection signal="pressed" from="Skip" to="Skip" method="_on_skip_pressed"]
+[connection signal="pressed" from="Dialogue/Panel/Skip" to="." method="_on_skip_pressed"]
+[connection signal="pressed" from="Dialogue/Panel/DialogBox/NextButton" to="." method="_on_next_button_pressed"]

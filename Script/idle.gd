@@ -9,6 +9,7 @@ var player_entered: bool = false:
 
 func enter():
 	super.enter()
+	player_entered = false
 	animation_player.play("idle")
 		
 func transition():

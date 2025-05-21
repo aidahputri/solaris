@@ -76,6 +76,7 @@ func _on_weapon_hitbox_area_entered(area: Area2D) -> void:
 
 func _on_attack_timer_timeout() -> void:
 	if hitbox != null and attack != null:
+		var player = hitbox.get_parent()
 		hitbox.damage(attack)
 	$AttackTimer.stop()
 
@@ -83,3 +84,7 @@ func _on_attack_timer_timeout() -> void:
 func _on_weapon_hitbox_area_exited(area: Area2D) -> void:
 	hitbox = null
 	attack = null
+
+func hurt():
+	$AnimatedSprite2D.play("hurt")
+	await $AnimatedSprite2D.animation_finished

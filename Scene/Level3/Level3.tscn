@@ -7901,6 +7901,7 @@ tile_set = SubResource("TileSet_qo4m7")
 
 [node name="Golem1" parent="." instance=ExtResource("10_vubkd")]
 position = Vector2(276, 416)
+scale = Vector2(1.435, 1.435)
 spriteFrame = ExtResource("11_n0w36")
 ySpriteFrame = -32
 speed = 80

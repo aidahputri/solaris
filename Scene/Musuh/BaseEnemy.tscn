@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bmi30g53k5ere"]
+[gd_scene load_steps=19 format=3 uid="uid://bmi30g53k5ere"]
 
 [ext_resource type="Script" path="res://Script/Enemy.gd" id="1_xy753"]
 [ext_resource type="SpriteFrames" uid="uid://dj87ujgsi5mbb" path="res://Asset/Musuh/spriteframe/BlueSlime.tres" id="2_o04k6"]
@@ -9,6 +9,9 @@
 [ext_resource type="Script" path="res://Scene/hitbox_component.gd" id="7_nk3vr"]
 [ext_resource type="Script" path="res://Script/WalkState.gd" id="8_on86j"]
 [ext_resource type="Script" path="res://Script/DeathState.gd" id="9_ubhpd"]
+[ext_resource type="AudioStream" uid="uid://bmsskix0jqkcg" path="res://Asset/Sfx/RPG_Essentials_Free/8_Atk_Magic_SFX/30_Earth_02.wav" id="10_1323i"]
+[ext_resource type="AudioStream" uid="uid://fxlq87cy7253" path="res://Asset/Sfx/RPG_Essentials_Free/10_Battle_SFX/39_Block_03.wav" id="11_vkt3t"]
+[ext_resource type="AudioStream" uid="uid://ccbvqqr4jy8ml" path="res://Asset/Sfx/RPG_Essentials_Free/10_Battle_SFX/69_Enemy_death_01.wav" id="12_ndu6t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_16vgy"]
 size = Vector2(46, 31.5)
@@ -107,6 +110,15 @@ script = ExtResource("9_ubhpd")
 [node name="AttackTimer" type="Timer" parent="."]
 
 [node name="ImmuneTimer" type="Timer" parent="."]
+
+[node name="AttackSfxPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_1323i")
+
+[node name="HurtSfxPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_vkt3t")
+
+[node name="DeathSfxPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_ndu6t")
 
 [connection signal="area_entered" from="WeaponHitbox" to="." method="_on_weapon_hitbox_area_entered"]
 [connection signal="area_exited" from="WeaponHitbox" to="." method="_on_weapon_hitbox_area_exited"]

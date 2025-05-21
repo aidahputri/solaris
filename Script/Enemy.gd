@@ -10,6 +10,8 @@ extends CharacterBody2D
 
 @export_group("Movement")
 @export var speed: int = 40
+@export var flipped = false
+
 var gravity: int = 980
 var tempSpeed: int = 0
 var direction: Vector2
@@ -20,14 +22,19 @@ var direction: Vector2
 @export var knockback_force: int = 10
 @export var weaponPosition: int = 35
 @export var timeBeforeAttack: float = 0.5
+
+
 var hitbox = null
 var attack = null
+var immune = false
 
 func _ready() -> void:
 	$HealthComponent.health = health
 	sprite.sprite_frames = spriteFrame
 	sprite.position.x = xSpriteFrame
 	sprite.position.y = ySpriteFrame
+	if flipped:
+		sprite.flip_h = true
 	#$Detection/CollisionShape2D.shape.radius = 200
 
 func _process(_delta):
@@ -35,7 +42,6 @@ func _process(_delta):
 		find_child("FiniteStateMachine").change_state("death")
 	direction = player.position - position
 	velocity.y += gravity * _delta
-	
 	if direction.x < 0:
 		$WeaponHitbox.position.x = weaponPosition * -1
 		sprite.flip_h = true
@@ -77,6 +83,7 @@ func _on_weapon_hitbox_area_entered(area: Area2D) -> void:
 func _on_attack_timer_timeout() -> void:
 	if hitbox != null and attack != null:
 		var player = hitbox.get_parent()
+		player.hurt()
 		hitbox.damage(attack)
 	$AttackTimer.stop()
 
@@ -86,5 +93,12 @@ func _on_weapon_hitbox_area_exited(area: Area2D) -> void:
 	attack = null
 
 func hurt():
+	$ImmuneTimer.start(0.5)
+	immune = true
 	$AnimatedSprite2D.play("hurt")
 	await $AnimatedSprite2D.animation_finished
+
+
+func _on_immune_timer_timeout() -> void:
+	immune = false
+	$ImmuneTimer.stop()

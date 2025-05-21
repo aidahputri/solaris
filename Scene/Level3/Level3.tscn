@@ -4665,7 +4665,8 @@ texture = ExtResource("8_lrepl")
 30:18/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_upica"]
-physics_layer_0/collision_layer = 1
+physics_layer_0/collision_layer = 3
+physics_layer_0/collision_mask = 3
 sources/0 = SubResource("TileSetAtlasSource_ywtlg")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kx24f"]
@@ -7750,7 +7751,7 @@ script = ExtResource("1_xjcls")
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="sky"]
 position = Vector2(0, -250)
-motion_scale = Vector2(0.5, 1)
+motion_scale = Vector2(0.3, 1)
 motion_mirroring = Vector2(2048, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="sky/ParallaxLayer"]
@@ -7765,7 +7766,7 @@ centered = false
 [node name="main" type="ParallaxBackground" parent="."]
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="main"]
-motion_scale = Vector2(0.5, 1)
+motion_scale = Vector2(0.3, 1)
 motion_mirroring = Vector2(2048, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="main/ParallaxLayer"]
@@ -7778,6 +7779,7 @@ texture = ExtResource("2_klwus")
 centered = false
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="main"]
+motion_scale = Vector2(0.5, 1)
 motion_mirroring = Vector2(2048, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="main/ParallaxLayer2"]
@@ -7790,6 +7792,7 @@ texture = ExtResource("3_hjkws")
 centered = false
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="main"]
+motion_scale = Vector2(0.7, 1)
 motion_mirroring = Vector2(2048, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="main/ParallaxLayer3"]
@@ -7802,6 +7805,7 @@ texture = ExtResource("4_l1ryt")
 centered = false
 
 [node name="ParallaxLayer4" type="ParallaxLayer" parent="main"]
+motion_scale = Vector2(0.8, 1)
 motion_mirroring = Vector2(2048, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="main/ParallaxLayer4"]
@@ -7814,6 +7818,7 @@ texture = ExtResource("5_pc0h0")
 centered = false
 
 [node name="ParallaxLayer5" type="ParallaxLayer" parent="main"]
+motion_scale = Vector2(0.85, 1)
 motion_mirroring = Vector2(2048, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="main/ParallaxLayer5"]
@@ -7826,6 +7831,7 @@ texture = ExtResource("6_1m1gk")
 centered = false
 
 [node name="ParallaxLayer6" type="ParallaxLayer" parent="main"]
+motion_scale = Vector2(0.9, 1)
 motion_mirroring = Vector2(2048, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="main/ParallaxLayer6"]
@@ -7841,6 +7847,7 @@ centered = false
 
 [node name="ParallaxLayer6" type="ParallaxLayer" parent="underground"]
 position = Vector2(0, 101.05)
+motion_scale = Vector2(0.9, 1)
 motion_mirroring = Vector2(2048, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="underground/ParallaxLayer6"]
@@ -7856,6 +7863,7 @@ centered = false
 
 [node name="ParallaxLayer6" type="ParallaxLayer" parent="underground2"]
 position = Vector2(0, 221.475)
+motion_scale = Vector2(0.9, 1)
 motion_mirroring = Vector2(2048, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="underground2/ParallaxLayer6"]
@@ -7871,6 +7879,7 @@ centered = false
 
 [node name="ParallaxLayer6" type="ParallaxLayer" parent="underground3"]
 position = Vector2(0, 351.95)
+motion_scale = Vector2(0.9, 1)
 motion_mirroring = Vector2(2048, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="underground3/ParallaxLayer6"]
@@ -7901,11 +7910,32 @@ tile_map_data = PackedByteArray("AABxAB8AAAAcAC4AAABxACAAAAAcAC8AAAByAB8AAAAdAC4
 tile_set = SubResource("TileSet_qo4m7")
 
 [node name="Golem1" parent="." instance=ExtResource("10_vubkd")]
-position = Vector2(276, 416)
+position = Vector2(1802, 608)
 scale = Vector2(1.435, 1.435)
+collision_mask = 2
 spriteFrame = ExtResource("11_n0w36")
 ySpriteFrame = -32
 speed = 80
+knockback_force = 2
+
+[node name="Golem2" parent="." instance=ExtResource("10_vubkd")]
+position = Vector2(1529, 608)
+scale = Vector2(1.435, 1.435)
+collision_mask = 2
+spriteFrame = ExtResource("11_n0w36")
+ySpriteFrame = -32
+speed = 80
+flipped = true
+knockback_force = 2
+
+[node name="Golem3" parent="." instance=ExtResource("10_vubkd")]
+position = Vector2(1891, 371)
+scale = Vector2(2.17, 2.17)
+collision_mask = 2
+spriteFrame = ExtResource("11_n0w36")
+ySpriteFrame = -32
+speed = 0
+flipped = true
 knockback_force = 2
 
 [node name="Player" parent="." instance=ExtResource("10_xmq3k")]

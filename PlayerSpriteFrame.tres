@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=56 format=3 uid="uid://dob520s8jtcvt"]
+[gd_resource type="SpriteFrames" load_steps=60 format=3 uid="uid://dob520s8jtcvt"]
 
 [ext_resource type="Texture2D" uid="uid://dalgnd1nls73g" path="res://Asset/Karakter/Converted_Vampire/attack_with_sparks_3.png" id="1_0edr5"]
 [ext_resource type="Texture2D" uid="uid://c8joy6qv57p8l" path="res://Asset/Karakter/Converted_Vampire/Attack_1.png" id="1_3wy2w"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://056ki5g4ey0i" path="res://Asset/Karakter/Converted_Vampire/Jump.png" id="5_nsack"]
 [ext_resource type="Texture2D" uid="uid://bh2dead2c6ruw" path="res://Asset/Karakter/Converted_Vampire/Run.png" id="5_p2kqb"]
 [ext_resource type="Texture2D" uid="uid://dafjs5xj4abyh" path="res://Asset/Karakter/Converted_Vampire/Walk.png" id="6_nm6dm"]
+[ext_resource type="Texture2D" uid="uid://br8xf0t6kenbq" path="res://Asset/Karakter/Converted_Vampire/hurt_2.png" id="7_wtrwq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k6kmr"]
 atlas = ExtResource("1_3wy2w")
@@ -96,6 +97,18 @@ region = Rect2(640, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rumxn"]
 atlas = ExtResource("3_omy24")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_41qxt"]
+atlas = ExtResource("7_wtrwq")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pegxr"]
+atlas = ExtResource("3_omy24")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vjehm"]
+atlas = ExtResource("7_wtrwq")
 region = Rect2(0, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_edj00"]
@@ -287,10 +300,19 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_rumxn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_41qxt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pegxr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vjehm")
 }],
 "loop": false,
 "name": &"hurt",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,

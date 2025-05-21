@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://bwvbfqb8oc8qh"]
+[gd_scene load_steps=30 format=4 uid="uid://bwvbfqb8oc8qh"]
 
 [ext_resource type="Script" path="res://Script/Level.gd" id="1_xjcls"]
 [ext_resource type="Texture2D" uid="uid://bogwujynel2ym" path="res://Asset/3. PF_StrangeMountains_v1.0/background1.png" id="2_klwus"]
@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://dnuek73cevx73" path="res://Scene/PauseGUI.tscn" id="14_a4j8d"]
 [ext_resource type="PackedScene" uid="uid://pe0qmwlpo6dj" path="res://Scene/FadeCanvas.tscn" id="15_1571v"]
 [ext_resource type="PackedScene" uid="uid://crfx06vy8h3dc" path="res://Scene/DialogueSystem.tscn" id="17_skwrk"]
+[ext_resource type="AudioStream" uid="uid://jd7tu3d47gdm" path="res://Asset/Bgm/16-Bit Fantasy RPG OST - Ancient Ruins of Light.wav" id="19_j1idd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_suict"]
 texture = ExtResource("8_lrepl")
@@ -7901,6 +7902,7 @@ tile_set = SubResource("TileSet_qo4m7")
 
 [node name="Golem1" parent="." instance=ExtResource("10_vubkd")]
 position = Vector2(276, 416)
+scale = Vector2(1.435, 1.435)
 spriteFrame = ExtResource("11_n0w36")
 ySpriteFrame = -32
 speed = 80
@@ -7957,6 +7959,7 @@ end_zoom = 4.5
 [node name="DialogueSystem" parent="." instance=ExtResource("17_skwrk")]
 
 [node name="BGM" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("19_j1idd")
 autoplay = true
 max_distance = 1e+17
 

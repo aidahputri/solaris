@@ -179,19 +179,11 @@ collision_mask = 2
 health = 30
 timeBeforeAttack = 0.25
 
-[node name="CollisionShape2D" parent="BlueSlime/WeaponHitbox" index="0"]
-position = Vector2(19, -4)
-scale = Vector2(4.05, 1)
-
 [node name="BlueSlime2" parent="." instance=ExtResource("16_khyqs")]
 position = Vector2(1592, 448)
 collision_mask = 2
 health = 30
 timeBeforeAttack = 0.25
-
-[node name="CollisionShape2D" parent="BlueSlime2/WeaponHitbox" index="0"]
-position = Vector2(18, -4)
-scale = Vector2(4.05, 1)
 
 [node name="BlueSlime3" parent="." instance=ExtResource("16_khyqs")]
 position = Vector2(2829, 350)
@@ -199,19 +191,11 @@ collision_mask = 2
 health = 30
 timeBeforeAttack = 0.25
 
-[node name="CollisionShape2D" parent="BlueSlime3/WeaponHitbox" index="0"]
-position = Vector2(19, -3)
-scale = Vector2(4.05, 1)
-
 [node name="BlueSlime4" parent="." instance=ExtResource("16_khyqs")]
 position = Vector2(3421, 430)
 collision_mask = 2
 health = 30
 timeBeforeAttack = 0.25
-
-[node name="CollisionShape2D" parent="BlueSlime4/WeaponHitbox" index="0"]
-position = Vector2(18, -4)
-scale = Vector2(4.05, 1)
 
 [node name="LoseArea" type="Area2D" parent="."]
 script = ExtResource("17_6dmda")
@@ -277,8 +261,3 @@ shape = SubResource("RectangleShape2D_b3itk")
 [connection signal="body_entered" from="FinishArea" to="." method="_on_finish_area_body_entered"]
 [connection signal="body_entered" from="Level1DialogueTrigger" to="DialogueSystem" method="_on_level_1_dialogue_trigger_body_entered"]
 [connection signal="body_entered" from="LoseArea" to="LoseArea" method="_on_body_entered"]
-
-[editable path="BlueSlime"]
-[editable path="BlueSlime2"]
-[editable path="BlueSlime3"]
-[editable path="BlueSlime4"]

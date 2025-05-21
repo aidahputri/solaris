@@ -41,6 +41,8 @@ func _ready() -> void:
 	$ProgressBar.value = health
 	$ProgressBar.position.y = $CollisionShape2D.position.y * 2.5 - 5
 	
+	initiate_sfx()
+	
 	$HealthComponent.health = health
 	sprite.sprite_frames = spriteFrame
 	sprite.position.x = xSpriteFrame
@@ -95,22 +97,16 @@ func _on_weapon_hitbox_area_entered(area: Area2D) -> void:
 				$AttackTimer.start(timeBeforeAttack)
 
 func play_attack_sfx():
-	if attackSfx != "":
-		attack_sfx_player.stream = load(attackSfx)
 	var random_pitch = randf_range(0.9,1.1)
 	attack_sfx_player.pitch_scale = random_pitch
 	attack_sfx_player.play()
 	
 func play_hurt_sfx():
-	if hurtSfx != "":
-		hurt_sfx_player.stream = load(hurtSfx)
 	var random_pitch = randf_range(0.8,1.2)
 	hurt_sfx_player.pitch_scale = random_pitch
 	hurt_sfx_player.play()
 
 func play_death_sfx():
-	if deathSfx != "":
-		death_sfx_player.stream = load(hurtSfx)
 	var random_pitch = randf_range(0.8,1.2)
 	death_sfx_player.pitch_scale = random_pitch
 	death_sfx_player.play()
@@ -136,3 +132,11 @@ func hurt():
 func _on_immune_timer_timeout() -> void:
 	immune = false
 	$ImmuneTimer.stop()
+
+func initiate_sfx():
+	if attackSfx != "":
+		attack_sfx_player.stream = load(attackSfx)
+	if deathSfx != "":
+		death_sfx_player.stream = load(hurtSfx)
+	if hurtSfx != "":
+		hurt_sfx_player.stream = load(hurtSfx)

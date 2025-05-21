@@ -8184,7 +8184,7 @@ start_zoom = 3.02
 end_zoom = 2.25
 
 [node name="CollisionShape2D" parent="CameraMotion/ZoomArea" index="0"]
-position = Vector2(148.5, -41.75)
+position = Vector2(142, -51)
 
 [node name="ZoomArea2" parent="CameraMotion" instance=ExtResource("17_4epm3")]
 position = Vector2(2085, -565)
@@ -8192,7 +8192,7 @@ start_zoom = 2.25
 end_zoom = 2.0
 
 [node name="CollisionShape2D" parent="CameraMotion/ZoomArea2" index="0"]
-position = Vector2(190, -68)
+position = Vector2(188, -75.2813)
 
 [node name="ZoomArea3" parent="CameraMotion" instance=ExtResource("17_4epm3")]
 position = Vector2(4061, -507)
@@ -8226,7 +8226,7 @@ position = Vector2(1915, -673)
 end_y = 128
 
 [node name="CollisionShape2D" parent="CameraMotion/LedgeArea" index="0"]
-position = Vector2(361, 41)
+position = Vector2(358, 34.25)
 
 [node name="LedgeArea2" parent="CameraMotion" instance=ExtResource("17_1bi7m")]
 position = Vector2(3922, -606)

@@ -27,6 +27,11 @@ var dialog_data = {
 		{"character": "", "text": "There will be no more running. No more hiding."},
 		{"character": "", "text": "Tonight, the flame will be extinguished... forever."}
 	],
+	"beforeBossFight": [
+		{"character": "", "text": "The air shifts, thick, unnatural... as if the world itself holds its breath."},
+		{"character": "", "text": "He steps into the clearing, where the light refuses to touch."},
+		{"character": "", "text": "Something ancient stirs in the dark... watching, waiting."}
+	],
 }
 
 var current_dialog = []
@@ -92,3 +97,7 @@ func _on_enter_level_3_dialogue_trigger_body_entered(body: Node2D):
 func _on_level_5_dialogue_trigger_body_entered(body: Node2D):
 	if body.name == "Player": 
 		start_dialog("level5")
+
+func _on_before_boss_dialogue_trigger_body_entered(body: Node2D):
+	if body.name == "Player": 
+		start_dialog("beforeBossFight")

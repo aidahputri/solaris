@@ -465,6 +465,15 @@ position = Vector2(268, 506)
 shape = SubResource("RectangleShape2D_bn3pf")
 debug_color = Color(0.792152, 0.310348, 0.744293, 0.42)
 
+[node name="BeforeBossDialogueTrigger" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BeforeBossDialogueTrigger"]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(7320, -18)
+shape = SubResource("RectangleShape2D_bn3pf")
+debug_color = Color(0.792152, 0.310348, 0.744293, 0.42)
+
 [node name="GUI" parent="." instance=ExtResource("4_rjtc6")]
 
 [node name="DialogueSystem" parent="." instance=ExtResource("9_bcr04")]
@@ -487,6 +496,7 @@ autoplay = true
 max_distance = 1e+17
 
 [connection signal="body_entered" from="Level5DialogueTrigger" to="DialogueSystem" method="_on_level_5_dialogue_trigger_body_entered"]
+[connection signal="body_entered" from="BeforeBossDialogueTrigger" to="DialogueSystem" method="_on_before_boss_dialogue_trigger_body_entered"]
 [connection signal="body_entered" from="LoseArea" to="LoseArea" method="_on_body_entered"]
 
 [editable path="Player"]

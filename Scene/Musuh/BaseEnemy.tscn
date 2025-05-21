@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bmi30g53k5ere"]
+[gd_scene load_steps=16 format=3 uid="uid://bmi30g53k5ere"]
 
 [ext_resource type="Script" path="res://Script/Enemy.gd" id="1_xy753"]
 [ext_resource type="SpriteFrames" uid="uid://dj87ujgsi5mbb" path="res://Asset/Musuh/spriteframe/BlueSlime.tres" id="2_o04k6"]
@@ -18,6 +18,17 @@ size = Vector2(20, 27)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qfcpb"]
 radius = 100.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_88ami"]
+bg_color = Color(0.266667, 0.266667, 0.266667, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gn8sn"]
+bg_color = Color(0.490196, 0.027451, 0.160784, 1)
+
+[sub_resource type="Theme" id="Theme_b8wt7"]
+ProgressBar/constants/outline_size = 0
+ProgressBar/styles/background = SubResource("StyleBoxFlat_88ami")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_gn8sn")
 
 [node name="BlueSlime" type="CharacterBody2D"]
 collision_layer = 2
@@ -63,10 +74,20 @@ disabled = true
 shape = SubResource("CircleShape2D_qfcpb")
 
 [node name="debug" type="Label" parent="."]
+visible = false
 offset_left = -24.0
 offset_top = -62.0
 offset_right = 16.0
 offset_bottom = -39.0
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+custom_minimum_size = Vector2(20, 4)
+offset_left = -25.0
+offset_top = -37.5
+offset_right = 25.0
+offset_bottom = -27.5
+theme = SubResource("Theme_b8wt7")
+show_percentage = false
 
 [node name="FiniteStateMachine" type="Node2D" parent="."]
 script = ExtResource("5_gjiow")

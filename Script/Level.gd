@@ -46,5 +46,5 @@ func _on_finish_area_body_entered(body: Node2D):
 		fade_out()
 
 func boss_died():
-	nextScene = ""
-	fade_out()
+	nextScene = "res://Scene/WinScene.tscn"
+	await fade_out()

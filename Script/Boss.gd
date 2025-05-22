@@ -153,10 +153,8 @@ func _on_flame_hitbox_area_exited(area: Area2D) -> void:
 		attack = null
 		
 func death():
-	$DeathTimer.start(1)
-
-
-
+	var level = get_parent()
+	level.boss_died()
 
 func initiate_sfx():
 	if attackSfx != "":

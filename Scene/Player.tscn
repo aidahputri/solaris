@@ -36,7 +36,7 @@ healthComponent = NodePath("HealthComponent")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -32)
 sprite_frames = ExtResource("1_5vhtm")
-animation = &"special_hurt"
+animation = &"hurt"
 
 [node name="HealthComponent" parent="." instance=ExtResource("3_f63as")]
 

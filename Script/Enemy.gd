@@ -120,15 +120,22 @@ func _on_attack_timer_timeout() -> void:
 			var player_x = player.global_position.x
 			var x_distance = abs(player_x - area_center_x)
 			print(x_distance)
-			if x_distance < maxDistance:
+			if x_distance < maxDistance :
 				player.hurt()
 				hitbox.damage(attack)
 	$AttackTimer.stop()
 
 func _on_weapon_hitbox_area_exited(area: Area2D) -> void:
-	pass
-	#hitbox = null
-	#attack = null
+	if hitbox != null and attack != null and !$AttackTimer.is_stopped():
+		var player = hitbox.get_parent()
+		if player.name == "Player":
+			var area_center_x = $WeaponHitbox/CollisionShape2D.global_position.x
+			var player_x = player.global_position.x
+			var x_distance = abs(player_x - area_center_x)
+			print(x_distance)
+			if x_distance < maxDistance :
+				player.hurt()
+				hitbox.damage(attack)
 
 func hurt():
 	play_hurt_sfx()

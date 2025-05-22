@@ -43,6 +43,8 @@ func _ready():
 	
 	
 func _physics_process(delta: float) -> void:
+	if Global.playerHealth <= 0:
+		await get_parent().fade_out()
 	if Global.is_dialog_active:
 		velocity = Vector2.ZERO
 		animplayer.play("idle")

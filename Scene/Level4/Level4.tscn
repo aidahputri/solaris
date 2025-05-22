@@ -8018,6 +8018,10 @@ health = 30
 attack_damage = 5
 timeBeforeAttack = 0.3
 
+[node name="WeaponHitbox" parent="Rat" index="4"]
+position = Vector2(-8.385, -10)
+scale = Vector2(3.265, 1)
+
 [node name="ProgressBar" parent="Rat" index="7"]
 offset_left = -20.0
 offset_top = 0.0
@@ -8036,6 +8040,10 @@ health = 30
 attack_damage = 5
 timeBeforeAttack = 0.3
 
+[node name="WeaponHitbox" parent="Rat2" index="4"]
+position = Vector2(-9.855, -10)
+scale = Vector2(3.265, 1)
+
 [node name="ProgressBar" parent="Rat2" index="7"]
 offset_left = -20.0
 offset_top = 0.0
@@ -8053,6 +8061,10 @@ speed = 70
 health = 30
 attack_damage = 5
 timeBeforeAttack = 0.3
+
+[node name="WeaponHitbox" parent="Rat3" index="4"]
+position = Vector2(-9.51, -10)
+scale = Vector2(3.265, 1)
 
 [node name="ProgressBar" parent="Rat3" index="7"]
 offset_left = -20.0
@@ -8237,6 +8249,11 @@ scale = Vector2(1.5, 1.5)
 collision_mask = 2
 spriteFrame = ExtResource("19_cafas")
 ySpriteFrame = -32
+maxDistance = 50
+
+[node name="WeaponHitbox" parent="Bat1" index="4"]
+position = Vector2(-8.215, -10)
+scale = Vector2(3.055, 1)
 
 [node name="Bat2" parent="." instance=ExtResource("18_v8hc5")]
 z_index = 1
@@ -8246,6 +8263,10 @@ scale = Vector2(1.5, 1.5)
 collision_mask = 2
 spriteFrame = ExtResource("19_cafas")
 ySpriteFrame = -32
+
+[node name="WeaponHitbox" parent="Bat2" index="4"]
+position = Vector2(-8.345, -10)
+scale = Vector2(3.26, 1)
 
 [node name="Light" type="Node" parent="."]
 
@@ -8614,3 +8635,5 @@ shape = SubResource("RectangleShape2D_aervv")
 [editable path="Skeleton9"]
 [editable path="Skeleton10"]
 [editable path="Skeleton11"]
+[editable path="Bat1"]
+[editable path="Bat2"]

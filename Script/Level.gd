@@ -17,8 +17,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	healthBar.value = Global.playerHealth
 	jumpBar.value = Global.playerJump
-	if Global.playerHealth <= 0:
-		await fade_out()
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_pause"):

@@ -16,6 +16,8 @@ func damage(attack: Attack):
 	health -= attack.attack_damage
 	var object = get_parent()
 	
+	if object.name == "Player":
+		Global.playerHealth = health
 	if health > MAX_HEALTH:
 		health = MAX_HEALTH
 		
@@ -27,6 +29,3 @@ func damage(attack: Attack):
 
 		owner.velocity = knockback_vector
 		owner.move_and_slide()
-	
-	if object.name == "Player":
-		Global.playerHealth = health

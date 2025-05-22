@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=4 uid="uid://bwvbfqb8oc8qh"]
+[gd_scene load_steps=35 format=4 uid="uid://bwvbfqb8oc8qh"]
 
 [ext_resource type="Script" path="res://Script/Level.gd" id="1_xjcls"]
 [ext_resource type="Texture2D" uid="uid://bogwujynel2ym" path="res://Asset/3. PF_StrangeMountains_v1.0/background1.png" id="2_klwus"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://pe0qmwlpo6dj" path="res://Scene/FadeCanvas.tscn" id="15_1571v"]
 [ext_resource type="PackedScene" uid="uid://crfx06vy8h3dc" path="res://Scene/DialogueSystem.tscn" id="17_skwrk"]
 [ext_resource type="AudioStream" uid="uid://jd7tu3d47gdm" path="res://Asset/Bgm/16-Bit Fantasy RPG OST - Ancient Ruins of Light.wav" id="19_j1idd"]
+[ext_resource type="Script" path="res://Script/LoseArea.gd" id="20_rsd3n"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_suict"]
 texture = ExtResource("8_lrepl")
@@ -7752,6 +7753,9 @@ size = Vector2(28, 209)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u8spr"]
 size = Vector2(105, 433.5)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dnpyp"]
+size = Vector2(719, 41)
+
 [node name="Level3" type="Node2D"]
 script = ExtResource("1_xjcls")
 nextScene = "res://Scene/Level4/Level4.tscn"
@@ -8018,6 +8022,12 @@ scale = Vector2(0.41, 1.615)
 start_zoom = 3.02
 end_zoom = 4.5
 
+[node name="ZoomArea4" parent="." instance=ExtResource("13_d42i7")]
+position = Vector2(3090, 647)
+scale = Vector2(0.725, 0.67)
+start_zoom = 1.5
+end_zoom = 3.0
+
 [node name="PauseGUI" parent="." instance=ExtResource("14_a4j8d")]
 
 [node name="FadeCanvas" parent="." instance=ExtResource("15_1571v")]
@@ -8057,8 +8067,17 @@ shape = SubResource("RectangleShape2D_xlrjk")
 position = Vector2(4139, 367.75)
 shape = SubResource("RectangleShape2D_u8spr")
 
+[node name="FallArea" type="Area2D" parent="."]
+position = Vector2(3338, 716)
+script = ExtResource("20_rsd3n")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FallArea"]
+position = Vector2(83.5, 44)
+shape = SubResource("RectangleShape2D_dnpyp")
+
 [connection signal="body_entered" from="EnterLevel3DialogueArea" to="DialogueSystem" method="_on_enter_level_3_dialogue_trigger_body_entered"]
 [connection signal="body_entered" from="FinishArea" to="." method="_on_finish_area_body_entered"]
+[connection signal="body_entered" from="FallArea" to="FallArea" method="_on_body_entered"]
 
 [editable path="Golem1"]
 [editable path="Golem2"]

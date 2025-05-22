@@ -5,6 +5,7 @@ extends Control
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	fadeRect.modulate.a = 1.0
+	Global.playerHealth = 100
 	await fade_in()
 
 func fade_in():

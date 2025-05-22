@@ -11,7 +11,7 @@ func _ready() -> void:
 	jumpBar.max_value = 2
 	healthBar.value = Global.playerHealth
 	jumpBar.value = Global.playerJump
-	
+	Global.curLevel = name
 	fadeRect.modulate.a = 1.0
 	await fade_in()
 

@@ -18,6 +18,7 @@ config/icon="res://Asset/Karakter/Converted_Vampire/Hurt.png"
 [autoload]
 
 Global="*res://Script/Global.gd"
+TileManager="*res://Script/GlobalTileManager.gd"
 
 [display]
 

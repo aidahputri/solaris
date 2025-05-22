@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://ddweben6kr5x4"]
+
+[ext_resource type="Script" path="res://Script/ZoomArea.gd" id="1_fot2m"]
+
+[node name="ZoomArea" type="Area2D"]
+script = ExtResource("1_fot2m")
+end_zoom = 1.5
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

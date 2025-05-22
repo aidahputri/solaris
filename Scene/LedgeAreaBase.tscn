@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://8cmpfpk1bcda"]
+
+[ext_resource type="Script" path="res://Script/LedgeArea.gd" id="1_sv2lj"]
+
+[node name="LedgeArea" type="Area2D"]
+script = ExtResource("1_sv2lj")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

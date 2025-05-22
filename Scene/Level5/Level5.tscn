@@ -516,8 +516,8 @@ timeBeforeAttack = 0.4
 MAX_HEALTH = 300.0
 
 [node name="WeaponHitbox" parent="Boss" index="4"]
-position = Vector2(-71.25, -20.605)
-scale = Vector2(1.055, 0.585)
+position = Vector2(-50.13, -20.605)
+scale = Vector2(1.965, 0.585)
 
 [node name="debug" parent="Boss" index="9"]
 visible = false

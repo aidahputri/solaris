@@ -8033,6 +8033,7 @@ end_zoom = 3.0
 [node name="FadeCanvas" parent="." instance=ExtResource("15_1571v")]
 
 [node name="DialogueSystem" parent="." instance=ExtResource("17_skwrk")]
+visible = false
 
 [node name="BGM" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("19_j1idd")
@@ -8042,7 +8043,7 @@ max_distance = 1e+17
 [node name="EnterLevel3DialogueArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnterLevel3DialogueArea"]
-position = Vector2(75, 332)
+position = Vector2(147, 318)
 shape = SubResource("RectangleShape2D_c6anj")
 
 [node name="InvisibleWall1" type="StaticBody2D" parent="."]

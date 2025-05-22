@@ -11,15 +11,12 @@ func _ready() -> void:
 	jumpBar.max_value = 2
 	healthBar.value = Global.playerHealth
 	jumpBar.value = Global.playerJump
-	Global.curLevel = name
 	fadeRect.modulate.a = 1.0
 	await fade_in()
 
 func _process(delta: float) -> void:
 	healthBar.value = Global.playerHealth
 	jumpBar.value = Global.playerJump
-	if Global.playerHealth <= 0:
-		await fade_out()
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_pause"):

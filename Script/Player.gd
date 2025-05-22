@@ -17,6 +17,7 @@ extends CharacterBody2D
 @export var sfx:String = "RPG_Essentials_Free/12_Player_Movement_SFX/08_Step_rock_02.wav"
 @onready var camera = $Camera2D
 
+
 const UP = Vector2(0,-1)
 var is_attacking = false
 var jumps = total_jump
@@ -36,10 +37,14 @@ var is_hurt = false
 
 func _ready():
 	Global.playerJump = jumps
+	Global.curLevel = get_parent().name
 	run_sfx_player.stream = load("res://Asset/Sfx/" + sfx)
 	original_position = camera.position
 	
+	
 func _physics_process(delta: float) -> void:
+	if Global.playerHealth <= 0:
+		await get_parent().fade_out()
 	if Global.is_dialog_active:
 		velocity = Vector2.ZERO
 		animplayer.play("idle")
@@ -66,11 +71,11 @@ func move():
 	if direction:
 		velocity.x = direction * SPEED
 		if direction < 0:
-			$WeaponHitbox.position.x = -37.5
+			$WeaponHitbox.position.x = -27.5
 			animplayer.flip_h = true
 		else:
 			animplayer.flip_h = false
-			$WeaponHitbox.position.x = 37.5
+			$WeaponHitbox.position.x = 27.5
 		if is_on_floor():
 			dust_particle.set_emitting(true)
 		else:
@@ -146,12 +151,12 @@ func _on_weapon_hitbox_area_entered(area: Area2D) -> void:
 				
 				# Heal player on successful attack
 				attack = Attack.new()
-				attack.attack_damage = -3
+				attack.attack_damage = -10
 				healthComponent.damage(attack)
 
 func health_drain() -> void:
 	var attack = Attack.new()
-	attack.attack_damage = 2
+	attack.attack_damage = 5
 	healthComponent.damage(attack)
 
 func drop_dust_animation():

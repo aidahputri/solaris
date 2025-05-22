@@ -5,3 +5,6 @@ extends Node
 var curLevel = "0"
 var is_dialog_active: bool = false
 var dialog_seen = {}
+
+func _process(delta: float) -> void:
+	print(curLevel)

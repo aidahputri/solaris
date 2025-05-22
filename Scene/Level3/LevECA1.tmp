@@ -7931,14 +7931,9 @@ ySpriteFrame = -32
 speed = 80
 health = 100
 knockback_force = 2
-maxDistance = 50
 
 [node name="HealthComponent" parent="Golem1" index="2"]
 MAX_HEALTH = 100.0
-
-[node name="WeaponHitbox" parent="Golem1" index="4"]
-position = Vector2(-12.425, -10)
-scale = Vector2(3.66, 1)
 
 [node name="ProgressBar" parent="Golem1" index="7"]
 offset_top = -33.0
@@ -7955,7 +7950,6 @@ flipped = true
 health = 100
 knockback_force = 2
 weaponPosition = 60
-maxDistance = 50
 
 [node name="HealthComponent" parent="Golem2" index="2"]
 MAX_HEALTH = 100.0
@@ -7974,7 +7968,6 @@ speed = 80
 flipped = true
 health = 200
 knockback_force = 2
-maxDistance = 50
 
 [node name="HealthComponent" parent="Golem3" index="2"]
 MAX_HEALTH = 200.0

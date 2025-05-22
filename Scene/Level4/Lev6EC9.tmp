@@ -7994,7 +7994,7 @@ spriteFrame = ExtResource("19_psnxc")
 ySpriteFrame = -32
 speed = 70
 timeBeforeAttack = 0.25
-maxDistance = 50
+maxDistance = 100
 
 [node name="WeaponHitbox" parent="Skeleton" index="4"]
 position = Vector2(-11.4, -10)
@@ -8069,11 +8069,6 @@ spriteFrame = ExtResource("19_psnxc")
 ySpriteFrame = -32
 speed = 70
 timeBeforeAttack = 0.25
-maxDistance = 50
-
-[node name="WeaponHitbox" parent="Skeleton2" index="4"]
-position = Vector2(-10.46, -10)
-scale = Vector2(3.53, 1)
 
 [node name="ProgressBar" parent="Skeleton2" index="7"]
 offset_left = -20.0
@@ -8090,11 +8085,6 @@ spriteFrame = ExtResource("19_psnxc")
 ySpriteFrame = -32
 speed = 70
 timeBeforeAttack = 0.25
-maxDistance = 50
-
-[node name="WeaponHitbox" parent="Skeleton4" index="4"]
-position = Vector2(-8.95, -10)
-scale = Vector2(3.27, 1)
 
 [node name="ProgressBar" parent="Skeleton4" index="7"]
 offset_left = -20.0
@@ -8111,11 +8101,6 @@ spriteFrame = ExtResource("19_psnxc")
 ySpriteFrame = -32
 speed = 70
 timeBeforeAttack = 0.25
-maxDistance = 50
-
-[node name="WeaponHitbox" parent="Skeleton5" index="4"]
-position = Vector2(-8.85, -10)
-scale = Vector2(3.205, 1)
 
 [node name="ProgressBar" parent="Skeleton5" index="7"]
 offset_left = -20.0
@@ -8132,11 +8117,6 @@ spriteFrame = ExtResource("19_psnxc")
 ySpriteFrame = -32
 speed = 70
 timeBeforeAttack = 0.25
-maxDistance = 100
-
-[node name="WeaponHitbox" parent="Skeleton7" index="4"]
-position = Vector2(-10.065, -10)
-scale = Vector2(3.28, 1)
 
 [node name="ProgressBar" parent="Skeleton7" index="7"]
 offset_left = -20.0
@@ -8153,11 +8133,6 @@ spriteFrame = ExtResource("19_psnxc")
 ySpriteFrame = -32
 speed = 70
 timeBeforeAttack = 0.25
-maxDistance = 100
-
-[node name="WeaponHitbox" parent="Skeleton8" index="4"]
-position = Vector2(-8.545, -10)
-scale = Vector2(3.27, 1)
 
 [node name="ProgressBar" parent="Skeleton8" index="7"]
 offset_left = -20.0
@@ -8174,11 +8149,6 @@ spriteFrame = ExtResource("19_psnxc")
 ySpriteFrame = -32
 speed = 70
 timeBeforeAttack = 0.25
-maxDistance = 100
-
-[node name="WeaponHitbox" parent="Skeleton9" index="4"]
-position = Vector2(-9.1, -10)
-scale = Vector2(3.255, 1)
 
 [node name="ProgressBar" parent="Skeleton9" index="7"]
 offset_left = -20.0
@@ -8195,11 +8165,6 @@ spriteFrame = ExtResource("19_psnxc")
 ySpriteFrame = -32
 speed = 70
 timeBeforeAttack = 0.25
-maxDistance = 100
-
-[node name="WeaponHitbox" parent="Skeleton10" index="4"]
-position = Vector2(-9.96, -10)
-scale = Vector2(3.315, 1)
 
 [node name="ProgressBar" parent="Skeleton10" index="7"]
 offset_left = -20.0
@@ -8216,11 +8181,6 @@ spriteFrame = ExtResource("19_psnxc")
 ySpriteFrame = -32
 speed = 70
 timeBeforeAttack = 0.25
-maxDistance = 100
-
-[node name="WeaponHitbox" parent="Skeleton11" index="4"]
-position = Vector2(-8.71, -10)
-scale = Vector2(3.255, 1)
 
 [node name="ProgressBar" parent="Skeleton11" index="7"]
 offset_left = -20.0

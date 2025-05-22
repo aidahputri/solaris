@@ -26,6 +26,7 @@ var direction: Vector2
 @export var weaponPosition: int = 35
 @export var bodyOffset: int = 35
 @export var timeBeforeAttack: float = 0.5
+@export var maxDistance = 30
 
 @export_group("Sfx")
 @export var attackSfx = ""
@@ -81,9 +82,8 @@ func _physics_process(delta):
 func _on_weapon_hitbox_area_entered(area: Area2D) -> void:
 	if area is HitboxComponent:
 		#$WeaponHitbox/CollisionShape2D.disabled = true
-		hitbox = area
-		var object = hitbox.get_parent()
-		if object.name == "Player":
+		if area.get_parent().name == "Player":
+			hitbox = area
 			attack = Attack.new()
 			attack.attack_damage = attack_damage
 			attack.knockback_force = knockback_force
@@ -96,7 +96,7 @@ func _on_weapon_hitbox_area_entered(area: Area2D) -> void:
 			play_attack_sfx()
 			if $AttackTimer.is_stopped() and ($AnimatedSprite2D.animation == "attack"):
 				$AttackTimer.start(timeBeforeAttack)
-
+		
 func play_attack_sfx():
 	var random_pitch = randf_range(0.9,1.1)
 	attack_sfx_player.pitch_scale = random_pitch
@@ -115,13 +115,20 @@ func play_death_sfx():
 func _on_attack_timer_timeout() -> void:
 	if hitbox != null and attack != null:
 		var player = hitbox.get_parent()
-		player.hurt()
-		hitbox.damage(attack)
+		if player.name == "Player":
+			var area_center_x = $WeaponHitbox/CollisionShape2D.global_position.x
+			var player_x = player.global_position.x
+			var x_distance = abs(player_x - area_center_x)
+			print(x_distance)
+			if x_distance < maxDistance:
+				player.hurt()
+				hitbox.damage(attack)
 	$AttackTimer.stop()
 
 func _on_weapon_hitbox_area_exited(area: Area2D) -> void:
-	hitbox = null
-	attack = null
+	pass
+	#hitbox = null
+	#attack = null
 
 func hurt():
 	play_hurt_sfx()

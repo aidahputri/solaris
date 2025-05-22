@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://boar8qdwydit" path="res://Asset/5.2 PF_Castle_v2.0/decorative.png" id="3_uvh1k"]
 [ext_resource type="Texture2D" uid="uid://bkhb40la431t3" path="res://Asset/5.2 PF_Castle_v2.0/decorative_castle.png" id="4_3ydoy"]
 [ext_resource type="PackedScene" uid="uid://clxig6qbc7tw8" path="res://Scene/Level5/Candle.tscn" id="5_7n6vn"]
-[ext_resource type="PackedScene" uid="uid://bneaab7eys6v2" path="res://Scene/Level5/Torch.tscn" id="6_rs8bn"]
+[ext_resource type="PackedScene" path="res://Scene/Level5/Torch.tscn" id="6_rs8bn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0q0il"]
 texture = ExtResource("1_n61ts")

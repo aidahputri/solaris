@@ -1,18 +1,23 @@
-[gd_scene load_steps=19 format=4 uid="uid://hr5ud32g6xml"]
+[gd_scene load_steps=24 format=4 uid="uid://hr5ud32g6xml"]
 
-[ext_resource type="PackedScene" uid="uid://q7ubskmfmaj2" path="res://Scene/Level5/Level5ParallaxBg.tscn" id="1_bauyl"]
+[ext_resource type="PackedScene" path="res://Scene/Level5/Level5ParallaxBg.tscn" id="1_bauyl"]
 [ext_resource type="Script" path="res://Script/Level.gd" id="1_s1sl0"]
 [ext_resource type="TileSet" uid="uid://db0mj3xhyihpm" path="res://Scene/Level5/TileMapLevel5.tres" id="2_6ikfe"]
 [ext_resource type="PackedScene" uid="uid://dm30ncxth5bqk" path="res://Scene/Player.tscn" id="4_jgure"]
 [ext_resource type="PackedScene" uid="uid://bmi30g53k5ere" path="res://Scene/Musuh/BaseEnemy.tscn" id="4_q3s2h"]
 [ext_resource type="PackedScene" uid="uid://cknetk7q7m7av" path="res://Scene/GUI.tscn" id="4_rjtc6"]
 [ext_resource type="SpriteFrames" uid="uid://i4im6hgas8be" path="res://Asset/Musuh/spriteframe/Skeleton.tres" id="5_00mg1"]
-[ext_resource type="PackedScene" path="res://Scene/PauseGUI.tscn" id="5_37oep"]
+[ext_resource type="PackedScene" uid="uid://dnuek73cevx73" path="res://Scene/PauseGUI.tscn" id="5_37oep"]
 [ext_resource type="SpriteFrames" uid="uid://cd1vbbic5rw4v" path="res://Asset/Musuh/spriteframe/Bat.tres" id="7_ghhxr"]
-[ext_resource type="PackedScene" path="res://Scene/FadeCanvas.tscn" id="7_y00sk"]
+[ext_resource type="PackedScene" uid="uid://pe0qmwlpo6dj" path="res://Scene/FadeCanvas.tscn" id="7_y00sk"]
 [ext_resource type="PackedScene" uid="uid://crfx06vy8h3dc" path="res://Scene/DialogueSystem.tscn" id="9_bcr04"]
 [ext_resource type="AudioStream" uid="uid://bcyylm6gt0gtg" path="res://Asset/Bgm/phantoms_castle.wav" id="9_sl1rn"]
 [ext_resource type="Script" path="res://Script/LoseArea.gd" id="12_bm5hp"]
+[ext_resource type="PackedScene" uid="uid://csci20kpuc0tm" path="res://Scene/Musuh/Boss.tscn" id="14_n0m6v"]
+[ext_resource type="AudioStream" uid="uid://deky7653u0lt4" path="res://Asset/Sfx/RPG_Essentials_Free/8_Atk_Magic_SFX/04_Fire_explosion_04_medium.wav" id="15_13hq8"]
+[ext_resource type="AudioStream" uid="uid://fxlq87cy7253" path="res://Asset/Sfx/RPG_Essentials_Free/10_Battle_SFX/39_Block_03.wav" id="16_8tk35"]
+[ext_resource type="AudioStream" uid="uid://ccbvqqr4jy8ml" path="res://Asset/Sfx/RPG_Essentials_Free/10_Battle_SFX/69_Enemy_death_01.wav" id="17_x84yx"]
+[ext_resource type="AudioStream" uid="uid://dhke1yqvjotsd" path="res://Asset/Sfx/RPG_Essentials_Free/10_Battle_SFX/Monster_Roar.wav" id="18_nifjh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xcjwk"]
 size = Vector2(20, 847)
@@ -242,7 +247,7 @@ shape = SubResource("RectangleShape2D_7sc83")
 [node name="Player" parent="." instance=ExtResource("4_jgure")]
 z_index = 1
 y_sort_enabled = true
-position = Vector2(150, 548)
+position = Vector2(164, 573)
 JUMP_SPEED = -500
 sfx = "RPG_Essentials_Free/12_Player_Movement_SFX/12_Step_wood_03.wav"
 
@@ -496,11 +501,47 @@ shape = SubResource("WorldBoundaryShape2D_wpd5y")
 
 [node name="BGM" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("9_sl1rn")
+volume_db = -5.0
 autoplay = true
 max_distance = 1e+17
+
+[node name="Boss" parent="." instance=ExtResource("14_n0m6v")]
+position = Vector2(8472, 124)
+scale = Vector2(2.47, 2.47)
+collision_mask = 2
+health = 300
+timeBeforeAttack = 0.4
+
+[node name="HealthComponent" parent="Boss" index="2"]
+MAX_HEALTH = 300.0
+
+[node name="WeaponHitbox" parent="Boss" index="4"]
+position = Vector2(-71.25, -20.605)
+scale = Vector2(1.055, 0.585)
+
+[node name="debug" parent="Boss" index="9"]
+visible = false
+
+[node name="AttackSfxPlayer" type="AudioStreamPlayer2D" parent="Boss"]
+stream = ExtResource("15_13hq8")
+
+[node name="HurtSfxPlayer" type="AudioStreamPlayer2D" parent="Boss"]
+stream = ExtResource("16_8tk35")
+area_mask = 269
+
+[node name="DeathSfxPlayer" type="AudioStreamPlayer2D" parent="Boss"]
+stream = ExtResource("17_x84yx")
+
+[node name="FlameSfxPlayer" type="AudioStreamPlayer2D" parent="Boss"]
+stream = ExtResource("18_nifjh")
+volume_db = -8.0
+
+[node name="DeathTimer" type="Timer" parent="Boss"]
 
 [connection signal="body_entered" from="Level5DialogueTrigger" to="DialogueSystem" method="_on_level_5_dialogue_trigger_body_entered"]
 [connection signal="body_entered" from="BeforeBossDialogueTrigger" to="DialogueSystem" method="_on_before_boss_dialogue_trigger_body_entered"]
 [connection signal="body_entered" from="LoseArea" to="LoseArea" method="_on_body_entered"]
+[connection signal="timeout" from="Boss/DeathTimer" to="Boss" method="_on_death_timer_timeout"]
 
 [editable path="Player"]
+[editable path="Boss"]

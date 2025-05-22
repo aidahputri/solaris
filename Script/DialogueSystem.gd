@@ -100,4 +100,5 @@ func _on_level_5_dialogue_trigger_body_entered(body: Node2D):
 
 func _on_before_boss_dialogue_trigger_body_entered(body: Node2D):
 	if body.name == "Player": 
+		body.reset_health()
 		start_dialog("beforeBossFight")

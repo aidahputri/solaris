@@ -129,24 +129,25 @@ func _on_weapon_hitbox_area_entered(area: Area2D) -> void:
 		var hitbox: HitboxComponent = area
 		var enemy = hitbox.get_parent()
 		var enemy_cur_health = enemy.get_node("HealthComponent").health
-		if enemy_cur_health > 0 and enemy.immune == false:
-			var attack = Attack.new()
-			attack.attack_damage = attack_damage
-			attack.knockback_force = knockback_force
-			attack.attack_position = global_position
-			if direction < 0:
-				attack.attack_dir = -1
-			else:
-				attack.attack_dir = 1
-			
-			hitbox.damage(attack)
-			enemy.hurt()
-			shake_camera(5.0, 0.1)
-			
-			# Heal player on successful attack
-			attack = Attack.new()
-			attack.attack_damage = -3
-			healthComponent.damage(attack)
+		if enemy.name != "Player":
+			if enemy_cur_health > 0 and enemy.immune == false:
+				var attack = Attack.new()
+				attack.attack_damage = attack_damage
+				attack.knockback_force = knockback_force
+				attack.attack_position = global_position
+				if direction < 0:
+					attack.attack_dir = -1
+				else:
+					attack.attack_dir = 1
+				
+				hitbox.damage(attack)
+				enemy.hurt()
+				shake_camera(5.0, 0.1)
+				
+				# Heal player on successful attack
+				attack = Attack.new()
+				attack.attack_damage = -3
+				healthComponent.damage(attack)
 
 func health_drain() -> void:
 	var attack = Attack.new()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=144 format=4 uid="uid://bw0oyp56svdsk"]
+[gd_scene load_steps=146 format=4 uid="uid://bw0oyp56svdsk"]
 
 [ext_resource type="Script" path="res://Script/Level.gd" id="1_8uwnh"]
 [ext_resource type="Texture2D" uid="uid://mgedb3376a7l" path="res://Asset/4. PF_CastlePrison1.0/bg_base_rock.png" id="2_j1uif"]
@@ -21,6 +21,7 @@
 [ext_resource type="SpriteFrames" uid="uid://i4im6hgas8be" path="res://Asset/Musuh/spriteframe/Skeleton.tres" id="19_psnxc"]
 [ext_resource type="PackedScene" uid="uid://8cmpfpk1bcda" path="res://Scene/LedgeAreaBase.tscn" id="20_f2ot2"]
 [ext_resource type="PackedScene" uid="uid://ddweben6kr5x4" path="res://Scene/ZoomAreaBase.tscn" id="21_abg28"]
+[ext_resource type="Script" path="res://Script/LoseArea.gd" id="22_q5tql"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nsrrh"]
 texture = ExtResource("6_8t73p")
@@ -7849,6 +7850,9 @@ size = Vector2(46, 575)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_18qh1"]
 size = Vector2(33.5, 150.5)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aervv"]
+size = Vector2(1925, 41)
+
 [node name="Level4" type="Node2D"]
 script = ExtResource("1_8uwnh")
 nextScene = "res://Scene/Level5/Level5.tscn"
@@ -8541,7 +8545,16 @@ shape = SubResource("RectangleShape2D_18qh1")
 position = Vector2(1971, -383.75)
 shape = SubResource("RectangleShape2D_18qh1")
 
+[node name="FallArea" type="Area2D" parent="."]
+position = Vector2(2494, -54)
+script = ExtResource("22_q5tql")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FallArea"]
+position = Vector2(686.5, 44)
+shape = SubResource("RectangleShape2D_aervv")
+
 [connection signal="body_entered" from="FinishArea" to="." method="_on_finish_area_body_entered"]
+[connection signal="body_entered" from="FallArea" to="FallArea" method="_on_body_entered"]
 
 [editable path="Player"]
 [editable path="Skeleton"]

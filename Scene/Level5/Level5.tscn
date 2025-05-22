@@ -1,6 +1,6 @@
-[gd_scene load_steps=24 format=4 uid="uid://hr5ud32g6xml"]
+[gd_scene load_steps=25 format=4 uid="uid://hr5ud32g6xml"]
 
-[ext_resource type="PackedScene" path="res://Scene/Level5/Level5ParallaxBg.tscn" id="1_bauyl"]
+[ext_resource type="PackedScene" uid="uid://q7ubskmfmaj2" path="res://Scene/Level5/Level5ParallaxBg.tscn" id="1_bauyl"]
 [ext_resource type="Script" path="res://Script/Level.gd" id="1_s1sl0"]
 [ext_resource type="TileSet" uid="uid://db0mj3xhyihpm" path="res://Scene/Level5/TileMapLevel5.tres" id="2_6ikfe"]
 [ext_resource type="PackedScene" uid="uid://dm30ncxth5bqk" path="res://Scene/Player.tscn" id="4_jgure"]
@@ -33,6 +33,9 @@ height = 75.0
 size = Vector2(26, 206)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_wpd5y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_grg2w"]
+size = Vector2(1925, 41)
 
 [node name="Level5" type="Node2D"]
 y_sort_enabled = true
@@ -538,10 +541,19 @@ volume_db = -8.0
 
 [node name="DeathTimer" type="Timer" parent="Boss"]
 
+[node name="FallArea" type="Area2D" parent="."]
+position = Vector2(3390, 281)
+script = ExtResource("12_bm5hp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FallArea"]
+position = Vector2(686.5, 44)
+shape = SubResource("RectangleShape2D_grg2w")
+
 [connection signal="body_entered" from="Level5DialogueTrigger" to="DialogueSystem" method="_on_level_5_dialogue_trigger_body_entered"]
 [connection signal="body_entered" from="BeforeBossDialogueTrigger" to="DialogueSystem" method="_on_before_boss_dialogue_trigger_body_entered"]
 [connection signal="body_entered" from="LoseArea" to="LoseArea" method="_on_body_entered"]
 [connection signal="timeout" from="Boss/DeathTimer" to="Boss" method="_on_death_timer_timeout"]
+[connection signal="body_entered" from="FallArea" to="FallArea" method="_on_body_entered"]
 
 [editable path="Player"]
 [editable path="Boss"]

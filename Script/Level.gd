@@ -44,3 +44,7 @@ func change_scene():
 func _on_finish_area_body_entered(body: Node2D):
 	if body.name == "Player":
 		fade_out()
+
+func boss_died():
+	nextScene = ""
+	fade_out()

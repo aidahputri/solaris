@@ -237,3 +237,7 @@ func special_hurt():
 	is_hurt = true
 	await animplayer.animation_finished
 	is_hurt = false
+
+func reset_health():
+	Global.playerHealth = 100
+	healthComponent.health = Global.playerHealth

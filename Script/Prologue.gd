@@ -7,6 +7,7 @@ extends Control
 @onready var label_dialog = $Dialogue/Panel/DialogBox/LabelDialog
 @onready var next_button = $Dialogue/Panel/DialogBox/NextButton
 @export var next_scene = ""
+var tree = null
 
 var dialog_data = [
 	{"character": "", "text": "Long forgotten, the vampire Noctis slept in silence.", "bg": "res://Asset/Background/prologue-1.png"},
@@ -24,6 +25,7 @@ var is_typing = false
 var skip_typing = false
 
 func _ready():
+	tree = get_tree()
 	show_dialog()
 	
 func show_dialog():
@@ -80,7 +82,7 @@ func go_to_next_scene():
 	call_deferred("change_scene")
 	
 func change_scene():
-	get_tree().change_scene_to_file(next_scene)
+	tree.change_scene_to_file(next_scene)
 	
 func _on_skip_pressed():
 	go_to_next_scene()

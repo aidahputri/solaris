@@ -21,6 +21,12 @@ var dialog_data = {
 		{"character": "", "text": "I feel my heart is burning."},
 		{"character": "", "text": "I can feel, I am getting closer to my gem."}
 	],
+	# Level 4
+	"enterLevel4": [
+		{"character": "", "text": "The scent of rot and rust... this must be the old castle prison."},
+		{"character": "", "text": "Chains still echo with screams long gone."},
+		{"character": "", "text": "If the thief passed through here, they didn’t walk out untouched."}
+	],
 	"level5": [
 		{"character": "", "text": "The Solaris Gem is near."},
 		{"character": "", "text": "But so is he; the one who took everything."},
@@ -93,6 +99,10 @@ func _on_level_1_dialogue_trigger_body_entered(body: Node2D):
 func _on_enter_level_3_dialogue_trigger_body_entered(body: Node2D):
 	if body.name == "Player":
 		start_dialog("enterLevel3")
+		
+func _on_enter_level_4_dialogue_area_body_entered(body: Node2D) -> void:
+	if body.name == "Player":
+		start_dialog("enterLevel4")
 
 func _on_level_5_dialogue_trigger_body_entered(body: Node2D):
 	if body.name == "Player": 
